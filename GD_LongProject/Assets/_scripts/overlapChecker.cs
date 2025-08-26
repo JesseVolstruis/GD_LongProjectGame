@@ -15,29 +15,33 @@ public class overlapChecker : MonoBehaviour
     public float _overlapDistance;
 
     public GameObject cube;
-    public Material materialA;
-    public Material materialB;
+    public Material overlapping;
+    public Material notOverlapping;
+    
+    public lightProperties.ColorOfLight lightColorA;
+    public lightProperties.ColorOfLight lightColorB;
     
     public float distance;
-    void Start()
-    {
 
-    }
     void Update()
     {
         _centreA = lightSourceA.GetComponent<basicLight>().lightCentre;
         _centreB = lightSourceB.GetComponent<basicLight>().lightCentre;
         _radiusA = lightSourceA.GetComponent<basicLight>().radius;
         _radiusB = lightSourceB.GetComponent<basicLight>().radius;
+        lightColorA = lightSourceA.GetComponent<basicLight>().colorOfLight;
+        lightColorB = lightSourceB.GetComponent<basicLight>().colorOfLight;
         _overlapDistance = _radiusA + _radiusB;
         distance = Mathf.Abs(Vector3.Distance(_centreA, _centreB));
+        
         if(CheckOverlap())
         {
-            cube.GetComponent<Renderer>().material = materialA;
+            Debug.Log(CheckColorCombos(lightColorA, lightColorB)); 
+            cube.GetComponent<Renderer>().material = overlapping;
         }
         else
         {
-            cube.GetComponent<Renderer>().material = materialB;
+            cube.GetComponent<Renderer>().material = notOverlapping;
         }
     }
     
@@ -45,4 +49,28 @@ public class overlapChecker : MonoBehaviour
     {
         return Mathf.Abs(Vector3.Distance(_centreA, _centreB))  <= _overlapDistance;
     }
+
+    private lightProperties.ColorOfLight CheckColorCombos(lightProperties.ColorOfLight colorA, lightProperties.ColorOfLight colorB)
+    {
+        //Yellow
+        if ((colorA == lightProperties.ColorOfLight.RedLight || colorB == lightProperties.ColorOfLight.RedLight) 
+            && (colorA == lightProperties.ColorOfLight.GreenLight || colorB == lightProperties.ColorOfLight.GreenLight))
+        {
+            return lightProperties.ColorOfLight.YellowLight;
+        }
+        //Cyan
+        if ((colorA == lightProperties.ColorOfLight.GreenLight || colorB == lightProperties.ColorOfLight.GreenLight) 
+            && (colorA == lightProperties.ColorOfLight.BlueLight || colorB == lightProperties.ColorOfLight.BlueLight))
+        {
+            return lightProperties.ColorOfLight.CyanLight;
+        }
+        //Magenta
+        if ((colorA == lightProperties.ColorOfLight.RedLight || colorB == lightProperties.ColorOfLight.RedLight)
+            && (colorA == lightProperties.ColorOfLight.BlueLight || colorB == lightProperties.ColorOfLight.BlueLight))
+        {
+            return lightProperties.ColorOfLight.MagentaLight;
+        }
+        
+        return lightProperties.ColorOfLight.WhiteLight;
+    } 
 }
