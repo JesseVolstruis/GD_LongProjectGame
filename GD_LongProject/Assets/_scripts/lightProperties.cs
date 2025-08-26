@@ -17,6 +17,5 @@ public class lightProperties : ScriptableObject
     public ColorOfLight currentColorOfLight;
     
     public float spreadOfLight;
-    
-    
+
 }

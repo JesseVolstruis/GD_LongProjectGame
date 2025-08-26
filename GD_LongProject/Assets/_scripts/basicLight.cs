@@ -24,9 +24,13 @@ public class basicLight : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var centreHit, 10f))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var centreHit))
         { 
             lightCentre =  centreHit.point;
+            if (centreHit.collider.gameObject.TryGetComponent(out IChangable changable))
+            {
+                changable.Change(colorOfLight);
+            }
             xDistance = Mathf.Abs(Vector3.Distance(transform.position, lightCentre));
             radius = GetRadius();
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * centreHit.distance, Color.yellow); 
