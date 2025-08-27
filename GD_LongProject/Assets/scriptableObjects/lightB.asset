@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8ae7b2368fe5749b2fa7bb229fe43d, type: 3}
   m_Name: lightB
   m_EditorClassIdentifier: 
-  currentColorOfLight: 1
+  currentColorOfLight: 2
   spreadOfLight: 12
