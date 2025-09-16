@@ -25,12 +25,12 @@ public class overlapChecker : MonoBehaviour
 
     void Update()
     {
-        _centreA = lightSourceA.GetComponent<basicLight>().lightCentre;
-        _centreB = lightSourceB.GetComponent<basicLight>().lightCentre;
-        _radiusA = lightSourceA.GetComponent<basicLight>().radius;
-        _radiusB = lightSourceB.GetComponent<basicLight>().radius;
-        lightColorA = lightSourceA.GetComponent<basicLight>().colorOfLight;
-        lightColorB = lightSourceB.GetComponent<basicLight>().colorOfLight;
+        _centreA = lightSourceA.GetComponent<torch>().lightCentre;
+        _centreB = lightSourceB.GetComponent<torch>().lightCentre;
+        _radiusA = lightSourceA.GetComponent<torch>().radius;
+        _radiusB = lightSourceB.GetComponent<torch>().radius;
+        lightColorA = lightSourceA.GetComponent<torch>().colorOfLight;
+        lightColorB = lightSourceB.GetComponent<torch>().colorOfLight;
         _overlapDistance = _radiusA + _radiusB;
         distance = Mathf.Abs(Vector3.Distance(_centreA, _centreB));
         

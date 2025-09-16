@@ -45,17 +45,18 @@ public class PlayerController : MonoBehaviour
         if (button.isPressed && _controller.isGrounded)
         {
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityValue);
-
         }
+    }
+
+    public void OnLook(InputValue value)
+    {
+        var direction = value.Get<Vector2>();
     }
     
     void Update()
     {
         // Ground check
         _grounded = _controller.isGrounded;
-
-        // Read input
-        //_moveInput = _moveAction.ReadValue<Vector2>();
 
         // Camera-relative movement
         Vector3 forward = cameraTransform.forward; forward.y = 0; forward.Normalize();
@@ -68,12 +69,6 @@ public class PlayerController : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(move, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, Time.deltaTime * 10f);
         }
-
-        // // Jump
-        // if (_jumpAction.triggered && _grounded)
-        // {
-        //     _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityValue);
-        // }
 
         // Gravity
         if (_grounded && _velocity.y < 0)

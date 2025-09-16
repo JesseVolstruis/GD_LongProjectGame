@@ -1,11 +1,14 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class CameraFocus : MonoBehaviour
 {
     public CinemachineBrain brain;
     public ICinemachineCamera CameraA;
     public ICinemachineCamera CameraB;
+    
 
     void Start()
     {
@@ -18,4 +21,6 @@ public class CameraFocus : MonoBehaviour
         float blendTime = 0f;
         brain.SetCameraOverride(layer, priority,  CameraA,CameraB, weight, blendTime);
     }
+    
 }
+

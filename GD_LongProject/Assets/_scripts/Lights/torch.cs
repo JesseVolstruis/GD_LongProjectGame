@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class basicLight : MonoBehaviour
+public class torch : MonoBehaviour
 {
     public lightProperties lightProperties;
     private float _upwardTiltDegrees = 12f; // 12 seems to correspond with light size of 25
+    private float _intensityOfLight;
     public lightProperties.ColorOfLight colorOfLight = lightProperties.ColorOfLight.WhiteLight;
     private Light _light;
     
@@ -61,7 +62,7 @@ public class basicLight : MonoBehaviour
     {
         colorOfLight = lightProperties.currentColorOfLight;
         _upwardTiltDegrees = lightProperties.spreadOfLight;
-
+        _light.intensity = lightProperties.intensityOfLight;
         switch (colorOfLight)
         {
             case lightProperties.ColorOfLight.WhiteLight:

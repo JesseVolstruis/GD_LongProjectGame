@@ -16,6 +16,8 @@ public class lightProperties : ScriptableObject
     
     public ColorOfLight currentColorOfLight;
     
-    public float spreadOfLight;
+    public float spreadOfLight; // for the torch
+    public float radiusOfLight; // for the lantern
+    public float intensityOfLight; // for both
 
 }
