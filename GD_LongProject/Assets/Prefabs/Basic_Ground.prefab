@@ -65,6 +65,10 @@ PrefabInstance:
       value: Basic_Ground
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5ddde9a79bc361a45b07b111101a5e0b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ddde9a79bc361a45b07b111101a5e0b, type: 3}
       propertyPath: m_TagString
       value: Rule Tile
       objectReference: {fileID: 0}
