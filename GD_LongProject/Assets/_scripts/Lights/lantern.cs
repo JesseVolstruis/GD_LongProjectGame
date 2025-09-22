@@ -23,7 +23,6 @@ public class lantern : MonoBehaviour
     {
         LanternLook(transform.position, _radiusOfLight);
     }
-    
     private void LanternLook(Vector3 center, float radius)
     {
         Collider[] hitColliders = Physics.OverlapSphere(center, 0.7f*radius);
@@ -67,5 +66,36 @@ public class lantern : MonoBehaviour
                 _light.color = Color.white;
                 throw new ArgumentOutOfRangeException();
         }
+    }
+
+    public void MakeRed()
+    {
+        colorOfLight = lightProperties.ColorOfLight.RedLight;
+        _light.color = Color.red;
+    }
+    public void MakeGreen()
+    {
+        colorOfLight = lightProperties.ColorOfLight.GreenLight;
+        _light.color = Color.green;
+    }
+    public void MakeBlue()
+    {
+        colorOfLight = lightProperties.ColorOfLight.BlueLight;
+        _light.color = Color.blue;
+    }
+    public void MakeCyan()
+    {
+        colorOfLight = lightProperties.ColorOfLight.CyanLight;
+        _light.color = Color.cyan;
+    }
+    public void MakeYellow()
+    {
+        colorOfLight = lightProperties.ColorOfLight.YellowLight;
+        _light.color = Color.yellow;
+    }
+    public void MakeMagenta()
+    {
+        colorOfLight = lightProperties.ColorOfLight.MagentaLight;
+        _light.color = Color.magenta;
     }
 }

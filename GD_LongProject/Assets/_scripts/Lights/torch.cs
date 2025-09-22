@@ -11,7 +11,7 @@ public class torch : MonoBehaviour
     public float numberOfRays = 8f;
     private float _tiltInRads;
     private float _degreesBetweenRays;
-    
+     
     public Vector3 lightCentre;
     public float radius;
     public float xDistance;
@@ -40,24 +40,11 @@ public class torch : MonoBehaviour
         { 
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.white); 
         }
-        
-                /////NOT in USE/////
-        // wireframe for the cone of vision
-        //
-        // Quaternion upTilt = Quaternion.AngleAxis(_upwardTiltDegrees, transform.TransformDirection(Vector3.left));
-        // Vector3 direction = upTilt * transform.forward;
-        // for (int i = 0; i < numberOfRays; i++)
-        // {
-        //     Debug.DrawRay(transform.position, direction * 12, Color.white);
-        //     Quaternion rotateValue = Quaternion.AngleAxis(_degreesBetweenRays, transform.TransformDirection(Vector3.forward));
-        //     direction = rotateValue * direction;
-        // }
     }
     private float GetRadius()
     {
         return Mathf.Abs(Vector3.Distance(transform.position, lightCentre) * Mathf.Tan(_tiltInRads)) ;
     }
-
     private void AssignLightProperties()
     {
         colorOfLight = lightProperties.currentColorOfLight;
@@ -87,7 +74,36 @@ public class torch : MonoBehaviour
                 _light.color = Color.blue;
                 break;
         }
-        
+    }
+    public void MakeRed()
+    {
+        colorOfLight = lightProperties.ColorOfLight.RedLight;
+        _light.color = Color.red;
+    }
+    public void MakeGreen()
+    {
+        colorOfLight = lightProperties.ColorOfLight.GreenLight;
+        _light.color = Color.green;
+    }
+    public void MakeBlue()
+    {
+        colorOfLight = lightProperties.ColorOfLight.BlueLight;
+        _light.color = Color.blue;
+    }
+    public void MakeCyan()
+    {
+        colorOfLight = lightProperties.ColorOfLight.CyanLight;
+        _light.color = Color.cyan;
+    }
+    public void MakeYellow()
+    {
+        colorOfLight = lightProperties.ColorOfLight.YellowLight;
+        _light.color = Color.yellow;
+    }
+    public void MakeMagenta()
+    {
+        colorOfLight = lightProperties.ColorOfLight.MagentaLight;
+        _light.color = Color.magenta;
     }
 }
 

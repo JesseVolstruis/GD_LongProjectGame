@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
     [Header("Camera")]
     public Transform cameraTransform;
     public bool faceMoveDirection = true;
-
+    
+    public Transform holdPosition;
     void OnEnable() => actionAsset.Enable();
     void OnDisable() => actionAsset.Disable();
 
@@ -53,6 +54,16 @@ public class PlayerController : MonoBehaviour
         var direction = value.Get<Vector2>();
     }
     
+    public void OnAttack(InputValue button)
+    {
+        if (button.isPressed) 
+        {
+            Debug.Log("pressed");
+            Transform currentLightSource = holdPosition.GetChild(0);
+            Light currentLight =  currentLightSource.GetComponent<Light>();
+            currentLight.enabled = !currentLight.enabled;
+        }
+    }
     void Update()
     {
         // Ground check
