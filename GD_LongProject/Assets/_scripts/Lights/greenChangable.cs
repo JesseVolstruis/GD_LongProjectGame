@@ -18,7 +18,7 @@ public class greenChangable : MonoBehaviour, IChangable
         }
     }
 
-    public void Change(lightProperties.ColorOfLight colorOfLight)
+    public void Change(lightProperties.ColorOfLight colorOfLight,  Transform none)
     {
         //Check for overlapping so mixing can be applied
         if (colorOfLight == lightProperties.ColorOfLight.GreenLight)

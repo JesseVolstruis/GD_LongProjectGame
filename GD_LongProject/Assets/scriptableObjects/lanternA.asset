@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8ae7b2368fe5749b2fa7bb229fe43d, type: 3}
   m_Name: lanternA
   m_EditorClassIdentifier: 
+  currentProjectionType: 1
   currentColorOfLight: 0
   spreadOfLight: 0
   radiusOfLight: 10

@@ -30,7 +30,7 @@ public class torch : MonoBehaviour
             lightCentre =  centreHit.point;
             if (centreHit.collider.gameObject.TryGetComponent(out IChangable changable))
             {
-                changable.Change(colorOfLight);
+                changable.Change(colorOfLight,null);
             }
             xDistance = Mathf.Abs(Vector3.Distance(transform.position, lightCentre));
             radius = GetRadius();

@@ -42,7 +42,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909224243808806517}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909224243808806517}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
@@ -130,11 +130,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909224243808806517}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2cff8f212481fa40a24dbe8d7418884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightProperties: {fileID: 0}
+  colorOfLight: 6
+  numberOfRays: 8
+  lightCentre: {x: 0, y: 0, z: 0}
+  radius: 0
+  xDistance: 0
 --- !u!1 &8621632679361942681
 GameObject:
   m_ObjectHideFlags: 0

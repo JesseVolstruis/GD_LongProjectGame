@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class lantern : MonoBehaviour
 {
+
+    
     public lightProperties lightProperties;
     private float _radiusOfLight;
     private float _intensityOfLight;
@@ -30,7 +32,7 @@ public class lantern : MonoBehaviour
         {
             if (hitCollider.gameObject.TryGetComponent(out IChangable changeable))
             {
-                changeable.Change(colorOfLight);
+                changeable.Change(colorOfLight, null);
             }
         }
     }
