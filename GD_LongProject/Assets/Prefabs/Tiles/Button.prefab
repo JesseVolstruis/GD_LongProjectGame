@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2841453193204766986
+--- !u!1001 &1456839901489421515
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ddde9a79bc361a45b07b111101a5e0b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ddde9a79bc361a45b07b111101a5e0b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ddde9a79bc361a45b07b111101a5e0b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -63,10 +63,10 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 5ddde9a79bc361a45b07b111101a5e0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 1e2afae7e875d2742a4ac94f452d8c1f, type: 2}
+      objectReference: {fileID: 2100000, guid: 78a1ab1eeabe7754c8a3399cf2bc3531, type: 2}
     - target: {fileID: 919132149155446097, guid: 5ddde9a79bc361a45b07b111101a5e0b, type: 3}
       propertyPath: m_Name
-      value: Exit
+      value: Button
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5ddde9a79bc361a45b07b111101a5e0b, type: 3}
       propertyPath: m_TagString
@@ -90,44 +90,44 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ddde9a79bc361a45b07b111101a5e0b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5984703533169158067}
+      addedObject: {fileID: 8158732394265263180}
     - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: 5ddde9a79bc361a45b07b111101a5e0b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4486700525928160874}
+      addedObject: {fileID: 1720235583922494195}
   m_SourcePrefab: {fileID: 100100000, guid: 5ddde9a79bc361a45b07b111101a5e0b, type: 3}
---- !u!1 &3147936210305131611 stripped
+--- !u!1 &1798860371216916890 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ddde9a79bc361a45b07b111101a5e0b, type: 3}
-  m_PrefabInstance: {fileID: 2841453193204766986}
+  m_PrefabInstance: {fileID: 1456839901489421515}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5984703533169158067
+--- !u!114 &8158732394265263180
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3147936210305131611}
+  m_GameObject: {fileID: 1798860371216916890}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0316ac0f9947a2346b16b69aab73adb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ruleTile: {fileID: 11400000, guid: 18d30000e3437c047a66c4afdf173e71, type: 2}
+  ruleTile: {fileID: 11400000, guid: 6362bf8fb1dee3a44b6474d34948afa9, type: 2}
   ruleTileController: {fileID: 0}
-  placeholder: {fileID: 6206660324564720770}
+  placeholder: {fileID: 7312471518511503683}
   neighborTilePositions: 0000000000000000
---- !u!1 &6206660324564720770 stripped
+--- !u!1 &7312471518511503683 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 5ddde9a79bc361a45b07b111101a5e0b, type: 3}
-  m_PrefabInstance: {fileID: 2841453193204766986}
+  m_PrefabInstance: {fileID: 1456839901489421515}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &4486700525928160874
+--- !u!65 &1720235583922494195
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6206660324564720770}
+  m_GameObject: {fileID: 7312471518511503683}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
