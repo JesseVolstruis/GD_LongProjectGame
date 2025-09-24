@@ -2,13 +2,14 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    [Header("Input")]
-    public InputActionAsset actionAsset;
-    
+    private PlayerInput _playerInput;
     private InputAction _moveAction;
     private InputAction _jumpAction;
+    private InputAction _attackAction;
 
     private Vector2 _moveInput;
 
@@ -24,48 +25,62 @@ public class PlayerController : MonoBehaviour
     [Header("Camera")]
     public Transform cameraTransform;
     public bool faceMoveDirection = true;
-    
+
     public Transform holdPosition;
-    void OnEnable() => actionAsset.Enable();
-    void OnDisable() => actionAsset.Disable();
 
-    void Start()
+    private System.Action<InputAction.CallbackContext> _jumpHandler;
+    private System.Action<InputAction.CallbackContext> _attackHandler;
+
+    private void Awake()
     {
-        _controller = GetComponent<CharacterController>();
-        _moveAction = actionAsset.FindAction("Move");
-        _jumpAction = actionAsset.FindAction("Jump");
+        _playerInput = GetComponent<PlayerInput>();
+
+        // Get this player's private actions (isolated from others)
+        _moveAction   = _playerInput.actions["Move"];
+        _jumpAction   = _playerInput.actions["Jump"];
+        _attackAction = _playerInput.actions["Attack"];
     }
 
-    public void OnMove(InputValue value)
+    private void OnEnable()
     {
-        _moveInput = value.Get<Vector2>();
+        _jumpHandler = ctx => Jump();
+        _attackHandler = ctx => Attack();
+
+        _jumpAction.performed += _jumpHandler;
+        _attackAction.performed += _attackHandler;
     }
 
-    public void OnJump(InputValue button)
+    private void OnDisable()
     {
-        if (button.isPressed && _controller.isGrounded)
-        {
+        _jumpAction.performed -= _jumpHandler;
+        _attackAction.performed -= _attackHandler;
+    }
+
+    private void Jump()
+    {
+        if (_controller.isGrounded)
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityValue);
-        }
     }
 
-    public void OnLook(InputValue value)
+    private void Attack()
     {
-        var direction = value.Get<Vector2>();
-    }
-    
-    public void OnAttack(InputValue button)
-    {
-        if (button.isPressed) 
+        if (holdPosition.childCount > 0)
         {
-            Debug.Log("pressed");
             Transform currentLightSource = holdPosition.GetChild(0);
-            Light currentLight =  currentLightSource.GetComponent<Light>();
+            Light currentLight = currentLightSource.GetComponent<Light>();
             currentLight.enabled = !currentLight.enabled;
         }
     }
-    void Update()
+
+    private void Start()
     {
+        _controller = GetComponent<CharacterController>();
+    }
+
+    private void Update()
+    {
+        _moveInput = _moveAction.ReadValue<Vector2>();
+
         // Ground check
         _grounded = _controller.isGrounded;
 
@@ -83,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
         // Gravity
         if (_grounded && _velocity.y < 0)
-            _velocity.y = -2f; // small downward force to stick to ground
+            _velocity.y = -2f;
         else
             _velocity.y += gravityValue * Time.deltaTime;
 
