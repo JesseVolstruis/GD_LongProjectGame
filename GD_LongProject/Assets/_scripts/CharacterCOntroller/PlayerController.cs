@@ -62,19 +62,16 @@ public class PlayerController : MonoBehaviour
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityValue);
     }
 
+    private LightSource _lightSource;
     private void Attack()
     {
-        if (holdPosition.childCount > 0)
-        {
-            Transform currentLightSource = holdPosition.GetChild(0);
-            Light currentLight = currentLightSource.GetComponent<Light>();
-            currentLight.enabled = !currentLight.enabled;
-        }
+        _lightSource.SwitchOnOff();
     }
 
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
+        _lightSource = holdPosition.GetChild(0).gameObject.GetComponent<LightSource>();
     }
 
     private void Update()

@@ -9,4 +9,8 @@ public class blueChangeable : MonoBehaviour, IChangable
             transform.SetParent(player.transform);
         }
     }
+    public void UnChange()
+    {
+        transform.SetParent(null);
+    }
 }

@@ -7,4 +7,9 @@ public class cyanChangeable : MonoBehaviour, IChangable
     {
         throw new System.NotImplementedException();
     }
+    
+    public void UnChange()
+    {
+        transform.SetParent(null);
+    }
 }

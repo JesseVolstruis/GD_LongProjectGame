@@ -13,7 +13,6 @@ public class lightProperties : ScriptableObject
         YellowLight,
         WhiteLight,
     }
-    
     public enum ProjectionType
     {
         Torch,
@@ -21,11 +20,10 @@ public class lightProperties : ScriptableObject
     }
     
     public ProjectionType currentProjectionType;
-    
     public ColorOfLight currentColorOfLight;
-    
+    public bool lightOn;
     public float spreadOfLight; // for the torch
-    public float radiusOfLight; // for the lantern
+    public float rangeOfLight; // for the lantern
     public float intensityOfLight; // for both
 
 }
