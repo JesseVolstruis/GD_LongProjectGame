@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: torch
   m_EditorClassIdentifier: 
   currentProjectionType: 0
-  currentColorOfLight: 0
+  currentColorOfLight: 1
+  lightOn: 0
   spreadOfLight: 12
   rangeOfLight: 10
   intensityOfLight: 100

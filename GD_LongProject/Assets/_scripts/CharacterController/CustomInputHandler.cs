@@ -37,23 +37,43 @@ public class CustomInputHandler : InputAxisControllerBase<CustomInputHandler.Rea
     [Serializable]
     public class Reader : IInputAxisReader
     {
-        public InputActionReference Input;
-        private Vector2 m_Value;
+        public InputActionReference input;
+        private Vector2 _mValue;
 
         public void ProcessInput(InputAction action)
         {
-            if (Input != null && Input.action.id == action.id)
+            if (input != null && input.action.id == action.id)
             {
                 if (action.expectedControlType == "Vector2")
-                    m_Value = action.ReadValue<Vector2>();
+                {
+                    Vector2 raw = action.ReadValue<Vector2>();
+
+                    // Detect mouse vs gamepad
+                    if (action.activeControl.device is Mouse)
+                    {
+                        // Mouse delta: scale directly
+                        _mValue = raw * mouseSensitivity; 
+                    }
+                    else
+                    {
+                        // Controller stick: scale with deltaTime
+                        _mValue = raw * controllerSensitivity * Time.deltaTime;
+                    }
+                }
                 else
-                    m_Value = new Vector2(action.ReadValue<float>(), 0);
+                {
+                    _mValue = new Vector2(action.ReadValue<float>(), 0);
+                }
             }
         }
 
+        [SerializeField] private float mouseSensitivity = 5.0f;
+        [SerializeField] private float controllerSensitivity = 50.0f;
+
+
         public float GetValue(UnityEngine.Object context, IInputAxisOwner.AxisDescriptor.Hints hint)
         {
-            return hint == IInputAxisOwner.AxisDescriptor.Hints.Y ? m_Value.y : m_Value.x;
+            return hint == IInputAxisOwner.AxisDescriptor.Hints.Y ? _mValue.y : _mValue.x;
         }
     }
 }

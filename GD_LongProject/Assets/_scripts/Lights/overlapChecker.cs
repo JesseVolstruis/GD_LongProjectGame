@@ -3,8 +3,10 @@ using UnityEngine.Serialization;
 
 public class overlapChecker : MonoBehaviour
 {
-    public GameObject lightSourceA;
-    public GameObject lightSourceB;
+    [Header("A- Lantern")]
+    public GameObject lightSourceA; //lantern
+    [Header("B- Torch")]
+    public GameObject lightSourceB; //torch
     
     public Vector3 _centreA;
     public Vector3 _centreB;
@@ -13,43 +15,42 @@ public class overlapChecker : MonoBehaviour
     public float _radiusB;
     
     public float _overlapDistance;
-
-    public GameObject cube;
-    public Material overlapping;
-    public Material notOverlapping;
     
     public lightProperties.ColorOfLight lightColorA;
     public lightProperties.ColorOfLight lightColorB;
     
     public float distance;
 
+    private IChangable _currentChangable;
     void Update()
     {
-        // _centreA = lightSourceA.GetComponent<LightSource>().lightCentre;
-        // _centreB = lightSourceB.GetComponent<LightSource>().lightCentre;
-        // _radiusA = lightSourceA.GetComponent<LightSource>().radius;
-        // _radiusB = lightSourceB.GetComponent<LightSource>().radius;
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Debug.Log(_overlapDistance);
+            Debug.Log(distance);
+        }
+        _centreA = lightSourceA.transform.position;
+        _centreB = lightSourceB.GetComponent<LightSource>().torchHitPoint;
+        _radiusA = lightSourceA.GetComponent<LightSource>().radiusOfLantern;
+        _radiusB = lightSourceB.GetComponent<LightSource>().radiusOfTorch;
         lightColorA = lightSourceA.GetComponent<LightSource>().colorOfLight;
         lightColorB = lightSourceB.GetComponent<LightSource>().colorOfLight;
         _overlapDistance = _radiusA + _radiusB;
         distance = Mathf.Abs(Vector3.Distance(_centreA, _centreB));
         
-        if(CheckOverlap())
+        if(IsOverlapping(_centreA,_centreB, _overlapDistance))
         {
-            Debug.Log(CheckColorCombos(lightColorA, lightColorB)); 
-            cube.GetComponent<Renderer>().material = overlapping;
+            _currentChangable = lightSourceB.GetComponent<LightSource>().CurrentChangable;
+            if (_currentChangable != null)  _currentChangable.Change(CheckColorCombos(lightColorA, lightColorB), null);
         }
-        else
-        {
-            cube.GetComponent<Renderer>().material = notOverlapping;
-        }
+       
     }
-    
-    private bool CheckOverlap()
+    private bool IsOverlapping(Vector3 positionA, Vector3 positionB, float maxDistance)
     {
-        return Mathf.Abs(Vector3.Distance(_centreA, _centreB))  <= _overlapDistance;
+        return Mathf.Abs(Vector3.Distance(positionA, positionB))  <= maxDistance;
     }
 
+    //COLOR COMBOS
     private lightProperties.ColorOfLight CheckColorCombos(lightProperties.ColorOfLight colorA, lightProperties.ColorOfLight colorB)
     {
         //Yellow

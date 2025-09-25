@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2987607079596372411}
   - component: {fileID: 3027826963037235218}
   - component: {fileID: 2329291584186835912}
-  - component: {fileID: 4463045096914085298}
   m_Layer: 0
   m_Name: torch
   m_TagString: Untagged
@@ -123,24 +122,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!114 &4463045096914085298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909224243808806517}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2cff8f212481fa40a24dbe8d7418884, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightProperties: {fileID: 0}
-  colorOfLight: 6
-  numberOfRays: 8
-  lightCentre: {x: 0, y: 0, z: 0}
-  radius: 0
-  xDistance: 0
 --- !u!1 &8621632679361942681
 GameObject:
   m_ObjectHideFlags: 0
