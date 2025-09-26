@@ -1,4 +1,3 @@
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +8,8 @@ public class PlayerController : MonoBehaviour
     private PlayerInput _playerInput;
     private InputAction _moveAction;
     private InputAction _jumpAction;
-    private InputAction _attackAction;
+    private InputAction _switchAction;
+    private InputAction _interactAction;
 
     private Vector2 _moveInput;
 
@@ -29,31 +29,34 @@ public class PlayerController : MonoBehaviour
     public Transform holdPosition;
 
     private System.Action<InputAction.CallbackContext> _jumpHandler;
-    private System.Action<InputAction.CallbackContext> _attackHandler;
+    private System.Action<InputAction.CallbackContext> _switchHandler;
+    private System.Action<InputAction.CallbackContext> _interactHandler;
 
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
 
-        // Get this player's private actions (isolated from others)
         _moveAction   = _playerInput.actions["Move"];
         _jumpAction   = _playerInput.actions["Jump"];
-        _attackAction = _playerInput.actions["Attack"];
+        _switchAction = _playerInput.actions["Switch"];
+        _interactAction = _playerInput.actions["Interact"];
     }
-
     private void OnEnable()
     {
         _jumpHandler = ctx => Jump();
-        _attackHandler = ctx => Attack();
-
+        _switchHandler = ctx => Switch();
+        _interactHandler = ctx => Interact();
+        
         _jumpAction.performed += _jumpHandler;
-        _attackAction.performed += _attackHandler;
+        _switchAction.performed += _switchHandler;
+        _interactAction.performed += _interactHandler;
     }
 
     private void OnDisable()
     {
         _jumpAction.performed -= _jumpHandler;
-        _attackAction.performed -= _attackHandler;
+        _switchAction.performed -= _switchHandler;
+        _interactAction.performed -= _interactHandler;
     }
 
     private void Jump()
@@ -62,8 +65,42 @@ public class PlayerController : MonoBehaviour
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityValue);
     }
 
+    private GameObject _inPickUpRange;
     private LightSource _lightSource;
-    private void Attack()
+    private bool _holdingLight;    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out LightSource lightSource))
+        {
+            _inPickUpRange =  other.gameObject;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        _inPickUpRange = null;
+    }
+    private void Interact()
+    {
+        if (_inPickUpRange != null)
+        {
+            if (!_holdingLight)
+            {
+                PickUp(holdPosition,_inPickUpRange.transform);
+                _holdingLight = true;
+            }
+        }
+    }
+
+    private void PickUp(Transform holdHere, Transform holdThis)
+    {
+        holdThis.position = holdHere.position;
+        holdThis.SetParent(holdHere);
+    }
+    private void PutDown()
+    {
+        
+    }
+    private void Switch()
     {
         _lightSource.SwitchOnOff();
     }

@@ -40,14 +40,7 @@ public class LightSource : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) MakeLantern();
-        if (Input.GetKeyDown(KeyCode.E)) MakeTorch();
-        if (Input.GetKeyDown(KeyCode.Alpha1)) MakeRed(_light);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) MakeBlue(_light);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) MakeGreen(_light);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) MakeCyan(_light);
-        if (Input.GetKeyDown(KeyCode.Alpha5)) MakeYellow(_light);
-        if (Input.GetKeyDown(KeyCode.Alpha6)) MakeMagenta(_light);
+        
     }
 
     private void LateUpdate()

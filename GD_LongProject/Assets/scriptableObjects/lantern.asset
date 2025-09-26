@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: lantern
   m_EditorClassIdentifier: 
   currentProjectionType: 1
-  currentColorOfLight: 0
+  currentColorOfLight: 2
   lightOn: 0
   spreadOfLight: 0
   rangeOfLight: 10
