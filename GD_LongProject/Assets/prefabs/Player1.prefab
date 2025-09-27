@@ -137,8 +137,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321567733140318339}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2756825, y: 0, z: 0, w: 0.96124876}
-  m_LocalPosition: {x: 0, y: 5, z: -8}
+  m_LocalRotation: {x: 0.15212339, y: 4.7757322e-17, z: -8.545585e-18, w: 0.98836154}
+  m_LocalPosition: {x: 0, y: 3.0070581, z: -9.5371685}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -206,7 +206,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  OrbitStyle: 1
+  OrbitStyle: 0
   Radius: 10
   Orbits:
     Top:
@@ -218,7 +218,7 @@ MonoBehaviour:
     Bottom:
       Radius: 5
       Height: 0.2
-    SplineCurvature: 0.5
+    SplineCurvature: 0
   RecenteringTarget: 2
   HorizontalAxis:
     Value: 0
@@ -233,10 +233,10 @@ MonoBehaviour:
   VerticalAxis:
     Value: 17.5
     Center: 17.5
-    Range: {x: -10, y: 45}
+    Range: {x: 5, y: 45}
     Wrap: 0
     Recentering:
-      Enabled: 0
+      Enabled: 1
       Wait: 1
       Time: 2
     Restrictions: 0
@@ -314,6 +314,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         input: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+        playerValues: {fileID: 11400000, guid: 76245fc7fd35acd4e8808526bce4fae4, type: 2}
         mouseSensitivity: 5
         controllerSensitivity: 5000
       InputValue: 0
@@ -325,6 +326,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         input: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+        playerValues: {fileID: 11400000, guid: 76245fc7fd35acd4e8808526bce4fae4, type: 2}
         mouseSensitivity: 5
         controllerSensitivity: 5000
       InputValue: 0
@@ -336,6 +338,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         input: {fileID: 0}
+        playerValues: {fileID: 0}
         mouseSensitivity: 2
         controllerSensitivity: 150
       InputValue: 0
@@ -605,12 +608,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9673a44d1494cfe44a4c24fab0646dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
+  playerValues: {fileID: 11400000, guid: 76245fc7fd35acd4e8808526bce4fae4, type: 2}
+  moveSpeed: 5
+  turnSpeed: 5
   jumpHeight: 1
   gravityValue: -9.81
   cameraTransform: {fileID: 2428769746897056878}
-  faceMoveDirection: 1
   holdPosition: {fileID: 3130121322194260501}
+  faceMoveDirection: 1
 --- !u!114 &1604063202232634458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,8 +813,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6931470357468496461}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27568254, y: 0, z: 0, w: 0.96124876}
-  m_LocalPosition: {x: 0, y: 5, z: -8}
+  m_LocalRotation: {x: 0.15212339, y: 4.7568927e-17, z: -7.3215576e-18, w: 0.98836154}
+  m_LocalPosition: {x: -2.6, y: 3.0070581, z: -21.187168}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

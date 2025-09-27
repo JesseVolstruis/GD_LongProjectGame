@@ -5,39 +5,43 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    //INPUT ACTIONS
     private PlayerInput _playerInput;
     private InputAction _moveAction;
     private InputAction _jumpAction;
     private InputAction _switchAction;
     private InputAction _interactAction;
     private InputAction _switchColourAction;
-
-    private Vector2 _moveInput;
-
-    [Header("Movement")]
-    [SerializeField] private float playerSpeed = 5.0f;
-    [SerializeField] private float jumpHeight = 1.5f;
-    [SerializeField] private float gravityValue = -9.81f;
-
-    private CharacterController _controller;
-    private Vector3 _velocity;
-    private bool _grounded;
-
-    [Header("Camera")]
-    public Transform cameraTransform;
-    public bool faceMoveDirection = true;
-
-    public Transform holdPosition;
-
+    //CALLBACK HANDLERS
     private System.Action<InputAction.CallbackContext> _jumpHandler;
     private System.Action<InputAction.CallbackContext> _switchHandler;
     private System.Action<InputAction.CallbackContext> _interactHandler;
     private System.Action<InputAction.CallbackContext> _switchColourHandler;
-
+    
+    
+    public PlayerValues playerValues;
+    
+    [Header("Movement Values")]
+    [SerializeField] private float moveSpeed = 5.0f;
+    [SerializeField] private float turnSpeed = 5.0f;
+    [SerializeField] private float jumpHeight = 1f;
+    [SerializeField] private float gravityValue = -9.81f;
+    
+    [Header("Camera")]
+    public Transform cameraTransform;
+    
+    [HideInInspector] public Transform holdPosition;
+    [HideInInspector] public bool faceMoveDirection = true;
+    
+    private CharacterController _controller;
+    private Vector2 _moveInput;
+    private Vector3 _velocity;
+    private bool _grounded;
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
-
+        _controller = GetComponent<CharacterController>();
+        AssignMovementValues();
         _moveAction   = _playerInput.actions["Move"];
         _jumpAction   = _playerInput.actions["Jump"];
         _switchAction = _playerInput.actions["Switch"];
@@ -47,7 +51,7 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         _jumpHandler = ctx => Jump();
-        _switchHandler = ctx => Switch();
+        _switchHandler = ctx => LightSwitch();
         _interactHandler = ctx => Interact();
         _switchColourHandler = ctx => ChangeColour();
         
@@ -56,7 +60,6 @@ public class PlayerController : MonoBehaviour
         _interactAction.performed += _interactHandler;
         _switchColourAction.performed += _switchColourHandler;
     }
-
     private void OnDisable()
     {
         _jumpAction.performed -= _jumpHandler;
@@ -64,7 +67,43 @@ public class PlayerController : MonoBehaviour
         _interactAction.performed -= _interactHandler;
         _switchColourAction.performed -= _switchColourHandler;
     }
+    private void Update()
+    {
+        _moveInput = _moveAction.ReadValue<Vector2>();
 
+        // Ground check
+        _grounded = _controller.isGrounded;
+
+        // Camera-relative movement
+        Vector3 forward = cameraTransform.forward; forward.y = 0; forward.Normalize();
+        Vector3 right   = cameraTransform.right;   right.y = 0;   right.Normalize();
+
+        Vector3 move = forward * _moveInput.y + right * _moveInput.x;
+
+        if (faceMoveDirection && move.sqrMagnitude > 0.01f)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(move, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, Time.deltaTime * turnSpeed);
+        }
+
+        // Gravity
+        if (_grounded && _velocity.y < 0)
+            _velocity.y = -2f;
+        else
+            _velocity.y += gravityValue * Time.deltaTime;
+
+        // Apply movement + gravity
+        _controller.Move((move * moveSpeed + _velocity) * Time.deltaTime);
+    }
+
+    private void AssignMovementValues()
+    {
+        moveSpeed = playerValues.moveSpeed;
+        turnSpeed = playerValues.turnSpeed;
+        jumpHeight = playerValues.jumpHeight;
+        gravityValue = playerValues.gravityValue;
+        
+    }
     private void Jump()
     {
         if (_controller.isGrounded)
@@ -73,7 +112,8 @@ public class PlayerController : MonoBehaviour
 
     private GameObject _inPickUpRange;
     private LightSource _lightSource;
-    private bool _holdingLight;    
+    private bool _holdingLight;   
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out LightSource lightSource))
@@ -113,7 +153,7 @@ public class PlayerController : MonoBehaviour
         _holdingLight = false;
         _lightSource = null;
     }
-    private void Switch()
+    private void LightSwitch()
     {
         if(_lightSource != null)  _lightSource.SwitchOnOff();
     }
@@ -122,38 +162,5 @@ public class PlayerController : MonoBehaviour
     { 
         if(_lightSource != null)  _lightSource.ChangeColour(3);
     }
-    private void Start()
-    {
-        _controller = GetComponent<CharacterController>();
-        //_lightSource = holdPosition.GetChild(0).gameObject.GetComponent<LightSource>();
-    }
 
-    private void Update()
-    {
-        _moveInput = _moveAction.ReadValue<Vector2>();
-
-        // Ground check
-        _grounded = _controller.isGrounded;
-
-        // Camera-relative movement
-        Vector3 forward = cameraTransform.forward; forward.y = 0; forward.Normalize();
-        Vector3 right   = cameraTransform.right;   right.y = 0;   right.Normalize();
-
-        Vector3 move = forward * _moveInput.y + right * _moveInput.x;
-
-        if (faceMoveDirection && move.sqrMagnitude > 0.01f)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(move, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, Time.deltaTime * 10f);
-        }
-
-        // Gravity
-        if (_grounded && _velocity.y < 0)
-            _velocity.y = -2f;
-        else
-            _velocity.y += gravityValue * Time.deltaTime;
-
-        // Apply movement + gravity
-        _controller.Move((move * playerSpeed + _velocity) * Time.deltaTime);
-    }
 }

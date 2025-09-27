@@ -8,7 +8,7 @@ public class LightSource : MonoBehaviour
     [Header("Initial Value Data")]
     public lightProperties lightProperties;
     
-    [Header("Univerasal Light Properties")]
+    [Header("Universal Light Properties")]
     public lightProperties.ProjectionType projectionType;
     public lightProperties.ColorOfLight colorOfLight = lightProperties.ColorOfLight.WhiteLight;
     [SerializeField] private float intensityOfLight;
@@ -61,6 +61,7 @@ public class LightSource : MonoBehaviour
         //LANTERN
         if (projectionType == lightProperties.ProjectionType.Lantern)
         {
+            
             _changeablesPrevious = _changeablesCurrent;
 
             _changeablesCurrent = LanternLook(transform.position, radialRangeOfLantern);
@@ -75,6 +76,10 @@ public class LightSource : MonoBehaviour
             {
                 changeable.UnChange();
             }
+            
+            //HELPERS
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * radialRangeOfLantern, 
+                Color.yellow); 
         } 
         //TORCH
         else if (projectionType == lightProperties.ProjectionType.Torch)
@@ -91,6 +96,15 @@ public class LightSource : MonoBehaviour
             {
                 _previousChangeable.UnChange();
             } 
+            //HELPERS
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * forwardRangeOfTorch, 
+                Color.white);
+            Quaternion upwardRotation = Quaternion.AngleAxis(-spreadOfTorchLight, transform.right);
+            Quaternion downwardRotation = Quaternion.AngleAxis(spreadOfTorchLight, transform.right);
+            Vector3 upDirection = upwardRotation * transform.forward;
+            Vector3 downDirection = downwardRotation * transform.forward;
+            Debug.DrawRay(transform.position, upDirection * forwardRangeOfTorch, Color.magenta);
+            Debug.DrawRay(transform.position, downDirection * forwardRangeOfTorch, Color.magenta);
         }
     }
     [HideInInspector] public Vector3 torchHitPoint; 
@@ -113,10 +127,6 @@ public class LightSource : MonoBehaviour
                 changeables.Add(changeable);
             }
         }
-        
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * radialRangeOfLantern, 
-            Color.yellow); 
-        
         return changeables;
     }
     
@@ -138,18 +148,8 @@ public class LightSource : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * centreHit.distance, 
                 Color.red); 
         }
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * forwardRangeOfTorch, 
-            Color.white);
-        
-        Quaternion upwardRotation = Quaternion.AngleAxis(-spreadOfTorchLight, transform.right);
-        Quaternion downwardRotation = Quaternion.AngleAxis(spreadOfTorchLight, transform.right);
-        Vector3 upDirection = upwardRotation * transform.forward;
-        Vector3 downDirection = downwardRotation * transform.forward;
-        Debug.DrawRay(transform.position, upDirection * forwardRangeOfTorch, Color.magenta);
-        Debug.DrawRay(transform.position, downDirection * forwardRangeOfTorch, Color.magenta);
         return null;
     }
-
     
     //Initial SetUp
     private void AssignLightProperties()
@@ -169,10 +169,8 @@ public class LightSource : MonoBehaviour
         
         lightOn = lightProperties.lightOn;
 
-        if (lightOn)
-        {
-            _light.enabled = true;
-        }
+        _light.enabled = lightOn;
+        
         switch (colorOfLight)
         {
             case lightProperties.ColorOfLight.WhiteLight:   _light.color = Color.white;   _colourIndex = 6; break;
@@ -200,7 +198,7 @@ public class LightSource : MonoBehaviour
     private void MakeYellow(Light l)  { colorOfLight = lightProperties.ColorOfLight.YellowLight; l.color = Color.yellow; }
     private void MakeMagenta(Light l) { colorOfLight = lightProperties.ColorOfLight.MagentaLight; l.color = Color.magenta; }
     
-    private int _colourIndex = 0;
+    private int _colourIndex;
 
     private List<Action<Light>> _colourChangers = new List<Action<Light>>();
     public void ChangeColour(int howMany)

@@ -5,7 +5,6 @@ using Unity.Cinemachine;
 
 public class CustomInputHandler : InputAxisControllerBase<CustomInputHandler.Reader>
 {
-    [Header("Input Source Override")]
     [SerializeField] private PlayerInput playerInput;
 
     private void Awake()
@@ -19,7 +18,6 @@ public class CustomInputHandler : InputAxisControllerBase<CustomInputHandler.Rea
             return;
         }
 
-        // Subscribe only to *this* player’s actions
         playerInput.notificationBehavior = PlayerNotifications.InvokeCSharpEvents;
         playerInput.onActionTriggered += action =>
         {
@@ -27,19 +25,26 @@ public class CustomInputHandler : InputAxisControllerBase<CustomInputHandler.Rea
                 controller.Input.ProcessInput(action.action);
         };
     }
-
     private void Update()
     {
         if (Application.isPlaying)
-            UpdateControllers(); // pushes cached values into Cinemachine
+            UpdateControllers(); 
     }
 
     [Serializable]
     public class Reader : IInputAxisReader
     {
         public InputActionReference input;
+        public PlayerValues playerValues;
         private Vector2 _mValue;
+        [SerializeField] private float mouseSensitivity = 5.0f;
+        [SerializeField] private float controllerSensitivity = 5000.0f;
 
+        void Start()
+        {
+            mouseSensitivity = playerValues.mouseSensitivity;
+            controllerSensitivity = playerValues.controllerSensitivity;
+        }
         public void ProcessInput(InputAction action)
         {
             if (input != null && input.action.id == action.id)
@@ -51,12 +56,10 @@ public class CustomInputHandler : InputAxisControllerBase<CustomInputHandler.Rea
                     // Detect mouse vs gamepad
                     if (action.activeControl.device is Mouse)
                     {
-                        // Mouse delta: scale directly
                         _mValue = raw * mouseSensitivity; 
                     }
                     else
                     {
-                        // Controller stick: scale with deltaTime
                         _mValue = raw * controllerSensitivity * Time.deltaTime;
                     }
                 }
@@ -66,10 +69,6 @@ public class CustomInputHandler : InputAxisControllerBase<CustomInputHandler.Rea
                 }
             }
         }
-
-        [SerializeField] private float mouseSensitivity = 5.0f;
-        [SerializeField] private float controllerSensitivity = 50.0f;
-
 
         public float GetValue(UnityEngine.Object context, IInputAxisOwner.AxisDescriptor.Hints hint)
         {
