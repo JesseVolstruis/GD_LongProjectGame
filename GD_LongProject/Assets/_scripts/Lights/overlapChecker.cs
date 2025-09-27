@@ -31,7 +31,7 @@ public class overlapChecker : MonoBehaviour
         }
         _centreA = lightSourceA.transform.position;
         _centreB = lightSourceB.GetComponent<LightSource>().torchHitPoint;
-        _radiusA = lightSourceA.GetComponent<LightSource>().radiusOfLantern;
+        _radiusA = lightSourceA.GetComponent<LightSource>().radialRangeOfLantern;
         _radiusB = lightSourceB.GetComponent<LightSource>().radiusOfTorch;
         lightColorA = lightSourceA.GetComponent<LightSource>().colorOfLight;
         lightColorB = lightSourceB.GetComponent<LightSource>().colorOfLight;
@@ -40,7 +40,7 @@ public class overlapChecker : MonoBehaviour
         
         if(IsOverlapping(_centreA,_centreB, _overlapDistance))
         {
-            _currentChangable = lightSourceB.GetComponent<LightSource>().CurrentChangable;
+            _currentChangable = lightSourceB.GetComponent<LightSource>().CurrentChangeable;
             if (_currentChangable != null)  _currentChangable.Change(CheckColorCombos(lightColorA, lightColorB), null);
         }
        

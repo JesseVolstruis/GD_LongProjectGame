@@ -1,48 +1,61 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System;
 
 public class LightSource : MonoBehaviour
 { 
-    public float radiusOfLantern;
+    [Header("Initial Value Data")]
     public lightProperties lightProperties;
-    public lightProperties.ColorOfLight colorOfLight = lightProperties.ColorOfLight.WhiteLight;
+    
+    [Header("Univerasal Light Properties")]
     public lightProperties.ProjectionType projectionType;
-    private float _upwardTiltDegrees = 12f;
-
+    public lightProperties.ColorOfLight colorOfLight = lightProperties.ColorOfLight.WhiteLight;
+    [SerializeField] private float intensityOfLight;
+    [SerializeField] private bool lightOn;
+    
+    [Header("Lantern Specific Values")]
+    public float radialRangeOfLantern;
+    
+    [Header("Torch Specific Values")]
+    [SerializeField] private float spreadOfTorchLight = 12f; // 12f seems to correspond to 25
+    [SerializeField] private float forwardRangeOfTorch = 12f;
+    
     private Light _light;
     private Transform _thisPlayer;
+    
+    [Header("Models (ART TEAM)")]
+    public GameObject lanternVisuals;
+    public GameObject torchVisuals;
 
-    public float numberOfRays = 8f;
-    private float _tiltInRads;
-    //private float _degreesBetweenRays;
-
-    public GameObject lantern;
-    public GameObject torch;
-
-    // track changables
+    // track changeable
     private List<IChangable> _changeablesPrevious = new List<IChangable>(); 
     private List<IChangable> _changeablesCurrent = new List<IChangable>();  
     private List<IChangable> _changeablesExited = new List<IChangable>();   
     
-    public IChangable CurrentChangable;
-    private IChangable _previousChangable;
+    public IChangable CurrentChangeable;
+    private IChangable _previousChangeable;
     
-    [SerializeField] private bool lightOn;
+    private void Awake()
+    {
+        _colourChangers = new List<Action<Light>>()
+        {
+            MakeRed,
+            MakeGreen,
+            MakeBlue,
+            MakeCyan,
+            MakeYellow,
+            MakeMagenta
+        };
+    }
     void Start()
     {
         _thisPlayer = transform.root;
-
-        TorchSetUp();
+        
         _light = GetComponent<Light>();
+        
         AssignLightProperties();
     }
-
-    void Update()
-    {
-        
-    }
-
     private void LateUpdate()
     {
         //LANTERN
@@ -50,7 +63,7 @@ public class LightSource : MonoBehaviour
         {
             _changeablesPrevious = _changeablesCurrent;
 
-            _changeablesCurrent = LanternLook(transform.position, radiusOfLantern);
+            _changeablesCurrent = LanternLook(transform.position, radialRangeOfLantern);
             foreach (var changeable in _changeablesCurrent)
             {
                 changeable.Change(colorOfLight,_thisPlayer);
@@ -58,41 +71,39 @@ public class LightSource : MonoBehaviour
            
             _changeablesExited = _changeablesPrevious.Except(_changeablesCurrent).ToList();
 
-            foreach (var changable in _changeablesExited)
+            foreach (var changeable in _changeablesExited)
             {
-                changable.UnChange();
+                changeable.UnChange();
             }
         } 
         //TORCH
         else if (projectionType == lightProperties.ProjectionType.Torch)
         {
-            _previousChangable = CurrentChangable;
+            _previousChangeable = CurrentChangeable;
             
-            CurrentChangable = TorchLook();
+            CurrentChangeable = TorchLook();
             
-            if (CurrentChangable != null)
+            if (CurrentChangeable != null)
             {
-                CurrentChangable.Change(colorOfLight, _thisPlayer);
+                CurrentChangeable.Change(colorOfLight, _thisPlayer);
             }
-            if (CurrentChangable == null && _previousChangable != null)
+            if (CurrentChangeable == null && _previousChangeable != null)
             {
-                _previousChangable.UnChange();
+                _previousChangeable.UnChange();
             } 
         }
     }
-    public Vector3 torchHitPoint; 
-    public float radiusOfTorch; 
-    public float xDistance;
-
+    [HideInInspector] public Vector3 torchHitPoint; 
+    [HideInInspector] public float radiusOfTorch;
     private float GetRadius()
     {
-        return Mathf.Abs(Vector3.Distance(transform.position, torchHitPoint) * Mathf.Tan(_tiltInRads)) ; 
+        return Mathf.Abs(Vector3.Distance(transform.position, torchHitPoint) * Mathf.Tan(spreadOfTorchLight * Mathf.Deg2Rad)) ; 
     }
     
     //LANTERN INTERACTION LOGIC
     private List<IChangable> LanternLook(Vector3 center, float lanternRadius)
     {
-        Collider[] hitColliders = Physics.OverlapSphere(center, 0.7f * lanternRadius);
+        Collider[] hitColliders = Physics.OverlapSphere(center, 0.7f * lanternRadius); 
         var changeables = new List<IChangable>();
 
         foreach (var hitCollider in hitColliders)
@@ -102,6 +113,10 @@ public class LightSource : MonoBehaviour
                 changeables.Add(changeable);
             }
         }
+        
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * radialRangeOfLantern, 
+            Color.yellow); 
+        
         return changeables;
     }
     
@@ -111,50 +126,64 @@ public class LightSource : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var centreHit)) 
         { 
             torchHitPoint = centreHit.point; 
-            if (centreHit.collider.gameObject.TryGetComponent(out IChangable changable) && lightOn)
+            var abs = Mathf.Abs(Vector3.Distance(transform.position, torchHitPoint));
+            if (abs <= forwardRangeOfTorch)
             {
-                return changable;
-            } 
-            xDistance = Mathf.Abs(Vector3.Distance(transform.position, torchHitPoint)); 
+                if (centreHit.collider.gameObject.TryGetComponent(out IChangable changeable) && lightOn)
+                {
+                    return changeable;
+                }
+            }
             radiusOfTorch = GetRadius(); 
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * centreHit.distance, 
-                Color.yellow); 
+                Color.red); 
         }
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * forwardRangeOfTorch, 
+            Color.white);
+        
+        Quaternion upwardRotation = Quaternion.AngleAxis(-spreadOfTorchLight, transform.right);
+        Quaternion downwardRotation = Quaternion.AngleAxis(spreadOfTorchLight, transform.right);
+        Vector3 upDirection = upwardRotation * transform.forward;
+        Vector3 downDirection = downwardRotation * transform.forward;
+        Debug.DrawRay(transform.position, upDirection * forwardRangeOfTorch, Color.magenta);
+        Debug.DrawRay(transform.position, downDirection * forwardRangeOfTorch, Color.magenta);
         return null;
     }
 
+    
     //Initial SetUp
-    private void TorchSetUp()
-    {
-        //_degreesBetweenRays = 360f / numberOfRays;
-        _tiltInRads = _upwardTiltDegrees * Mathf.Deg2Rad;
-    }
     private void AssignLightProperties()
     {
         colorOfLight = lightProperties.currentColorOfLight;
         projectionType = lightProperties.currentProjectionType;
+        intensityOfLight =  lightProperties.intensityOfLight;
+        radialRangeOfLantern = lightProperties.radialRangeOfLantern;
+        spreadOfTorchLight = lightProperties.innerSpotAngle/2f;
+        forwardRangeOfTorch = lightProperties.forwardRangeOfTorch;
 
         switch (projectionType)
         {
             case lightProperties.ProjectionType.Lantern: MakeLantern(); break;
             case lightProperties.ProjectionType.Torch: MakeTorch(); break;
         }
-
-        radiusOfLantern = lightProperties.rangeOfLight;
-        _upwardTiltDegrees = lightProperties.spreadOfLight;
-        _light.intensity = lightProperties.intensityOfLight;
-        lightOn = lightProperties.lightOn;
         
+        lightOn = lightProperties.lightOn;
+
+        if (lightOn)
+        {
+            _light.enabled = true;
+        }
         switch (colorOfLight)
         {
-            case lightProperties.ColorOfLight.WhiteLight:   _light.color = Color.white;   break;
-            case lightProperties.ColorOfLight.CyanLight:    _light.color = Color.cyan;    break;
-            case lightProperties.ColorOfLight.YellowLight:  _light.color = Color.yellow;  break;
-            case lightProperties.ColorOfLight.MagentaLight: _light.color = Color.magenta; break;
-            case lightProperties.ColorOfLight.RedLight:     _light.color = Color.red;     break;
-            case lightProperties.ColorOfLight.GreenLight:   _light.color = Color.green;   break;
-            case lightProperties.ColorOfLight.BlueLight:    _light.color = Color.blue;    break;
+            case lightProperties.ColorOfLight.WhiteLight:   _light.color = Color.white;   _colourIndex = 6; break;
+            case lightProperties.ColorOfLight.CyanLight:    _light.color = Color.cyan;    _colourIndex = 3; break;
+            case lightProperties.ColorOfLight.YellowLight:  _light.color = Color.yellow;  _colourIndex = 4; break;
+            case lightProperties.ColorOfLight.MagentaLight: _light.color = Color.magenta; _colourIndex = 5; break;
+            case lightProperties.ColorOfLight.RedLight:     _light.color = Color.red;     _colourIndex = 0; break;
+            case lightProperties.ColorOfLight.GreenLight:   _light.color = Color.green;   _colourIndex = 1; break;
+            case lightProperties.ColorOfLight.BlueLight:    _light.color = Color.blue;    _colourIndex = 2; break;
         }
+
     }
     //ON/OFF Switch
     public void SwitchOnOff()
@@ -164,25 +193,41 @@ public class LightSource : MonoBehaviour
     } 
 
     // Colour Changers
-    public void MakeRed(Light l)     { colorOfLight = lightProperties.ColorOfLight.RedLight; l.color = Color.red; }
-    public void MakeGreen(Light l)   { colorOfLight = lightProperties.ColorOfLight.GreenLight; l.color = Color.green; }
-    public void MakeBlue(Light l)    { colorOfLight = lightProperties.ColorOfLight.BlueLight; l.color = Color.blue; }
-    public void MakeCyan(Light l)    { colorOfLight = lightProperties.ColorOfLight.CyanLight; l.color = Color.cyan; }
-    public void MakeYellow(Light l)  { colorOfLight = lightProperties.ColorOfLight.YellowLight; l.color = Color.yellow; }
-    public void MakeMagenta(Light l) { colorOfLight = lightProperties.ColorOfLight.MagentaLight; l.color = Color.magenta; }
+    private void MakeRed(Light l)     { colorOfLight = lightProperties.ColorOfLight.RedLight; l.color = Color.red; }
+    private void MakeGreen(Light l)   { colorOfLight = lightProperties.ColorOfLight.GreenLight; l.color = Color.green; }
+    private void MakeBlue(Light l)    { colorOfLight = lightProperties.ColorOfLight.BlueLight; l.color = Color.blue; }
+    private void MakeCyan(Light l)    { colorOfLight = lightProperties.ColorOfLight.CyanLight; l.color = Color.cyan; }
+    private void MakeYellow(Light l)  { colorOfLight = lightProperties.ColorOfLight.YellowLight; l.color = Color.yellow; }
+    private void MakeMagenta(Light l) { colorOfLight = lightProperties.ColorOfLight.MagentaLight; l.color = Color.magenta; }
     
+    private int _colourIndex = 0;
+
+    private List<Action<Light>> _colourChangers = new List<Action<Light>>();
+    public void ChangeColour(int howMany)
+    {
+        _colourIndex++;
+        _colourChangers[_colourIndex](_light);
+        
+        if (_colourIndex == howMany)
+        {
+            _colourIndex = 0;
+        }
+    }
     //Tool Changers
     private void TorchProjectionProperties(Light l)
     {
         l.type = LightType.Spot;
-        l.innerSpotAngle = 28;
+        l.intensity = intensityOfLight;
+        l.range = forwardRangeOfTorch;
+        l.innerSpotAngle = 28;          //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         l.spotAngle = 30;
+        
     }
-    
-    public void MakeTorch()
+
+    private void MakeTorch()
     {
-        lantern.SetActive(false);
-        torch.SetActive(true);
+        lanternVisuals.SetActive(false);
+        torchVisuals.SetActive(true);
         projectionType = lightProperties.ProjectionType.Torch;
         TorchProjectionProperties(_light);
     }
@@ -190,12 +235,14 @@ public class LightSource : MonoBehaviour
     private void LanternProjectionProperties(Light l)
     {
         l.type = LightType.Point;
+        l.intensity = intensityOfLight;
+        l.range = radialRangeOfLantern;
     }
 
-    public void MakeLantern()
+    private void MakeLantern()
     {
-        lantern.SetActive(true);
-        torch.SetActive(false);
+        lanternVisuals.SetActive(true);
+        torchVisuals.SetActive(false);
         projectionType = lightProperties.ProjectionType.Lantern;
         LanternProjectionProperties(_light);
     }

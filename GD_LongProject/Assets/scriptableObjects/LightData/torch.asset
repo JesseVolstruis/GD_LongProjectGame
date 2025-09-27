@@ -15,6 +15,7 @@ MonoBehaviour:
   currentProjectionType: 0
   currentColorOfLight: 1
   lightOn: 0
-  spreadOfLight: 12
-  rangeOfLight: 10
+  innerSpotAngle: 28
+  forwardRangeOfTorch: 10
+  radialRangeOfLantern: 0
   intensityOfLight: 100

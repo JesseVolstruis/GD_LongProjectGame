@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private InputAction _jumpAction;
     private InputAction _switchAction;
     private InputAction _interactAction;
+    private InputAction _switchColourAction;
 
     private Vector2 _moveInput;
 
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private System.Action<InputAction.CallbackContext> _jumpHandler;
     private System.Action<InputAction.CallbackContext> _switchHandler;
     private System.Action<InputAction.CallbackContext> _interactHandler;
+    private System.Action<InputAction.CallbackContext> _switchColourHandler;
 
     private void Awake()
     {
@@ -40,16 +42,19 @@ public class PlayerController : MonoBehaviour
         _jumpAction   = _playerInput.actions["Jump"];
         _switchAction = _playerInput.actions["Switch"];
         _interactAction = _playerInput.actions["Interact"];
+        _switchColourAction = _playerInput.actions["SwitchColour"];
     }
     private void OnEnable()
     {
         _jumpHandler = ctx => Jump();
         _switchHandler = ctx => Switch();
         _interactHandler = ctx => Interact();
+        _switchColourHandler = ctx => ChangeColour();
         
         _jumpAction.performed += _jumpHandler;
         _switchAction.performed += _switchHandler;
         _interactAction.performed += _interactHandler;
+        _switchColourAction.performed += _switchColourHandler;
     }
 
     private void OnDisable()
@@ -57,6 +62,7 @@ public class PlayerController : MonoBehaviour
         _jumpAction.performed -= _jumpHandler;
         _switchAction.performed -= _switchHandler;
         _interactAction.performed -= _interactHandler;
+        _switchColourAction.performed -= _switchColourHandler;
     }
 
     private void Jump()
@@ -81,34 +87,45 @@ public class PlayerController : MonoBehaviour
     }
     private void Interact()
     {
-        if (_inPickUpRange != null)
+        if (_holdingLight)
         {
-            if (!_holdingLight)
-            {
-                PickUp(holdPosition,_inPickUpRange.transform);
-                _holdingLight = true;
-            }
+            PutDown();
+        }
+        else if (_inPickUpRange != null)
+        {
+            if (_holdingLight) return;
+            PickUp(holdPosition,_inPickUpRange.transform);
+            _holdingLight = true;
+            _lightSource = _inPickUpRange.GetComponent<LightSource>();
         }
     }
-
     private void PickUp(Transform holdHere, Transform holdThis)
     {
+		holdThis.GetComponent<Rigidbody>().isKinematic = true;
         holdThis.position = holdHere.position;
         holdThis.SetParent(holdHere);
     }
     private void PutDown()
     {
-        
+        Transform heldLight = _lightSource.transform;
+        heldLight.SetParent(null);
+        heldLight.GetComponent<Rigidbody>().isKinematic = false;
+        _holdingLight = false;
+        _lightSource = null;
     }
     private void Switch()
     {
-        _lightSource.SwitchOnOff();
+        if(_lightSource != null)  _lightSource.SwitchOnOff();
     }
 
+    private void ChangeColour()
+    { 
+        if(_lightSource != null)  _lightSource.ChangeColour(3);
+    }
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
-        _lightSource = holdPosition.GetChild(0).gameObject.GetComponent<LightSource>();
+        //_lightSource = holdPosition.GetChild(0).gameObject.GetComponent<LightSource>();
     }
 
     private void Update()

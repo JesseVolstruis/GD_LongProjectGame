@@ -22,8 +22,9 @@ public class lightProperties : ScriptableObject
     public ProjectionType currentProjectionType;
     public ColorOfLight currentColorOfLight;
     public bool lightOn;
-    public float spreadOfLight; // for the torch
-    public float rangeOfLight; // for the lantern
-    public float intensityOfLight; // for both
+    public float innerSpotAngle; 
+    public float forwardRangeOfTorch;
+    public float radialRangeOfLantern; 
+    public float intensityOfLight; 
 
 }

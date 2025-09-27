@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4094068546371413534}
   - component: {fileID: 7702356968678251102}
-  - component: {fileID: 5819965319017451409}
   - component: {fileID: 4552495509320752756}
   - component: {fileID: 116208173039544943}
+  - component: {fileID: 1282436538956362684}
+  - component: {fileID: 5819965319017451409}
   m_Layer: 0
   m_Name: LightSource
   m_TagString: Untagged
@@ -44,7 +45,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4281433833917925622}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -102,29 +103,6 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!114 &5819965319017451409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4281433833917925622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 896f56bc680a89a43bea6a52331ca7d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radiusOfLantern: 0
-  lightProperties: {fileID: 0}
-  colorOfLight: 6
-  projectionType: 0
-  numberOfRays: 8
-  lantern: {fileID: 6380447446744599989}
-  torch: {fileID: 7421309055805729404}
-  lightOn: 0
-  torchHitPoint: {x: 0, y: 0, z: 0}
-  radiusOfTorch: 0
-  xDistance: 0
 --- !u!114 &4552495509320752756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +147,57 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1282436538956362684
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4281433833917925622}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &5819965319017451409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4281433833917925622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896f56bc680a89a43bea6a52331ca7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightProperties: {fileID: 11400000, guid: 683fad85e8257574c9dd36f80c58ba04, type: 2}
+  projectionType: 0
+  colorOfLight: 6
+  intensityOfLight: 0
+  lightOn: 0
+  radialRangeOfLantern: 0
+  spreadOfTorchLight: 12
+  forwardRangeOfTorch: 12
+  lanternVisuals: {fileID: 6380447446744599989}
+  torchVisuals: {fileID: 7421309055805729404}
+  torchHitPoint: {x: 0, y: 0, z: 0}
+  radiusOfTorch: 0
 --- !u!1001 &4521069502620740635
 PrefabInstance:
   m_ObjectHideFlags: 0
