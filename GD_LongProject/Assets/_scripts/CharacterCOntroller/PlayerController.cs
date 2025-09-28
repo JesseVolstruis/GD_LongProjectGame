@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     public Transform cameraTransform;
     
     [HideInInspector] public Transform holdPosition;
-    [HideInInspector] public bool faceMoveDirection = true;
+     public bool faceMoveDirection = true;
     
     private CharacterController _controller;
     private Vector2 _moveInput;

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: lantern
   m_EditorClassIdentifier: 
   currentProjectionType: 1
-  currentColorOfLight: 2
+  currentColorOfLight: 1
   lightOn: 0
-  spreadOfTorchLight: 0
+  innerSpotAngle: 0
   forwardRangeOfTorch: 0
-  radialRangeOfLantern: 10
+  radialRangeOfLantern: 4
   intensityOfLight: 100
