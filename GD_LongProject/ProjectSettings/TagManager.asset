@@ -8,6 +8,7 @@ TagManager:
   - Rule Tile
   - Tile Mesh
   - Combined Mesh
+  - Blue
   layers:
   - Default
   - TransparentFX
