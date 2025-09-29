@@ -12,7 +12,7 @@ public class LightSource : MonoBehaviour
     public lightProperties.ProjectionType projectionType;
     public lightProperties.ColorOfLight colorOfLight = lightProperties.ColorOfLight.WhiteLight;
     [SerializeField] private float intensityOfLight;
-    [SerializeField] private bool lightOn;
+    public bool lightOn;
     
     [Header("Lantern Specific Values")]
     public float radialRangeOfLantern;
@@ -61,7 +61,6 @@ public class LightSource : MonoBehaviour
         //LANTERN
         if (projectionType == lightProperties.ProjectionType.Lantern)
         {
-            
             _changeablesPrevious = _changeablesCurrent;
 
             _changeablesCurrent = LanternLook(transform.position, radialRangeOfLantern);
@@ -92,9 +91,9 @@ public class LightSource : MonoBehaviour
             {
                 CurrentChangeable.Change(colorOfLight, _thisPlayer);
             }
-            if (CurrentChangeable == null && _previousChangeable != null)
+            if ((CurrentChangeable == null && _previousChangeable != null) || CurrentChangeable != _previousChangeable)
             {
-                _previousChangeable.UnChange();
+                if (_previousChangeable != null) _previousChangeable.UnChange();
             } 
             //HELPERS
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * forwardRangeOfTorch, 
@@ -150,7 +149,6 @@ public class LightSource : MonoBehaviour
         }
         return null;
     }
-    
     //Initial SetUp
     private void AssignLightProperties()
     {
@@ -183,6 +181,16 @@ public class LightSource : MonoBehaviour
         }
 
     }
+
+    public void SetThisPlayer(Transform player)
+    {
+        _thisPlayer = player;
+    }
+
+    public void ResetThisPlayer()
+    {
+        _thisPlayer = transform.root;
+    }
     //ON/OFF Switch
     public void SwitchOnOff()
     {
@@ -214,6 +222,26 @@ public class LightSource : MonoBehaviour
 
     public void GreenBlueSwitch()
     {
+        if (projectionType == lightProperties.ProjectionType.Lantern)
+        {
+            foreach (var changeable in _changeablesExited)
+            {
+                changeable.UnChange();
+            }
+            foreach (var changeable in _changeablesCurrent)
+            {
+                changeable.UnChange();
+            }
+            foreach (var changeable in _changeablesPrevious)
+            {
+                changeable.UnChange();
+            }
+        }
+        else if (projectionType == lightProperties.ProjectionType.Torch)
+        {
+            _previousChangeable.UnChange();
+            CurrentChangeable.UnChange();
+        }
         if (colorOfLight == lightProperties.ColorOfLight.BlueLight)
         {
             MakeGreen(_light);

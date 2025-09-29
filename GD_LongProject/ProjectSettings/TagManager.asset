@@ -9,6 +9,7 @@ TagManager:
   - Tile Mesh
   - Combined Mesh
   - Blue
+  - Ground
   layers:
   - Default
   - TransparentFX

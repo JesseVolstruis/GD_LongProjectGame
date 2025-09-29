@@ -151,23 +151,32 @@ public class PlayerController : MonoBehaviour
             }
             PickUp(holdHere,_inPickUpRange.transform);
             _holdingLight = true;
-            _lightSource = _inPickUpRange.GetComponent<LightSource>();
+            
         }
     }
     private void PickUp(Transform holdHere, Transform holdThis)
     {
+        holdThis.GetComponent<LightSource>().SetThisPlayer(transform);
 		holdThis.GetComponent<Rigidbody>().isKinematic = true;
         holdThis.position = holdHere.position;
         holdThis.rotation = holdHere.rotation;
         holdThis.SetParent(holdHere);
+        
+        _lightSource = _inPickUpRange.GetComponent<LightSource>();
+        if (_lightSource.lightOn)
+        {
+            faceMoveDirection = false;
+        }
     }
     private void PutDown()
     {
         Transform heldLight = _lightSource.transform;
+        heldLight.GetComponent<LightSource>().ResetThisPlayer();
         heldLight.SetParent(null);
         heldLight.GetComponent<Rigidbody>().isKinematic = false;
         _holdingLight = false;
         _lightSource = null;
+        faceMoveDirection = true;
     }
 
     private void Strafe()
