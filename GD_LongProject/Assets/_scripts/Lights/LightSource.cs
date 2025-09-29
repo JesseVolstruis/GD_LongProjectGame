@@ -18,7 +18,7 @@ public class LightSource : MonoBehaviour
     public float radialRangeOfLantern;
     
     [Header("Torch Specific Values")]
-    [SerializeField] private float spreadOfTorchLight = 12f; // 12f seems to correspond to 25
+    [SerializeField] private float spreadOfTorchLight = 12f; 
     [SerializeField] private float forwardRangeOfTorch = 12f;
     
     private Light _light;
@@ -211,14 +211,26 @@ public class LightSource : MonoBehaviour
             _colourIndex = 0;
         }
     }
+
+    public void GreenBlueSwitch()
+    {
+        if (colorOfLight == lightProperties.ColorOfLight.BlueLight)
+        {
+            MakeGreen(_light);
+        }
+        else if (colorOfLight == lightProperties.ColorOfLight.GreenLight)
+        {
+            MakeBlue(_light);
+        }
+    }
     //Tool Changers
     private void TorchProjectionProperties(Light l)
     {
         l.type = LightType.Spot;
         l.intensity = intensityOfLight;
         l.range = forwardRangeOfTorch;
-        l.innerSpotAngle = 28;          //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        l.spotAngle = 30;
+        l.innerSpotAngle = spreadOfTorchLight*2;          
+        l.spotAngle = spreadOfTorchLight*2 + 2;
         
     }
 

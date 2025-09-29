@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
     [Header("Camera")]
     public Transform cameraTransform;
     
-    [HideInInspector] public Transform holdPosition;
+     public Transform lanternHoldPosition;
+    public Transform torcHoldPosition;
      public bool faceMoveDirection = true;
     
     private CharacterController _controller;
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour
         _jumpHandler = ctx => Jump();
         _switchHandler = ctx => LightSwitch();
         _interactHandler = ctx => Interact();
-        _switchColourHandler = ctx => ChangeColour();
+        _switchColourHandler = ctx => ColourSwitch();
         
         _jumpAction.performed += _jumpHandler;
         _switchAction.performed += _switchHandler;
@@ -116,7 +117,7 @@ public class PlayerController : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out LightSource lightSource))
+        if (other.TryGetComponent(out LightSource _))
         {
             _inPickUpRange =  other.gameObject;
         }
@@ -134,7 +135,21 @@ public class PlayerController : MonoBehaviour
         else if (_inPickUpRange != null)
         {
             if (_holdingLight) return;
-            PickUp(holdPosition,_inPickUpRange.transform);
+
+            Transform holdHere = null;
+            if (_inPickUpRange.TryGetComponent(out LightSource lightSource))
+            {
+                lightProperties.ProjectionType lightType = lightSource.projectionType;
+                if (lightType == lightProperties.ProjectionType.Lantern)
+                {
+                    holdHere = lanternHoldPosition;
+                }
+                else if (lightType == lightProperties.ProjectionType.Torch)
+                {
+                    holdHere = torcHoldPosition;
+                }
+            }
+            PickUp(holdHere,_inPickUpRange.transform);
             _holdingLight = true;
             _lightSource = _inPickUpRange.GetComponent<LightSource>();
         }
@@ -143,6 +158,7 @@ public class PlayerController : MonoBehaviour
     {
 		holdThis.GetComponent<Rigidbody>().isKinematic = true;
         holdThis.position = holdHere.position;
+        holdThis.rotation = holdHere.rotation;
         holdThis.SetParent(holdHere);
     }
     private void PutDown()
@@ -153,14 +169,23 @@ public class PlayerController : MonoBehaviour
         _holdingLight = false;
         _lightSource = null;
     }
+
+    private void Strafe()
+    {
+        faceMoveDirection = !faceMoveDirection;
+    }
     private void LightSwitch()
     {
-        if(_lightSource != null)  _lightSource.SwitchOnOff();
+        if (_lightSource != null)
+        {
+            _lightSource.SwitchOnOff();
+            Strafe();
+        }
     }
 
-    private void ChangeColour()
+    private void ColourSwitch()
     { 
-        if(_lightSource != null)  _lightSource.ChangeColour(3);
+        if(_lightSource != null)  _lightSource.GreenBlueSwitch();
     }
 
 }
