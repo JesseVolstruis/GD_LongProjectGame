@@ -16,6 +16,6 @@ MonoBehaviour:
   currentColorOfLight: 2
   lightOn: 0
   innerSpotAngle: 28
-  forwardRangeOfTorch: 10
+  forwardRangeOfTorch: 15
   radialRangeOfLantern: 0
   intensityOfLight: 100
