@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 116208173039544943}
   - component: {fileID: 1282436538956362684}
   - component: {fileID: 5819965319017451409}
+  - component: {fileID: -1535963225692961863}
   m_Layer: 0
   m_Name: LightSource
   m_TagString: Untagged
@@ -198,6 +199,19 @@ MonoBehaviour:
   torchVisuals: {fileID: 7421309055805729404}
   torchHitPoint: {x: 0, y: 0, z: 0}
   radiusOfTorch: 0
+--- !u!114 &-1535963225692961863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4281433833917925622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1577f0cfb73840a5ac29063b2e4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followTarget: {fileID: 0}
 --- !u!1001 &4521069502620740635
 PrefabInstance:
   m_ObjectHideFlags: 0
