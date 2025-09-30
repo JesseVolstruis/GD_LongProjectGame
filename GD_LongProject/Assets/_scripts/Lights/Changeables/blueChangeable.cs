@@ -5,10 +5,12 @@ public class blueChangeable : MonoBehaviour, IChangable
     private Rigidbody _rigidbody;
     private FixedJoint _joint;
     private bool _isChanged;
+    //private blueBlockHelper _blueBlockHelper;
 
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        //_blueBlockHelper = GetComponentInChildren<blueBlockHelper>();
     }
 
     public void Change(lightProperties.ColorOfLight colorOfLight, Transform player)
@@ -60,7 +62,7 @@ public class blueChangeable : MonoBehaviour, IChangable
         _isChanged = false;
         _rigidbody.useGravity = true;
         _rigidbody.isKinematic = false;
-
+        //_blueBlockHelper.DoGroundCheck();
         
     }
 

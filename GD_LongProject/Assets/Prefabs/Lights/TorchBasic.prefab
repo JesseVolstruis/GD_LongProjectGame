@@ -52,6 +52,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: TorchBasic
       objectReference: {fileID: 0}
+    - target: {fileID: 5738045439804962768, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+      propertyPath: m_Size.x
+      value: 0.81958604
+      objectReference: {fileID: 0}
+    - target: {fileID: 5738045439804962768, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+      propertyPath: m_Size.y
+      value: 1.7760997
+      objectReference: {fileID: 0}
+    - target: {fileID: 5738045439804962768, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5738045439804962768, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5738045439804962768, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7421309055805729404, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -67,5 +87,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4281433833917925622, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2595213287815223130}
   m_SourcePrefab: {fileID: 100100000, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+--- !u!1 &364956065290210402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4281433833917925622, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+  m_PrefabInstance: {fileID: 4501947030359966868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2595213287815223130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364956065290210402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c1577f0cfb73840a5ac29063b2e4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followTarget: {fileID: 480527667375530634}
+--- !u!4 &480527667375530634 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4094068546371413534, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+  m_PrefabInstance: {fileID: 4501947030359966868}
+  m_PrefabAsset: {fileID: 0}

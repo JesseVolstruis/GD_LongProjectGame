@@ -163,6 +163,9 @@ public class PlayerController : MonoBehaviour
         holdThis.rotation = holdHere.rotation;
         holdThis.SetParent(holdHere);
         
+        holdThis.GetComponent<SphereCollider>().enabled = false;
+        holdThis.GetComponentInChildren<BoxCollider>().enabled = false;
+        
         _lightSource = _inPickUpRange.GetComponent<LightSource>();
         if (_lightSource.lightOn)
         {
@@ -174,7 +177,11 @@ public class PlayerController : MonoBehaviour
         Transform heldLight = _lightSource.transform;
         //heldLight.GetComponent<LightSource>().ResetThisPlayer();
         heldLight.SetParent(null);
+        heldLight.position = lanternHoldPosition.position;
+        heldLight.rotation = lanternHoldPosition.rotation;
         heldLight.GetComponent<Rigidbody>().isKinematic = false;
+        heldLight.GetComponent<SphereCollider>().enabled = true;
+        heldLight.GetComponentInChildren<BoxCollider>().enabled = true;
         heldLight.GetComponent<Rigidbody>().useGravity = true;
         _holdingLight = false;
         _lightSource = null;

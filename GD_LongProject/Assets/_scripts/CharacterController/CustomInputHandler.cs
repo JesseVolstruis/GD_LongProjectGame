@@ -72,7 +72,7 @@ public class CustomInputHandler : InputAxisControllerBase<CustomInputHandler.Rea
 
         public float GetValue(UnityEngine.Object context, IInputAxisOwner.AxisDescriptor.Hints hint)
         {
-            return hint == IInputAxisOwner.AxisDescriptor.Hints.Y ? _mValue.y : _mValue.x;
+            return hint == IInputAxisOwner.AxisDescriptor.Hints.Y ? -_mValue.y : _mValue.x;
         }
     }
 }
