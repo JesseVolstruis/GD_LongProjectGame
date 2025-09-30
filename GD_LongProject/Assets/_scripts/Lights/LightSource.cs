@@ -222,6 +222,7 @@ public class LightSource : MonoBehaviour
 
     public void GreenBlueSwitch()
     {
+        
         if (projectionType == lightProperties.ProjectionType.Lantern)
         {
             foreach (var changeable in _changeablesExited)
@@ -239,15 +240,18 @@ public class LightSource : MonoBehaviour
         }
         else if (projectionType == lightProperties.ProjectionType.Torch)
         {
-            _previousChangeable.UnChange();
-            CurrentChangeable.UnChange();
+            _previousChangeable?.UnChange();
+            CurrentChangeable?.UnChange();
         }
+        
         if (colorOfLight == lightProperties.ColorOfLight.BlueLight)
         {
+            
             MakeGreen(_light);
         }
         else if (colorOfLight == lightProperties.ColorOfLight.GreenLight)
         {
+            
             MakeBlue(_light);
         }
     }
