@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class greenChangable : MonoBehaviour, IChangable
+public class GreenChangeable : MonoBehaviour, IChangeable
 {
     public GameObject leaf;
     public void Change(lightProperties.ColorOfLight colorOfLight,  Transform none)

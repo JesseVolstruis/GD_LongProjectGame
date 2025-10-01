@@ -1,51 +1,68 @@
 using UnityEngine;
 
-public class blueChangeable : MonoBehaviour, IChangable
+public class blueChangeable : MonoBehaviour, IChangeable
 {
     private Rigidbody _rigidbody;
     private FixedJoint _joint;
     private bool _isChanged;
-    //private blueBlockHelper _blueBlockHelper;
+
+    [Header("Grab Settings")]
+    public float grabDelay = 0.05f;    // time in seconds before grabbing
+    public float releaseDelay = 0.2f; // time in seconds before letting go
+    private float _grabTimer = 0f;
+    private float _releaseTimer = 0f;
+
+    private Transform _player;
+    private Rigidbody _grabRb;
 
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        //_blueBlockHelper = GetComponentInChildren<blueBlockHelper>();
     }
 
     public void Change(lightProperties.ColorOfLight colorOfLight, Transform player)
     {
-        // Already attached? Don’t reattach
-        if (_isChanged) return;
-
-        if (colorOfLight == lightProperties.ColorOfLight.BlueLight)
+        if (colorOfLight != lightProperties.ColorOfLight.BlueLight)
         {
-            _isChanged = true;
-            Debug.Log("Blue light");
-            _rigidbody.useGravity = false;
-            _rigidbody.isKinematic = false;
-            // Look for GrabAnchor child on the player
+            // Not blue → start release timer
+            if (_isChanged)
+            {
+                _releaseTimer += Time.deltaTime;
+                if (_releaseTimer >= releaseDelay) UnChange();
+            }
+            return;
+        }
+
+        // Blue light → start grab timer if not already grabbed
+        if (!_isChanged)
+        {
+            _player = player;
             var grabAnchor = player.GetComponentInChildren<GrabAnchorFollower>();
-            if (grabAnchor == null)
+            if (grabAnchor == null) return;
+
+            _grabRb = grabAnchor.GetComponent<Rigidbody>();
+            if (_grabRb == null) return;
+
+            _grabTimer += Time.deltaTime;
+            if (_grabTimer >= grabDelay)
             {
-                Debug.LogWarning("GrabAnchor not found on player!");
-                return;
+                _isChanged = true;
+                _rigidbody.useGravity = false;
+                _rigidbody.isKinematic = false;
+
+                _joint = gameObject.AddComponent<FixedJoint>();
+                _joint.connectedBody = _grabRb;
+                _joint.breakForce = Mathf.Infinity;
+                _joint.breakTorque = Mathf.Infinity;
+
+                _grabTimer = 0f;
+                _releaseTimer = 0f;
             }
-
-            var grabRb = grabAnchor.GetComponent<Rigidbody>();
-            if (grabRb == null)
-            {
-                Debug.LogWarning("GrabAnchor has no Rigidbody!");
-                return;
-            }
-
-            // Add a joint ON THIS block
-            _joint = gameObject.AddComponent<FixedJoint>();
-            _joint.connectedBody = grabRb;
-            _joint.breakForce = Mathf.Infinity;
-            _joint.breakTorque = Mathf.Infinity;
-
-            
+        }
+        else
+        {
+            // reset release timer if already held
+            _releaseTimer = 0f;
         }
     }
 
@@ -58,20 +75,18 @@ public class blueChangeable : MonoBehaviour, IChangable
             Destroy(_joint);
             _joint = null;
         }
-        
+
         _isChanged = false;
         _rigidbody.useGravity = true;
         _rigidbody.isKinematic = false;
-        //_blueBlockHelper.DoGroundCheck();
-        
+        _grabTimer = 0f;
+        _releaseTimer = 0f;
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.collider.CompareTag("Ground") && !_isChanged)
         {
-            Debug.Log("groundHit");
-            // Optional: freeze after touching ground again
             _rigidbody.isKinematic = true;
         }
     }
