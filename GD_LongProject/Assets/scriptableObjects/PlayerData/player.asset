@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: player
   m_EditorClassIdentifier: 
   moveSpeed: 4.5
-  turnSpeed: 5
+  turnSpeed: 30
   jumpHeight: 1.3
   gravityValue: -18
   mouseSensitivity: 30
