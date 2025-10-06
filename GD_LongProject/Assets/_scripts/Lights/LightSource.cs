@@ -37,6 +37,9 @@ public class LightSource : MonoBehaviour
     private IChangeable _previousChangeable;
 
     private LayerMask _playerLayerMask;
+    private int _ignoreRaycastLayerMask; 
+    private int _mask;
+    
     
     // --- Colour switching ---
     private int _colourIndex;
@@ -57,7 +60,8 @@ public class LightSource : MonoBehaviour
     private void Start()
     {
         _playerLayerMask = LayerMask.GetMask("Player");
-
+        _ignoreRaycastLayerMask = 1 << LayerMask.NameToLayer("Ignore Raycast");
+        _mask = ~(_playerLayerMask | _ignoreRaycastLayerMask);
         _thisLightSource = transform.root;
         _light = GetComponent<Light>();
         AssignLightProperties();
@@ -118,7 +122,8 @@ private void LateUpdate()
     
     private IChangeable TorchLook()
     {
-        if (Physics.SphereCast(transform.position, _sphereCastRadius, transform.forward, out var centreHit, forwardRangeOfTorch, ~_playerLayerMask)) 
+        if (Physics.SphereCast(transform.position, _sphereCastRadius, transform.forward, out var centreHit, forwardRangeOfTorch,
+                _mask)) 
         { 
             torchHitPoint = centreHit.point; 
             float abs = Mathf.Abs(Vector3.Distance(transform.position, torchHitPoint));
