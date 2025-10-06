@@ -36,6 +36,8 @@ public class LightSource : MonoBehaviour
     public IChangeable CurrentChangeable;
     private IChangeable _previousChangeable;
 
+    private LayerMask _playerLayerMask;
+    
     // --- Colour switching ---
     private int _colourIndex;
     private List<Action<Light>> _colourChangers = new List<Action<Light>>();
@@ -54,6 +56,8 @@ public class LightSource : MonoBehaviour
 
     private void Start()
     {
+        _playerLayerMask = LayerMask.GetMask("Player");
+
         _thisLightSource = transform.root;
         _light = GetComponent<Light>();
         AssignLightProperties();
@@ -111,9 +115,10 @@ private void LateUpdate()
     }
 
     private readonly float _sphereCastRadius = 0.3f; //Torch
+    
     private IChangeable TorchLook()
     {
-        if (Physics.SphereCast(transform.position, _sphereCastRadius, transform.forward, out var centreHit)) 
+        if (Physics.SphereCast(transform.position, _sphereCastRadius, transform.forward, out var centreHit, forwardRangeOfTorch, ~_playerLayerMask)) 
         { 
             torchHitPoint = centreHit.point; 
             float abs = Mathf.Abs(Vector3.Distance(transform.position, torchHitPoint));

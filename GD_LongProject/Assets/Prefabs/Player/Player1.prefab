@@ -214,7 +214,7 @@ MonoBehaviour:
     Range: {x: 5, y: 45}
     Wrap: 0
     Recentering:
-      Enabled: 1
+      Enabled: 0
       Wait: 1
       Time: 2
     Restrictions: 0
@@ -597,13 +597,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerValues: {fileID: 11400000, guid: 76245fc7fd35acd4e8808526bce4fae4, type: 2}
-  moveSpeed: 5
-  turnSpeed: 5
-  jumpHeight: 1
-  gravityValue: -9.81
   cameraTransform: {fileID: 2428769746897056878}
   lanternHoldPosition: {fileID: 3130121322194260501}
   torcHoldPosition: {fileID: 2254957201098749380}
+  moveSpeed: 5
+  turnSpeed: 10
+  jumpHeight: 1
+  gravityValue: -9.81
   faceMoveDirection: 1
 --- !u!114 &1604063202232634458
 MonoBehaviour:
@@ -803,7 +803,7 @@ Transform:
   m_GameObject: {fileID: 6931470357468496461}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1521234, y: -0.000000008911229, z: 0.0000000013715696, w: 0.98836154}
-  m_LocalPosition: {x: 0, y: 5.011763, z: -15.895281}
+  m_LocalPosition: {x: 16.499998, y: 6.845096, z: 6.0047174}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
