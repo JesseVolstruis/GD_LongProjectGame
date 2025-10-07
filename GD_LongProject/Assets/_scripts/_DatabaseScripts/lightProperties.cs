@@ -24,6 +24,7 @@ public class lightProperties : ScriptableObject
     public bool lightOn;
     public float innerSpotAngle; 
     public float forwardRangeOfTorch;
+    public float horizontalRangeOfTorch;
     public float radialRangeOfLantern; 
     public float intensityOfLight; 
 

@@ -20,9 +20,11 @@ public class LightSource : MonoBehaviour
     [Header("Torch Specific Values")]
     [SerializeField] private float spreadOfTorchLight = 12f; 
     [SerializeField] private float forwardRangeOfTorch = 12f;
+    [SerializeField] private float horizontalRangeOfTorch = 0.3f;
+
 
     private Light _light;
-    private Transform _thisLightSource;              // Who is holding this light?
+    private Transform _thisLightSource;              
 
     [Header("Models (ART TEAM)")]
     public GameObject lanternVisuals;
@@ -36,6 +38,11 @@ public class LightSource : MonoBehaviour
     public IChangeable CurrentChangeable;
     private IChangeable _previousChangeable;
 
+    private LayerMask _playerLayerMask;
+    private int _ignoreRaycastLayerMask; 
+    private int _mask;
+    
+    
     // --- Colour switching ---
     private int _colourIndex;
     private List<Action<Light>> _colourChangers = new List<Action<Light>>();
@@ -54,6 +61,9 @@ public class LightSource : MonoBehaviour
 
     private void Start()
     {
+        _playerLayerMask = LayerMask.GetMask("Player");
+        _ignoreRaycastLayerMask = 1 << LayerMask.NameToLayer("Ignore Raycast");
+        _mask = ~(_playerLayerMask | _ignoreRaycastLayerMask);
         _thisLightSource = transform.root;
         _light = GetComponent<Light>();
         AssignLightProperties();
@@ -110,10 +120,11 @@ private void LateUpdate()
         return Mathf.Abs(Vector3.Distance(transform.position, torchHitPoint) * Mathf.Tan(spreadOfTorchLight * Mathf.Deg2Rad));
     }
 
-    private readonly float _sphereCastRadius = 0.3f; //Torch
+    
     private IChangeable TorchLook()
     {
-        if (Physics.SphereCast(transform.position, _sphereCastRadius, transform.forward, out var centreHit)) 
+        if (Physics.SphereCast(transform.position, horizontalRangeOfTorch, transform.forward, out var centreHit, forwardRangeOfTorch,
+                _mask)) 
         { 
             torchHitPoint = centreHit.point; 
             float abs = Mathf.Abs(Vector3.Distance(transform.position, torchHitPoint));
@@ -154,6 +165,7 @@ private void LateUpdate()
         radialRangeOfLantern= lightProperties.radialRangeOfLantern;
         spreadOfTorchLight  = lightProperties.innerSpotAngle / 2f;
         forwardRangeOfTorch = lightProperties.forwardRangeOfTorch;
+        horizontalRangeOfTorch = lightProperties.horizontalRangeOfTorch;
 
         // Mode-specific setup
         switch (projectionType)
