@@ -20,9 +20,11 @@ public class LightSource : MonoBehaviour
     [Header("Torch Specific Values")]
     [SerializeField] private float spreadOfTorchLight = 12f; 
     [SerializeField] private float forwardRangeOfTorch = 12f;
+    [SerializeField] private float horizontalRangeOfTorch = 0.3f;
+
 
     private Light _light;
-    private Transform _thisLightSource;              // Who is holding this light?
+    private Transform _thisLightSource;              
 
     [Header("Models (ART TEAM)")]
     public GameObject lanternVisuals;
@@ -118,11 +120,10 @@ private void LateUpdate()
         return Mathf.Abs(Vector3.Distance(transform.position, torchHitPoint) * Mathf.Tan(spreadOfTorchLight * Mathf.Deg2Rad));
     }
 
-    private readonly float _sphereCastRadius = 0.3f; //Torch
     
     private IChangeable TorchLook()
     {
-        if (Physics.SphereCast(transform.position, _sphereCastRadius, transform.forward, out var centreHit, forwardRangeOfTorch,
+        if (Physics.SphereCast(transform.position, horizontalRangeOfTorch, transform.forward, out var centreHit, forwardRangeOfTorch,
                 _mask)) 
         { 
             torchHitPoint = centreHit.point; 
@@ -164,6 +165,7 @@ private void LateUpdate()
         radialRangeOfLantern= lightProperties.radialRangeOfLantern;
         spreadOfTorchLight  = lightProperties.innerSpotAngle / 2f;
         forwardRangeOfTorch = lightProperties.forwardRangeOfTorch;
+        horizontalRangeOfTorch = lightProperties.horizontalRangeOfTorch;
 
         // Mode-specific setup
         switch (projectionType)
