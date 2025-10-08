@@ -41,9 +41,11 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _edgeFallOff: 0.77
-    - _opacity: 0.2
+    - _glowStrength: 2
+    - _opacity: 0.1
     m_Colors:
     - _Color: {r: 0, g: 1, b: 0, a: 0}
+    - _EmmissionColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &921793053618181313
