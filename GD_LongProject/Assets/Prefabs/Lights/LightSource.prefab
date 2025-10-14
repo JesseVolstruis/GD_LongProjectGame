@@ -193,8 +193,11 @@ MonoBehaviour:
   intensityOfLight: 0
   lightOn: 0
   radialRangeOfLantern: 0
+  lanternVisualization: {fileID: 6396012540719810580}
   spreadOfTorchLight: 12
   forwardRangeOfTorch: 12
+  horizontalRangeOfTorch: 0.3
+  torchVisualization: {fileID: 7749962787498547879}
   lanternVisuals: {fileID: 6380447446744599989}
   torchVisuals: {fileID: 7421309055805729404}
   torchHitPoint: {x: 0, y: 0, z: 0}
@@ -283,6 +286,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7365065339824841134, guid: eedc5db39b5a16146abd0f2047b3ecda, type: 3}
   m_PrefabInstance: {fileID: 4521069502620740635}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6396012540719810580 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7385097751270515727, guid: eedc5db39b5a16146abd0f2047b3ecda, type: 3}
+  m_PrefabInstance: {fileID: 4521069502620740635}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8972054540894931977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -352,5 +360,10 @@ Transform:
 --- !u!1 &7421309055805729404 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1909224243808806517, guid: d6f3d26a86929664fa396880b92231dd, type: 3}
+  m_PrefabInstance: {fileID: 8972054540894931977}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7749962787498547879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1661337922124764846, guid: d6f3d26a86929664fa396880b92231dd, type: 3}
   m_PrefabInstance: {fileID: 8972054540894931977}
   m_PrefabAsset: {fileID: 0}
