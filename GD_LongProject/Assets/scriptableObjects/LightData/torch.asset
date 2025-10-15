@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: torch
   m_EditorClassIdentifier: 
   currentProjectionType: 0
-  currentColorOfLight: 2
+  currentColorOfLight: 1
   lightOn: 0
   innerSpotAngle: 28
   forwardRangeOfTorch: 15

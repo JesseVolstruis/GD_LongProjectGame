@@ -6,16 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/LightSource.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/LightSource.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/Model_Lantern.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/Model_Lantern.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/Model_Torch.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/Model_Torch.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/WallBlocks/NormalBlock/Materials/NormalWall_Mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/WallBlocks/NormalBlock/Materials/NormalWall_Mat.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/TorchBasic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/TorchBasic.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/lanternBasic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/lanternBasic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Wall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Wall.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/blueChangeable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/blueChangeable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/CharacterCOntroller/CameraObstructionHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/CharacterCOntroller/CameraObstructionHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/materials/volumetricLight.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/materials/volumetricLight.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scriptableObjects/LightData/lantern.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scriptableObjects/LightData/lantern.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/scriptableObjects/LightData/torch.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scriptableObjects/LightData/torch.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +24,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/CharacterCOntroller/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/GreenChangeable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/blueBlockHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/sceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@e2c83221d2dc/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
@@ -138,6 +135,7 @@
       <workItem from="1759947793555" duration="6151000" />
       <workItem from="1760453935520" duration="608000" />
       <workItem from="1760466141280" duration="3458000" />
+      <workItem from="1760508298066" duration="2928000" />
     </task>
     <servers />
   </component>

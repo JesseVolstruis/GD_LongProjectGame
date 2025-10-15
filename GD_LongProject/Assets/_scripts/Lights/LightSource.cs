@@ -106,10 +106,6 @@ private void LateUpdate()
             // Debug helpers (Play mode only)
             var origin = transform.position;
             Debug.DrawRay(transform.position, transform.forward * forwardRangeOfTorch, Color.white);
-            // Debug.DrawRay(new Vector3(origin.x + _sphereCastRadius,origin.y,origin.z) , transform.forward * forwardRangeOfTorch, Color.yellow);
-            // Debug.DrawRay(new Vector3(origin.x - _sphereCastRadius,origin.y,origin.z) , transform.forward * forwardRangeOfTorch, Color.yellow);
-            // Debug.DrawRay(new Vector3(origin.x,origin.y + _sphereCastRadius,origin.z) , transform.forward * forwardRangeOfTorch, Color.yellow);
-            // Debug.DrawRay(new Vector3(origin.x,origin.y - _sphereCastRadius,origin.z) , transform.forward * forwardRangeOfTorch, Color.yellow);
             break;
 
         default:
@@ -126,6 +122,8 @@ private void LateUpdate()
     
     private IChangeable TorchLook()
     {
+		if(!lightOn) return null;
+        
         if (Physics.SphereCast(transform.position, horizontalRangeOfTorch, transform.forward, out var centreHit, forwardRangeOfTorch,
                 _mask)) 
         { 
@@ -135,6 +133,7 @@ private void LateUpdate()
             if (abs <= forwardRangeOfTorch)
             {
                 Debug.Log("hit");
+                Debug.Log(centreHit.collider.name);
                 if (centreHit.collider.gameObject.TryGetComponent(out IChangeable changeable) && lightOn)
                     return changeable;
             }
