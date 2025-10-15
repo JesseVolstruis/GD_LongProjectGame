@@ -17,5 +17,6 @@ MonoBehaviour:
   lightOn: 0
   innerSpotAngle: 0
   forwardRangeOfTorch: 0
+  horizontalRangeOfTorch: 0
   radialRangeOfLantern: 4
-  intensityOfLight: 100
+  intensityOfLight: 10

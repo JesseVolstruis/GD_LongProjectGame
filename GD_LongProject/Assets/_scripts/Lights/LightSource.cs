@@ -13,15 +13,18 @@ public class LightSource : MonoBehaviour
     public lightProperties.ColorOfLight colorOfLight = lightProperties.ColorOfLight.WhiteLight;
     [SerializeField] private float intensityOfLight;
     public bool lightOn;
-
+    private GameObject _lightVisualization;
+    private Material _visualizationMaterial;
+    
     [Header("Lantern Specific Values")]
     public float radialRangeOfLantern;
+    [SerializeField] private GameObject lanternVisualization;
 
     [Header("Torch Specific Values")]
     [SerializeField] private float spreadOfTorchLight = 12f; 
     [SerializeField] private float forwardRangeOfTorch = 12f;
     [SerializeField] private float horizontalRangeOfTorch = 0.3f;
-
+    [SerializeField] private GameObject torchVisualization;
 
     private Light _light;
     private Transform _thisLightSource;              
@@ -53,10 +56,10 @@ public class LightSource : MonoBehaviour
     private void Awake()
     {
         // Build the list of colour change methods
-        _colourChangers = new List<Action<Light>>()
-        {
-            MakeRed, MakeGreen, MakeBlue, MakeCyan, MakeYellow, MakeMagenta
-        };
+        // _colourChangers = new List<Action<Light>>()
+        // {
+        //     MakeRed, MakeGreen, MakeBlue, MakeCyan, MakeYellow, MakeMagenta
+        // };
     }
 
     private void Start()
@@ -103,10 +106,6 @@ private void LateUpdate()
             // Debug helpers (Play mode only)
             var origin = transform.position;
             Debug.DrawRay(transform.position, transform.forward * forwardRangeOfTorch, Color.white);
-            // Debug.DrawRay(new Vector3(origin.x + _sphereCastRadius,origin.y,origin.z) , transform.forward * forwardRangeOfTorch, Color.yellow);
-            // Debug.DrawRay(new Vector3(origin.x - _sphereCastRadius,origin.y,origin.z) , transform.forward * forwardRangeOfTorch, Color.yellow);
-            // Debug.DrawRay(new Vector3(origin.x,origin.y + _sphereCastRadius,origin.z) , transform.forward * forwardRangeOfTorch, Color.yellow);
-            // Debug.DrawRay(new Vector3(origin.x,origin.y - _sphereCastRadius,origin.z) , transform.forward * forwardRangeOfTorch, Color.yellow);
             break;
 
         default:
@@ -123,6 +122,8 @@ private void LateUpdate()
     
     private IChangeable TorchLook()
     {
+		if(!lightOn) return null;
+        
         if (Physics.SphereCast(transform.position, horizontalRangeOfTorch, transform.forward, out var centreHit, forwardRangeOfTorch,
                 _mask)) 
         { 
@@ -131,6 +132,8 @@ private void LateUpdate()
 
             if (abs <= forwardRangeOfTorch)
             {
+                Debug.Log("hit");
+                Debug.Log(centreHit.collider.name);
                 if (centreHit.collider.gameObject.TryGetComponent(out IChangeable changeable) && lightOn)
                     return changeable;
             }
@@ -191,19 +194,33 @@ private void LateUpdate()
             case lightProperties.ColorOfLight.BlueLight:    _light.color = Color.blue;    _colourIndex = 2; break;
             default: throw new ArgumentOutOfRangeException();
         }
-    }
 
+        _visualizationMaterial = _lightVisualization.GetComponent<Renderer>().material;
+    }
+    
     // --- On/Off ---
     public void SwitchOnOff()
     {
         _light.enabled = !_light.enabled;
         lightOn = !lightOn;
+        _lightVisualization.SetActive(lightOn);
     } 
 
     // --- Colour control ---
     private void MakeRed(Light l)     { colorOfLight = lightProperties.ColorOfLight.RedLight;     l.color = Color.red; }
-    private void MakeGreen(Light l)   { colorOfLight = lightProperties.ColorOfLight.GreenLight;   l.color = Color.green; }
-    private void MakeBlue(Light l)    { colorOfLight = lightProperties.ColorOfLight.BlueLight;    l.color = Color.blue; }
+    private void MakeGreen(Light l, Material m)   
+    { 
+        colorOfLight = lightProperties.ColorOfLight.GreenLight;   
+        l.color = Color.green; 
+        m.color = Color.green;
+    }
+
+    private void MakeBlue(Light l, Material m)
+    {
+        colorOfLight = lightProperties.ColorOfLight.BlueLight;    
+        l.color = Color.blue;
+        m.color = Color.blue;
+    }
     private void MakeCyan(Light l)    { colorOfLight = lightProperties.ColorOfLight.CyanLight;    l.color = Color.cyan; }
     private void MakeYellow(Light l)  { colorOfLight = lightProperties.ColorOfLight.YellowLight;  l.color = Color.yellow; }
     private void MakeMagenta(Light l) { colorOfLight = lightProperties.ColorOfLight.MagentaLight; l.color = Color.magenta; }
@@ -234,9 +251,9 @@ private void LateUpdate()
 
         // Swap between green and blue
         if (colorOfLight == lightProperties.ColorOfLight.BlueLight)
-            MakeGreen(_light);
+            MakeGreen(_light, _visualizationMaterial);
         else if (colorOfLight == lightProperties.ColorOfLight.GreenLight)
-            MakeBlue(_light);
+            MakeBlue(_light, _visualizationMaterial);
     }
 
     // --- Visual & light mode setup ---
@@ -255,6 +272,7 @@ private void LateUpdate()
         torchVisuals.SetActive(true);
         projectionType = lightProperties.ProjectionType.Torch;
         TorchProjectionProperties(_light);
+        _lightVisualization = torchVisualization;
     }
 
     private void LanternProjectionProperties(Light l)
@@ -270,5 +288,6 @@ private void LateUpdate()
         torchVisuals.SetActive(false);
         projectionType = lightProperties.ProjectionType.Lantern;
         LanternProjectionProperties(_light);
+        _lightVisualization = lanternVisualization;
     }
 }
