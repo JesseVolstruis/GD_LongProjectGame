@@ -1,66 +1,84 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraObstructionHandler : MonoBehaviour
 {
+    private static readonly int Color1 = Shader.PropertyToID("_BaseColor");
+
     [Header("References")]
     [SerializeField] private Transform player;
     
     [Header("Settings")]
     [SerializeField] private LayerMask obstructionMask;
     [SerializeField] private float sphereRadius = 0.3f;
-    [SerializeField] private float fadeSpeed = 5f; // How quickly tiles fade in/out
-    [SerializeField] private float minAlpha = 0f; // Minimum alpha for faded tiles
+    [SerializeField] private float fadeSpeed = 5f;
+    [SerializeField] private float minAlpha = 0f;
 
-    private Dictionary<Renderer, float> _fadingObjects = new Dictionary<Renderer, float>();
+    private Dictionary<Renderer, (Material originalMat, Material tempMat)> _materials;
+    private MaterialPropertyBlock _block;
+
+    void Awake()
+    {
+        _materials = new Dictionary<Renderer, (Material, Material)>();
+        _block = new MaterialPropertyBlock();
+    }
 
     void LateUpdate()
     {
+        if (!player) return;
+
         Vector3 direction = player.position - transform.position;
         float distance = direction.magnitude;
 
-        // SphereCastAll to detect all tiles in the way
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, sphereRadius, direction, distance, obstructionMask);
+        HashSet<Renderer> currentHits = new();
 
-        HashSet<Renderer> currentlyHit = new HashSet<Renderer>();
         foreach (var hit in hits)
         {
             Renderer rend = hit.collider.GetComponent<Renderer>();
-            if (rend != null)
+            if (!rend) continue;
+
+            currentHits.Add(rend);
+
+            if (!_materials.ContainsKey(rend))
             {
-                currentlyHit.Add(rend);
-                if (!_fadingObjects.ContainsKey(rend))
-                {
-                    _fadingObjects[rend] = rend.material.color.a; // store current alpha
-                }
+                // Create temp material safely
+                Material temp = new Material(rend.sharedMaterial);
+                rend.material = temp;
+                _materials[rend] = (rend.sharedMaterial, temp);
             }
+
+            rend.GetPropertyBlock(_block);
+            Color color = rend.material.GetColor(Color1);
+            color.a = Mathf.Lerp(color.a, minAlpha, Time.deltaTime * fadeSpeed);
+            _block.SetColor(Color1, color);
+            rend.SetPropertyBlock(_block);
         }
 
-        // Fade in/out logic
-        List<Renderer> keys = new List<Renderer>(_fadingObjects.Keys);
-        foreach (var rend in keys)
+        // Fade back and cleanup
+        List<Renderer> toRemove = new();
+        foreach (var kvp in _materials)
         {
-            Color color = rend.material.color;
+            Renderer rend = kvp.Key;
+            if (!rend) { toRemove.Add(rend); continue; }
 
-            if (currentlyHit.Contains(rend))
+            if (currentHits.Contains(rend)) continue;
+
+            rend.GetPropertyBlock(_block);
+            Color color = rend.material.GetColor(Color1);
+            color.a = Mathf.Lerp(color.a, 1f, Time.deltaTime * fadeSpeed);
+            _block.SetColor(Color1, color);
+            rend.SetPropertyBlock(_block);
+
+            if (color.a >= 0.99f)
             {
-                // Fade OUT
-                color.a = Mathf.Lerp(color.a, minAlpha, Time.deltaTime * fadeSpeed);
+                Destroy(rend.material);
+                rend.material = kvp.Value.originalMat;
+                toRemove.Add(rend);
             }
-            else
-            {
-                // Fade IN
-                color.a = Mathf.Lerp(color.a, 1f, Time.deltaTime * fadeSpeed);
-
-                // Remove from dictionary once fully visible
-                if (Mathf.Abs(color.a - 1f) < 0.01f)
-                {
-                    _fadingObjects.Remove(rend);
-                }
-            }
-
-            rend.material.color = color;
         }
+
+        foreach (var rend in toRemove)
+            _materials.Remove(rend);
     }
 }
