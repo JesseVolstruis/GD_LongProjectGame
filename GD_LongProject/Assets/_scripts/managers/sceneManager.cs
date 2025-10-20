@@ -3,11 +3,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class sceneManager : MonoBehaviour
 {
-    [SerializeField] private button exitA;
-    [SerializeField] private button exitB;
+    [SerializeField] private exitTriggers exitA;
+    //[SerializeField] private button exitB;
     private void Update()
     {
-        CheckExits(exitA.isPressed, exitB.isPressed);
+        CheckExits(exitA.isPressed);
         
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -34,10 +34,9 @@ public class sceneManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
-    private void CheckExits(bool extA, bool extB)
-    {
-        if(extA && extB) Debug.Log("gotem");//NextLevel();
-    }
     
+    private void CheckExits(bool extA)
+    {
+        if(extA) Debug.Log("gotem"); NextLevel();
+    }
 }
