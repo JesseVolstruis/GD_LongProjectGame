@@ -21,7 +21,7 @@ public class overlapChecker : MonoBehaviour
     
     public float distance;
 
-    private IChangable _currentChangable;
+    private IChangeable _currentChangeable;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
@@ -40,8 +40,8 @@ public class overlapChecker : MonoBehaviour
         
         if(IsOverlapping(_centreA,_centreB, _overlapDistance))
         {
-            _currentChangable = lightSourceB.GetComponent<LightSource>().CurrentChangeable;
-            if (_currentChangable != null)  _currentChangable.Change(CheckColorCombos(lightColorA, lightColorB), null);
+            _currentChangeable = lightSourceB.GetComponent<LightSource>().CurrentChangeable;
+            if (_currentChangeable != null)  _currentChangeable.Change(CheckColorCombos(lightColorA, lightColorB), null);
         }
        
     }

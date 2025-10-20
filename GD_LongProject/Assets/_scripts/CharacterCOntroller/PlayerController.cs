@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,82 +6,94 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    //INPUT ACTIONS
+    [Header("References")]
+    public PlayerValues playerValues;              // ScriptableObject with base values
+    public Transform cameraTransform;              // Camera to calculate relative movement
+    public Transform lanternHoldPosition;          // Where lanterns are held
+    public Transform torcHoldPosition;             // Where torches are held
+
+    [Header("Movement Values")]
+    [SerializeField] private float moveSpeed = 5.0f;
+    [SerializeField] private float turnSpeed = 5.0f;
+    [SerializeField] private float jumpHeight = 1f;
+    [SerializeField] private float gravityValue = -9.81f;
+    public bool faceMoveDirection = true;          // Determines if player rotates to match move direction
+
+    // --- Input Actions ---
     private PlayerInput _playerInput;
     private InputAction _moveAction;
     private InputAction _jumpAction;
     private InputAction _switchAction;
     private InputAction _interactAction;
     private InputAction _switchColourAction;
-    //CALLBACK HANDLERS
-    private System.Action<InputAction.CallbackContext> _jumpHandler;
-    private System.Action<InputAction.CallbackContext> _switchHandler;
-    private System.Action<InputAction.CallbackContext> _interactHandler;
-    private System.Action<InputAction.CallbackContext> _switchColourHandler;
-    
-    
-    public PlayerValues playerValues;
-    
-    [Header("Movement Values")]
-    [SerializeField] private float moveSpeed = 5.0f;
-    [SerializeField] private float turnSpeed = 5.0f;
-    [SerializeField] private float jumpHeight = 1f;
-    [SerializeField] private float gravityValue = -9.81f;
-    
-    [Header("Camera")]
-    public Transform cameraTransform;
-    
-     public Transform lanternHoldPosition;
-    public Transform torcHoldPosition;
-     public bool faceMoveDirection = true;
-    
+
+    // Cached callback delegates (avoid garbage allocation every frame)
+    private Action<InputAction.CallbackContext> _jumpHandler;
+    private Action<InputAction.CallbackContext> _switchHandler;
+    private Action<InputAction.CallbackContext> _interactHandler;
+    private Action<InputAction.CallbackContext> _switchColourHandler;
+
+    // --- Movement state ---
     private CharacterController _controller;
     private Vector2 _moveInput;
     private Vector3 _velocity;
     private bool _grounded;
+
+    // --- Interaction state ---
+    private GameObject _inPickUpRange;
+    private LightSource _lightSource;
+    private bool _holdingLight;   
+
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
         _controller = GetComponent<CharacterController>();
+
         AssignMovementValues();
-        _moveAction   = _playerInput.actions["Move"];
-        _jumpAction   = _playerInput.actions["Jump"];
-        _switchAction = _playerInput.actions["Switch"];
-        _interactAction = _playerInput.actions["Interact"];
-        _switchColourAction = _playerInput.actions["SwitchColour"];
+
+        // Bind input actions
+        _moveAction        = _playerInput.actions["Move"];
+        _jumpAction        = _playerInput.actions["Jump"];
+        _switchAction      = _playerInput.actions["Switch"];
+        _interactAction    = _playerInput.actions["Interact"];
+        _switchColourAction= _playerInput.actions["SwitchColour"];
     }
+
     private void OnEnable()
     {
-        _jumpHandler = ctx => Jump();
-        _switchHandler = ctx => LightSwitch();
-        _interactHandler = ctx => Interact();
-        _switchColourHandler = ctx => ColourSwitch();
-        
-        _jumpAction.performed += _jumpHandler;
-        _switchAction.performed += _switchHandler;
-        _interactAction.performed += _interactHandler;
-        _switchColourAction.performed += _switchColourHandler;
+        // Assign delegates once and add them
+        _jumpHandler        = ctx => Jump();
+        _switchHandler      = ctx => LightSwitch();
+        _interactHandler    = ctx => Interact();
+        _switchColourHandler= ctx => ColourSwitch();
+
+        _jumpAction.performed        += _jumpHandler;
+        _switchAction.performed      += _switchHandler;
+        _interactAction.performed    += _interactHandler;
+        _switchColourAction.performed+= _switchColourHandler;
     }
+
     private void OnDisable()
     {
-        _jumpAction.performed -= _jumpHandler;
-        _switchAction.performed -= _switchHandler;
-        _interactAction.performed -= _interactHandler;
-        _switchColourAction.performed -= _switchColourHandler;
+        // Remove delegates to avoid memory leaks
+        _jumpAction.performed        -= _jumpHandler;
+        _switchAction.performed      -= _switchHandler;
+        _interactAction.performed    -= _interactHandler;
+        _switchColourAction.performed-= _switchColourHandler;
     }
+
     private void Update()
     {
+        // --- Movement ---
         _moveInput = _moveAction.ReadValue<Vector2>();
-
-        // Ground check
         _grounded = _controller.isGrounded;
 
         // Camera-relative movement
         Vector3 forward = cameraTransform.forward; forward.y = 0; forward.Normalize();
         Vector3 right   = cameraTransform.right;   right.y = 0;   right.Normalize();
+        Vector3 move    = forward * _moveInput.y + right * _moveInput.x;
 
-        Vector3 move = forward * _moveInput.y + right * _moveInput.x;
-
+        // Smooth rotation toward move direction
         if (faceMoveDirection && move.sqrMagnitude > 0.01f)
         {
             Quaternion toRotation = Quaternion.LookRotation(move, Vector3.up);
@@ -88,123 +101,117 @@ public class PlayerController : MonoBehaviour
         }
 
         // Gravity
-        if (_grounded && _velocity.y < 0)
-            _velocity.y = -2f;
-        else
-            _velocity.y += gravityValue * Time.deltaTime;
+        if (_grounded && _velocity.y < 0) _velocity.y = -2f;
+        else _velocity.y += gravityValue * Time.deltaTime;
 
         // Apply movement + gravity
         _controller.Move((move * moveSpeed + _velocity) * Time.deltaTime);
     }
 
+    // --- Value setup ---
     private void AssignMovementValues()
     {
-        moveSpeed = playerValues.moveSpeed;
-        turnSpeed = playerValues.turnSpeed;
-        jumpHeight = playerValues.jumpHeight;
+        moveSpeed    = playerValues.moveSpeed;
+        turnSpeed    = playerValues.turnSpeed;
+        jumpHeight   = playerValues.jumpHeight;
         gravityValue = playerValues.gravityValue;
-        
     }
+
     private void Jump()
     {
         if (_controller.isGrounded)
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityValue);
     }
 
-    private GameObject _inPickUpRange;
-    private LightSource _lightSource;
-    private bool _holdingLight;   
-    
+    // --- Interaction logic ---
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out LightSource _))
-        {
-            _inPickUpRange =  other.gameObject;
-        }
+            _inPickUpRange = other.gameObject;
     }
+
     private void OnTriggerExit(Collider other)
     {
         _inPickUpRange = null;
     }
+
     private void Interact()
     {
-        if (_holdingLight)
-        {
-            PutDown();
-        }
+        if (_holdingLight) PutDown();
         else if (_inPickUpRange != null)
         {
-            if (_holdingLight) return;
+            if (!_inPickUpRange.TryGetComponent(out LightSource lightSource)) return;
 
-            Transform holdHere = null;
-            if (_inPickUpRange.TryGetComponent(out LightSource lightSource))
+            // Decide which hold position to use
+            Transform holdHere = lightSource.projectionType switch
             {
-                lightProperties.ProjectionType lightType = lightSource.projectionType;
-                if (lightType == lightProperties.ProjectionType.Lantern)
-                {
-                    holdHere = lanternHoldPosition;
-                }
-                else if (lightType == lightProperties.ProjectionType.Torch)
-                {
-                    holdHere = torcHoldPosition;
-                }
-            }
-            PickUp(holdHere,_inPickUpRange.transform);
-            _holdingLight = true;
-            
+                lightProperties.ProjectionType.Lantern => lanternHoldPosition,
+                lightProperties.ProjectionType.Torch   => torcHoldPosition,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+
+            PickUp(holdHere, _inPickUpRange.transform);
         }
     }
+
     private void PickUp(Transform holdHere, Transform holdThis)
     {
-        //holdThis.GetComponent<LightSource>().SetThisPlayer(transform);
-		holdThis.GetComponent<Rigidbody>().isKinematic = true;
-        holdThis.GetComponent<Rigidbody>().useGravity = false;
+        _holdingLight = true;
+
+        // Disable physics + attach to player
+        var rb = holdThis.GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+        rb.useGravity = false;
+
         holdThis.position = holdHere.position;
         holdThis.rotation = holdHere.rotation;
         holdThis.SetParent(holdHere);
-        
+
+        // Disable colliders (avoids blocking player)
         holdThis.GetComponent<SphereCollider>().enabled = false;
         holdThis.GetComponentInChildren<BoxCollider>().enabled = false;
-        
-        _lightSource = _inPickUpRange.GetComponent<LightSource>();
-        if (_lightSource.lightOn)
-        {
-            faceMoveDirection = false;
-        }
+
+        _lightSource = holdThis.GetComponent<LightSource>();
+
+        // If the light is already on, stop rotating to move direction
+        if (_lightSource.lightOn) faceMoveDirection = false;
     }
+
     private void PutDown()
     {
         Transform heldLight = _lightSource.transform;
-        //heldLight.GetComponent<LightSource>().ResetThisPlayer();
+
         heldLight.SetParent(null);
-        heldLight.position = lanternHoldPosition.position;
+        heldLight.position = lanternHoldPosition.position;   // ⚠️ always uses lantern pos (bug if torch?)
         heldLight.rotation = lanternHoldPosition.rotation;
-        heldLight.GetComponent<Rigidbody>().isKinematic = false;
+
+        var rb = heldLight.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.useGravity = true;
+
         heldLight.GetComponent<SphereCollider>().enabled = true;
         heldLight.GetComponentInChildren<BoxCollider>().enabled = true;
-        heldLight.GetComponent<Rigidbody>().useGravity = true;
+
         _holdingLight = false;
         _lightSource = null;
         faceMoveDirection = true;
-        
     }
 
     private void Strafe()
     {
         faceMoveDirection = !faceMoveDirection;
     }
+
     private void LightSwitch()
     {
-        if (_lightSource != null)
-        {
-            _lightSource.SwitchOnOff();
-            Strafe();
-        }
+        if (_lightSource == null) return;
+        _lightSource.SwitchOnOff();
+        Strafe();
     }
 
     private void ColourSwitch()
     { 
-        if(_lightSource != null)  _lightSource.GreenBlueSwitch();
+        if (_lightSource != null)  
+            _lightSource.GreenBlueSwitch();
     }
-
 }

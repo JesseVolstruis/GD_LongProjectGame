@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cyanChangeable : MonoBehaviour, IChangable
+public class cyanChangeable : MonoBehaviour, IChangeable
 {
     [Header("Assign the waypoints IN ORDER")]
     public List<Transform> targets = new List<Transform>();
