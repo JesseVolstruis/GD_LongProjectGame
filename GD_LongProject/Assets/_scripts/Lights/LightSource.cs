@@ -32,6 +32,7 @@ public class LightSource : MonoBehaviour
     [Header("Models (ART TEAM)")]
     public GameObject lanternVisuals;
     public GameObject torchVisuals;
+    private GameObject _torchVisualsCylinder;
 
     // --- Changeable tracking ---
     private List<IChangeable> _changeablesPrevious = new List<IChangeable>(); 
@@ -69,6 +70,7 @@ public class LightSource : MonoBehaviour
         _mask = ~(_playerLayerMask | _ignoreRaycastLayerMask);
         _thisLightSource = transform.root;
         _light = GetComponent<Light>();
+        _torchVisualsCylinder = torchVisualization.transform.GetChild(0).gameObject;
         AssignLightProperties();
     }
 
@@ -195,7 +197,7 @@ private void LateUpdate()
             default: throw new ArgumentOutOfRangeException();
         }
 
-        _visualizationMaterial = _lightVisualization.GetComponent<Renderer>().material;
+        _visualizationMaterial = _lightVisualization.GetComponentInChildren<Renderer>().material;
     }
     
     // --- On/Off ---
@@ -204,6 +206,7 @@ private void LateUpdate()
         _light.enabled = !_light.enabled;
         lightOn = !lightOn;
         _lightVisualization.SetActive(lightOn);
+        Debug.Log(_lightVisualization.name);
     } 
 
     // --- Colour control ---
@@ -270,6 +273,7 @@ private void LateUpdate()
     {
         lanternVisuals.SetActive(false);
         torchVisuals.SetActive(true);
+        torchVisualization.transform.localScale = new Vector3(1f,1f,forwardRangeOfTorch-0.5f);
         projectionType = lightProperties.ProjectionType.Torch;
         TorchProjectionProperties(_light);
         _lightVisualization = torchVisualization;
@@ -286,6 +290,7 @@ private void LateUpdate()
     {
         lanternVisuals.SetActive(true);
         torchVisuals.SetActive(false);
+        lanternVisualization.transform.localScale = new Vector3(radialRangeOfLantern*4, radialRangeOfLantern*4, radialRangeOfLantern*4);
         projectionType = lightProperties.ProjectionType.Lantern;
         LanternProjectionProperties(_light);
         _lightVisualization = lanternVisualization;

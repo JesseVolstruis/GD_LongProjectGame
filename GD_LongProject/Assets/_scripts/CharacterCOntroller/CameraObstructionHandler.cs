@@ -26,7 +26,7 @@ public class CameraObstructionHandler : MonoBehaviour
         HashSet<Renderer> currentlyHit = new HashSet<Renderer>();
         foreach (var hit in hits)
         {
-            Renderer rend = hit.collider.GetComponent<Renderer>();
+            Renderer rend = hit.collider.GetComponentInChildren<Renderer>();
             if (rend != null)
             {
                 currentlyHit.Add(rend);
