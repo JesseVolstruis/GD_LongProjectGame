@@ -9,11 +9,17 @@ public class gate : MonoBehaviour
     
     private bool _open;
     private BoxCollider _gateCollider;
-    private MeshRenderer _meshRenderer;
+
+    /// <summary>
+    /// TEMPORARY GOTTA ADD ANIMATIONS
+    /// </summary>
+    //[SerializeField] private MeshRenderer barsMeshRenderer;
+    [SerializeField] private GameObject barsGameObject;
     void Start()
     {
         _gateCollider = GetComponent<BoxCollider>();
-       _meshRenderer =  GetComponent<MeshRenderer>();
+       //barsMeshRenderer =  GetComponent<MeshRenderer>();
+       
     }
     void Update()
     {
@@ -30,7 +36,8 @@ public class gate : MonoBehaviour
     {
         _open = buttons.All(b => b.isPressed);
         _gateCollider.enabled = !_open;
-        _meshRenderer.enabled = !_open;
+        //barsMeshRenderer.enabled = !_open;
+        barsGameObject.SetActive(!_open);
     }
 
     private void StayOpen()
@@ -42,6 +49,6 @@ public class gate : MonoBehaviour
 
         if (!_open) return;
         _gateCollider.enabled = false;
-        _meshRenderer.enabled = false;
+        barsGameObject.SetActive(false);
     }
 }
