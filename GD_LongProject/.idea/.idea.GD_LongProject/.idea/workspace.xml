@@ -6,15 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/Model_Lantern.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/Model_Lantern.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/Model_Torch.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/Model_Torch.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/TorchBasic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/TorchBasic.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/lanternBasic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/lanternBasic.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Gate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Gate.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/gates/gate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/gates/gate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scriptableObjects/LightData/torch.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scriptableObjects/LightData/torch.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Exit.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Exit.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/managers/sceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/managers/sceneManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +21,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/CharacterCOntroller/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/GreenChangeable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/blueBlockHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/exitTriggers.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/sceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@e2c83221d2dc/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@087c6d6dbb7d/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
@@ -138,7 +132,7 @@
       <workItem from="1760453935520" duration="608000" />
       <workItem from="1760466141280" duration="3458000" />
       <workItem from="1760508298066" duration="4117000" />
-      <workItem from="1760967027199" duration="2792000" />
+      <workItem from="1760967027199" duration="7925000" />
     </task>
     <servers />
   </component>
