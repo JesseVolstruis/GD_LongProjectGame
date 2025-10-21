@@ -2,48 +2,31 @@ using UnityEngine;
 
 public class exitTriggers : MonoBehaviour
 {
-    public bool isPressed;
-    private bool _countDown = false;
-    private bool _playerOneThrough;
-    private bool _playerTwoThrough;
+    public bool playersThrough = false;
+    private int _playerCount = 0;
     
-    private float _countDownTimer = 0;
-    [SerializeField] private float countDownTime = 0.5f;
+    // private bool _countDown = false;
+    // private float _countDownTimer = 0;
+    // [SerializeField] private float countDownTime = 0.5f;
     
     
     private void Update()
     {
-        if (!_countDown) return;
-        
-        _countDownTimer += Time.deltaTime;
-        if (!(_countDownTimer >= countDownTime)) return;
-        
-        isPressed = true;
-        _countDown = false;
+        playersThrough = _playerCount >= 2;
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Pressed();
+            _playerCount++;
         }
     }
     void OnTriggerExit(Collider other)
     {
-        Released();
-    }
-
-    private void Pressed()
-    {
-        _countDownTimer = 0f;
-        _countDown = true;
-    }
-
-    private void Released()
-    {
-        isPressed = false;
-        _countDown = false;
-        _countDownTimer = 0f;
+        if (other.CompareTag("Player"))
+        {
+            _playerCount--;
+        }
     }
 }
