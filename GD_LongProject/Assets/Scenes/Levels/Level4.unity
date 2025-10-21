@@ -189,6 +189,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4376558993220817888, guid: a160fc9d016547341a9a7dcdeb4fae68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.011763
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376558993220817888, guid: a160fc9d016547341a9a7dcdeb4fae68, type: 3}
       propertyPath: m_LocalPosition.z
       value: -15.895283
       objectReference: {fileID: 0}
@@ -409,11 +413,11 @@ PrefabInstance:
     - target: {fileID: 6587936260536028632, guid: 98e63c9611e93644bb0abbe6f93deef7, type: 3}
       propertyPath: exitA
       value: 
-      objectReference: {fileID: 1554072346}
+      objectReference: {fileID: 7710340201658180778}
     - target: {fileID: 6587936260536028632, guid: 98e63c9611e93644bb0abbe6f93deef7, type: 3}
       propertyPath: exitB
       value: 
-      objectReference: {fileID: 1554072346}
+      objectReference: {fileID: 0}
     - target: {fileID: 8762155182650229701, guid: 98e63c9611e93644bb0abbe6f93deef7, type: 3}
       propertyPath: m_Name
       value: reset plane
@@ -528,17 +532,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8979c3518ae1f56479e27e63b08a3f3d, type: 3}
---- !u!114 &1554072346 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3301434053693314035, guid: eeba19c401677f2449bbc850f1533267, type: 3}
-  m_PrefabInstance: {fileID: 7710340201658180776}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c42fd66262e112047944338899493e90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1612029678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -644,6 +637,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2549810880102869679, guid: eeba19c401677f2449bbc850f1533267, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4398167530332051926, guid: eeba19c401677f2449bbc850f1533267, type: 3}
       propertyPath: barsGameObject
       value: 
@@ -662,6 +659,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 670882227814500778, guid: eeba19c401677f2449bbc850f1533267, type: 3}
   m_PrefabInstance: {fileID: 7710340201658180776}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7710340201658180778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8471170516840825733, guid: eeba19c401677f2449bbc850f1533267, type: 3}
+  m_PrefabInstance: {fileID: 7710340201658180776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9180984d9dad7364e82ee22f576e56b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
