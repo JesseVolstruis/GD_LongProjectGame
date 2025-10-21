@@ -24,7 +24,6 @@ public class blueChangeable : MonoBehaviour, IChangeable
     // Called by the light system when the object is illuminated
     public void Change(lightProperties.ColorOfLight colorOfLight, Transform player)
     {
-        Debug.Log("Changing blue light");
         if (colorOfLight == lightProperties.ColorOfLight.BlueLight)
         {
             
