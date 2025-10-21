@@ -9,8 +9,8 @@ public class blueChangeable : MonoBehaviour, IChangeable
     [Header("Grab Settings")]
     public float grabDelay = 0.05f;
     public float releaseDelay = 0.2f;
-    private float _grabTimer = 0f;
-    private float _releaseTimer = 0f;
+    private float _grabTimer;
+    private float _releaseTimer;
 
     private Transform _player;
     private Rigidbody _grabRb;
@@ -26,7 +26,6 @@ public class blueChangeable : MonoBehaviour, IChangeable
     {
         if (colorOfLight == lightProperties.ColorOfLight.BlueLight)
         {
-            
             _isTryingToGrab = true;
             _player = player;
         }

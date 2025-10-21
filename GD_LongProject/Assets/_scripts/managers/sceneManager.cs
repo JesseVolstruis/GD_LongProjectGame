@@ -7,7 +7,7 @@ public class sceneManager : MonoBehaviour
     //[SerializeField] private button exitB;
     private void Update()
     {
-        CheckExits(exitA.isPressed);
+        CheckExits(exitA.playersThrough);
         
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -37,6 +37,8 @@ public class sceneManager : MonoBehaviour
     
     private void CheckExits(bool extA)
     {
-        if(extA) Debug.Log("gotem"); NextLevel();
+        if (!extA) return;
+        Debug.Log("gotem");
+        NextLevel();
     }
 }
