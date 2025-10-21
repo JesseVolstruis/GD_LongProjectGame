@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Exit.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Exit.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/GreenChangeable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/GreenChangeable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/IChangeable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/IChangeable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/blueChangeable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/blueChangeable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/cyanChangeable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/cyanChangeable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" afterDir="false" />
-    </list>
+    <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
