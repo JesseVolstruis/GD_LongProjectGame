@@ -16,7 +16,7 @@ public class blueChangeable : MonoBehaviour, IChangeable
     private Rigidbody _grabRb;
     private bool _isTryingToGrab; // track if light is still blue
 
-    void Awake()
+    void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
     }

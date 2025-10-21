@@ -30,8 +30,8 @@ public class LightSource : MonoBehaviour
     private Transform _thisLightSource;              
 
     [Header("Models (ART TEAM)")]
-    public GameObject lanternVisuals;
-    public GameObject torchVisuals;
+    public GameObject lanternModel;
+    public GameObject torchModel;
     private GameObject _torchVisualsCylinder;
 
     // --- Changeable tracking ---
@@ -271,8 +271,8 @@ private void LateUpdate()
 
     private void MakeTorch()
     {
-        lanternVisuals.SetActive(false);
-        torchVisuals.SetActive(true);
+        lanternModel.SetActive(false);
+        torchModel.SetActive(true);
         torchVisualization.transform.localScale = new Vector3(1f,1f,forwardRangeOfTorch-0.5f);
         projectionType = lightProperties.ProjectionType.Torch;
         TorchProjectionProperties(_light);
@@ -288,8 +288,8 @@ private void LateUpdate()
 
     private void MakeLantern()
     {
-        lanternVisuals.SetActive(true);
-        torchVisuals.SetActive(false);
+        lanternModel.SetActive(true);
+        torchModel.SetActive(false);
         lanternVisualization.transform.localScale = new Vector3(radialRangeOfLantern*4, radialRangeOfLantern*4, radialRangeOfLantern*4);
         projectionType = lightProperties.ProjectionType.Lantern;
         LanternProjectionProperties(_light);
