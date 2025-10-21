@@ -134,8 +134,7 @@ private void LateUpdate()
 
             if (abs <= forwardRangeOfTorch)
             {
-                Debug.Log("hit");
-                Debug.Log(centreHit.collider.name);
+                
                 if (centreHit.collider.gameObject.TryGetComponent(out IChangeable changeable) && lightOn)
                     return changeable;
             }

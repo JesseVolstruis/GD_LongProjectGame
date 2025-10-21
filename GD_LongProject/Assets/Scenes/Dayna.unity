@@ -1327,19 +1327,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7454876987105843029, guid: 834a51dfd00d87d40a96ab467d4b1e1d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7454876987105843029, guid: 834a51dfd00d87d40a96ab467d4b1e1d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7454876987105843029, guid: 834a51dfd00d87d40a96ab467d4b1e1d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7454876987105843029, guid: 834a51dfd00d87d40a96ab467d4b1e1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -18.4
       objectReference: {fileID: 0}
     - target: {fileID: 7454876987105843029, guid: 834a51dfd00d87d40a96ab467d4b1e1d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1347,7 +1347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7454876987105843029, guid: 834a51dfd00d87d40a96ab467d4b1e1d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 13.1
       objectReference: {fileID: 0}
     - target: {fileID: 7454876987105843029, guid: 834a51dfd00d87d40a96ab467d4b1e1d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1376,6 +1376,10 @@ PrefabInstance:
     - target: {fileID: 7454876987105843029, guid: 834a51dfd00d87d40a96ab467d4b1e1d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454876987105843029, guid: 834a51dfd00d87d40a96ab467d4b1e1d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3705,7 +3709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6278004916107594565, guid: c99bc467d67eb4c4b81c2b181aa7ead9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6373573993705658910, guid: c99bc467d67eb4c4b81c2b181aa7ead9, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
