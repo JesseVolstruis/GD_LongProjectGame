@@ -124,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constantPressure: 1
   buttons: []
+  barsGameObject: {fileID: 0}
 --- !u!1001 &3190668982548012621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -192,6 +193,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate
       objectReference: {fileID: 0}
+    - target: {fileID: 1954859237364998489, guid: eea1a4a3afedb94448155425ce7757b6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 41317a06780b36c4d9133dd7079f872f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -204,6 +204,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5648767689465423854, guid: bcc7bbe9fe8c6bf4b93b91db417ca3cc, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 41317a06780b36c4d9133dd7079f872f, type: 2}
     - target: {fileID: 919132149155446097, guid: bcc7bbe9fe8c6bf4b93b91db417ca3cc, type: 3}
       propertyPath: m_Name
       value: Giant Button
