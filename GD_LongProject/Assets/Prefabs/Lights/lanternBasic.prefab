@@ -101,6 +101,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5819965319017451409, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+      propertyPath: torchModel
+      value: 
+      objectReference: {fileID: 5327012212313482698}
+    - target: {fileID: 5819965319017451409, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+      propertyPath: lanternModel
+      value: 
+      objectReference: {fileID: 8618613169925833219}
+    - target: {fileID: 5819965319017451409, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: lightProperties
       value: 
       objectReference: {fileID: 11400000, guid: 6a2e4dcf5c1520e44850e69bcf7a8fca, type: 2}
@@ -199,5 +207,10 @@ GameObject:
 --- !u!1 &7691363790894351630 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5020852469062896312, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+  m_PrefabInstance: {fileID: 3391369012606422966}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8618613169925833219 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6380447446744599989, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
   m_PrefabInstance: {fileID: 3391369012606422966}
   m_PrefabAsset: {fileID: 0}
