@@ -36,7 +36,7 @@ public class cyanChangeable : MonoBehaviour, IChangeable
             speed = 0f;
         }
     }
-    public void UnChange()
+    public void UnChange(bool immediately)
     {
         speed = 2f;
     }

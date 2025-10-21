@@ -88,7 +88,7 @@ private void LateUpdate()
 
             _changeablesExited = _changeablesPrevious.Except(_changeablesCurrent).ToList();
             foreach (var changeable in _changeablesExited)
-                changeable.UnChange();
+                changeable.UnChange(false);
 
             // Debug helper (Play mode only)
             Debug.DrawRay(transform.position, transform.forward * radialRangeOfLantern, Color.yellow);
@@ -103,7 +103,7 @@ private void LateUpdate()
 
             // If target changed or torch lost target, unchange old one
             if ((CurrentChangeable == null && _previousChangeable != null) || CurrentChangeable != _previousChangeable)
-                _previousChangeable?.UnChange();
+                _previousChangeable?.UnChange(false);
 
             // Debug helpers (Play mode only)
             var origin = transform.position;
@@ -203,6 +203,7 @@ private void LateUpdate()
     // --- On/Off ---
     public void SwitchOnOff()
     {
+        ResetChangeables();
         _light.enabled = !_light.enabled;
         lightOn = !lightOn;
         _lightVisualization.SetActive(lightOn);
@@ -237,20 +238,24 @@ private void LateUpdate()
             _colourIndex = 0;
     }
 
-    public void GreenBlueSwitch()
+    private void ResetChangeables()
     {
-        // Reset objects when switching
         if (projectionType == lightProperties.ProjectionType.Lantern)
         {
-            foreach (var changeable in _changeablesExited)   changeable.UnChange();
-            foreach (var changeable in _changeablesCurrent)  changeable.UnChange();
-            foreach (var changeable in _changeablesPrevious) changeable.UnChange();
+            foreach (var changeable in _changeablesExited)   changeable.UnChange(true);
+            foreach (var changeable in _changeablesCurrent)  changeable.UnChange(true);
+            foreach (var changeable in _changeablesPrevious) changeable.UnChange(true);
         }
         else if (projectionType == lightProperties.ProjectionType.Torch)
         {
-            _previousChangeable?.UnChange();
-            CurrentChangeable?.UnChange();
+            _previousChangeable?.UnChange(true);
+            CurrentChangeable?.UnChange(true);
         }
+    }
+    public void GreenBlueSwitch()
+    {
+        // Reset objects when switching
+        ResetChangeables();
 
         // Swap between green and blue
         if (colorOfLight == lightProperties.ColorOfLight.BlueLight)

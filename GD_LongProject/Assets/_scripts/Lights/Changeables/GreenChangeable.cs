@@ -12,7 +12,7 @@ public class GreenChangeable : MonoBehaviour, IChangeable
             leaf.SetActive(true);
         }
     }
-    public void UnChange()
+    public void UnChange(bool immediately)
     {
         leaf.SetActive(false);
     }

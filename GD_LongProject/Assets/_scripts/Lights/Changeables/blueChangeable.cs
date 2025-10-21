@@ -15,6 +15,7 @@ public class blueChangeable : MonoBehaviour, IChangeable
     private Transform _player;
     private Rigidbody _grabRb;
     private bool _isTryingToGrab; // track if light is still blue
+    private bool _useBuffer;
 
     void Start()
     {
@@ -36,9 +37,20 @@ public class blueChangeable : MonoBehaviour, IChangeable
     }
 
     // Called by the light system when the object exits the light
-    public void UnChange()
+    public void UnChange(bool immediately)
     {
-        _isTryingToGrab = false;
+        if (immediately)
+        {
+            Release();
+            _isTryingToGrab = false;
+        }
+        else
+        {
+            _useBuffer = true;
+            _isTryingToGrab = false;
+        }
+        
+        
     }
 
     void Update()
@@ -54,18 +66,17 @@ public class blueChangeable : MonoBehaviour, IChangeable
                     Grab();
                 }
             }
-
-            _releaseTimer = 0f; // reset release timer if still under blue light
+            _releaseTimer = 0f; 
         }
         else
         {
-            // Try to release if currently held
-            if (_isChanged)
+            if (_isChanged && _useBuffer)
             {
                 _releaseTimer += Time.deltaTime;
                 if (_releaseTimer >= releaseDelay)
                 {
                     Release();
+                    _useBuffer =  false;
                 }
             }
 
