@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6165854835373029076}
   - component: {fileID: 7428820719221357884}
   m_Layer: 0
-  m_Name: Player_Spawn
+  m_Name: ToolSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 12b9c2bb2aa1d74488e4c4076f9a251d, type: 2}
+  - {fileID: 2100000, guid: 5b173692e51f4d045973992895039d20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
