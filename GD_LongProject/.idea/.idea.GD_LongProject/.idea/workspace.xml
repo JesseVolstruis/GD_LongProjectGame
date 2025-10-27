@@ -6,17 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/Player1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player/Player1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Button.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Button.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/AssetIntegration.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AssetIntegration.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/CharacterCOntroller/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/CharacterCOntroller/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/_DatabaseScripts/PlayerValues.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/_DatabaseScripts/PlayerValues.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/materials/clear 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/materials/clear 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/materials/clear.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/materials/clear.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/materials/fadeAway.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/materials/fadeAway.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/materials/physicsMaterials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/materials/physicsMaterials/New Physics Material.physicMaterial" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/materials/physicsMaterials/New Physics Material.physicMaterial.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/materials/volumetric.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/materials/volumetric.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/materials/volumetricLight.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/materials/volumetricLight.mat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +29,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/CharacterCOntroller/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/GreenChangeable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/blueBlockHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/exitTriggers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/exitTriggers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/sceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@e2c83221d2dc/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@087c6d6dbb7d/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
@@ -144,6 +143,7 @@
       <workItem from="1760967027199" duration="7925000" />
       <workItem from="1760989098501" duration="1810000" />
       <workItem from="1761052722606" duration="4429000" />
+      <workItem from="1761574548858" duration="1041000" />
     </task>
     <servers />
   </component>
