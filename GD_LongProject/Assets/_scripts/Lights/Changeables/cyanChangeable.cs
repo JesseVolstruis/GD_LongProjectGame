@@ -4,6 +4,7 @@ using UnityEngine;
 public class cyanChangeable : MonoBehaviour, IChangeable
 {
     [Header("Assign the waypoints IN ORDER")]
+    
     public List<Transform> targets = new List<Transform>();
     public float speed = 2f;
     public int currentTarget = 0;

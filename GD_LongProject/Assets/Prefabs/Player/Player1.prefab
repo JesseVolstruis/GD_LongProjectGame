@@ -453,6 +453,7 @@ MonoBehaviour:
   jumpHeight: 1
   gravityValue: -9.81
   faceMoveDirection: 1
+  coyoteTime: 0.2
 --- !u!114 &1604063202232634458
 MonoBehaviour:
   m_ObjectHideFlags: 0

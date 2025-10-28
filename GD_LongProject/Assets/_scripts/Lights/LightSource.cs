@@ -32,37 +32,26 @@ public class LightSource : MonoBehaviour
     [Header("Models (ART TEAM)")]
     public GameObject lanternModel;
     public GameObject torchModel;
-    private GameObject _torchVisualsCylinder;
+    
 
     // --- Changeable tracking ---
-    private List<IChangeable> _changeablesPrevious = new List<IChangeable>(); 
+    private List<IChangeable> _changeablesPrevious = new List<IChangeable>();
     private List<IChangeable> _changeablesCurrent  = new List<IChangeable>();  
     private List<IChangeable> _changeablesExited   = new List<IChangeable>();   
-
-    public IChangeable CurrentChangeable;
-    private IChangeable _previousChangeable;
-
+     
     private LayerMask _playerLayerMask;
     private int _ignoreRaycastLayerMask; 
     private int _mask;
     
     
     // --- Colour switching ---
-    private int _colourIndex;
-    private List<Action<Light>> _colourChangers = new List<Action<Light>>();
+    //private int _colourIndex;
 
     [HideInInspector] public Vector3 torchHitPoint; 
     [HideInInspector] public float radiusOfTorch;
 
-    private void Awake()
-    {
-        // Build the list of colour change methods
-        // _colourChangers = new List<Action<Light>>()
-        // {
-        //     MakeRed, MakeGreen, MakeBlue, MakeCyan, MakeYellow, MakeMagenta
-        // };
-    }
-
+    // --- For Overlap Checking ---
+    public List<(IChangeable changeable, lightProperties.ColorOfLight, Transform transform)> OverlapData = new();
     private void Start()
     {
         _playerLayerMask = LayerMask.GetMask("Player");
@@ -70,91 +59,85 @@ public class LightSource : MonoBehaviour
         _mask = ~(_playerLayerMask | _ignoreRaycastLayerMask);
         _thisLightSource = transform.root;
         _light = GetComponent<Light>();
-        _torchVisualsCylinder = torchVisualization.transform.GetChild(0).gameObject;
         AssignLightProperties();
     }
 
-private void LateUpdate()
-{
-    switch (projectionType)
+    private void LateUpdate()
     {
-        // --- Lantern Mode ---
-        case lightProperties.ProjectionType.Lantern:
-            _changeablesPrevious = _changeablesCurrent;
-            _changeablesCurrent  = LanternLook(transform.position, radialRangeOfLantern);
+        // Ensure OverlapData only contains this frame's hits
+        OverlapData.Clear();
 
-            foreach (var changeable in _changeablesCurrent)
-                changeable.Change(colorOfLight, _thisLightSource);
+        // Get current hits depending on projection type
+        List<IChangeable> current = projectionType switch
+        {
+            lightProperties.ProjectionType.Lantern => LanternLook(transform.position, radialRangeOfLantern),
+            lightProperties.ProjectionType.Torch   => TorchLook(transform.position, forwardRangeOfTorch),
+            _ => new List<IChangeable>()
+        };
 
-            _changeablesExited = _changeablesPrevious.Except(_changeablesCurrent).ToList();
-            foreach (var changeable in _changeablesExited)
-                changeable.UnChange(false);
+        // Normalize null -> empty list (so we can safely Except/Any)
+        current = current ?? new List<IChangeable>();
 
-            // Debug helper (Play mode only)
-            Debug.DrawRay(transform.position, transform.forward * radialRangeOfLantern, Color.yellow);
-            break;
+        // Fill OverlapData (unique per IChangeable) — avoid duplicates
+        var seen = new HashSet<IChangeable>();
+        foreach (var changeable in current)
+        {
+            if (changeable == null) continue;
+            if (seen.Add(changeable))
+                OverlapData.Add((changeable, colorOfLight, transform));
+        }
 
-        // --- Torch Mode ---
-        case lightProperties.ProjectionType.Torch:
-            _previousChangeable = CurrentChangeable;
-            CurrentChangeable   = TorchLook();
+        // Compute entered & exited using copies (no reference aliasing)
+        var prev = _changeablesPrevious ?? new List<IChangeable>();
+        var entered = current.Except(prev).ToList();
+        var exited  = prev.Except(current).ToList();
 
-            CurrentChangeable?.Change(colorOfLight, _thisLightSource);
+        // Handle newly entered objects
+        foreach (var changeable in entered)
+        {
+            // Do the change here if desired (original code had commented out Change)
+            changeable.Change(colorOfLight, _thisLightSource);
+        }
 
-            // If target changed or torch lost target, unchange old one
-            if ((CurrentChangeable == null && _previousChangeable != null) || CurrentChangeable != _previousChangeable)
-                _previousChangeable?.UnChange(false);
+        // Handle exited objects
+        foreach (var changeable in exited)
+        {
+            changeable.UnChange(false);
+        }
 
-            // Debug helpers (Play mode only)
-            var origin = transform.position;
-            Debug.DrawRay(transform.position, transform.forward * forwardRangeOfTorch, Color.white);
-            break;
+        // Finally set previous to a copy of current for next frame
+        _changeablesPrevious = new List<IChangeable>(current);
 
-        default:
-            throw new ArgumentOutOfRangeException();
+        // Also keep _changeablesCurrent for other uses in your class if needed
+        _changeablesCurrent = new List<IChangeable>(current);
     }
-}
+
 
     // --- Torch helpers ---
-    private float GetRadius()
+    private List<IChangeable> TorchLook(Vector3 origin, float forwardRange)    
     {
-        return Mathf.Abs(Vector3.Distance(transform.position, torchHitPoint) * Mathf.Tan(spreadOfTorchLight * Mathf.Deg2Rad));
-    }
-
-    
-    private IChangeable TorchLook()
-    {
-		if(!lightOn) return null;
-        
-        if (Physics.SphereCast(transform.position, horizontalRangeOfTorch, transform.forward, out var centreHit, forwardRangeOfTorch,
-                _mask)) 
-        { 
-            torchHitPoint = centreHit.point; 
-            float abs = Mathf.Abs(Vector3.Distance(transform.position, torchHitPoint));
-
-            if (abs <= forwardRangeOfTorch)
-            {
-                Debug.Log("hit");
-                Debug.Log(centreHit.collider.name);
-                if (centreHit.collider.gameObject.TryGetComponent(out IChangeable changeable) && lightOn)
-                    return changeable;
-            }
-
-            radiusOfTorch = GetRadius(); 
-            Debug.DrawRay(transform.position, transform.forward * centreHit.distance, Color.red); 
+        if(!lightOn) return null;
+        var hitColliders =  Physics.SphereCastAll(origin, horizontalRangeOfTorch, transform.forward,
+            forwardRange, _mask);
+        var changeables = new List<IChangeable>();
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.collider.TryGetComponent(out IChangeable changeable))
+                changeables.Add(changeable);
         }
-        return null;
+        return changeables;
     }
 
     // --- Lantern helpers ---
     private List<IChangeable> LanternLook(Vector3 center, float lanternRadius)
     {
+        if(!lightOn) return null;
         Collider[] hitColliders = Physics.OverlapSphere(center, 0.8f *lanternRadius); 
         var changeables = new List<IChangeable>();
 
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.TryGetComponent(out IChangeable changeable) && lightOn)
+            if (hitCollider.TryGetComponent(out IChangeable changeable))
                 changeables.Add(changeable);
         }
         return changeables;
@@ -187,13 +170,13 @@ private void LateUpdate()
         // Set initial colour
         switch (colorOfLight)
         {
-            case lightProperties.ColorOfLight.WhiteLight:   _light.color = Color.white;   _colourIndex = 6; break;
-            case lightProperties.ColorOfLight.CyanLight:    _light.color = Color.cyan;    _colourIndex = 3; break;
-            case lightProperties.ColorOfLight.YellowLight:  _light.color = Color.yellow;  _colourIndex = 4; break;
-            case lightProperties.ColorOfLight.MagentaLight: _light.color = Color.magenta; _colourIndex = 5; break;
-            case lightProperties.ColorOfLight.RedLight:     _light.color = Color.red;     _colourIndex = 0; break;
-            case lightProperties.ColorOfLight.GreenLight:   _light.color = Color.green;   _colourIndex = 1; break;
-            case lightProperties.ColorOfLight.BlueLight:    _light.color = Color.blue;    _colourIndex = 2; break;
+            case lightProperties.ColorOfLight.WhiteLight:   _light.color = Color.white;    break;
+            case lightProperties.ColorOfLight.CyanLight:    _light.color = Color.cyan;    break;
+            case lightProperties.ColorOfLight.YellowLight:  _light.color = Color.yellow;  break;
+            case lightProperties.ColorOfLight.MagentaLight: _light.color = Color.magenta;  break;
+            case lightProperties.ColorOfLight.RedLight:     _light.color = Color.red;     break;
+            case lightProperties.ColorOfLight.GreenLight:   _light.color = Color.green;    break;
+            case lightProperties.ColorOfLight.BlueLight:    _light.color = Color.blue;     break;
             default: throw new ArgumentOutOfRangeException();
         }
 
@@ -207,63 +190,69 @@ private void LateUpdate()
         _light.enabled = !_light.enabled;
         lightOn = !lightOn;
         _lightVisualization.SetActive(lightOn);
-        Debug.Log(_lightVisualization.name);
     } 
+    
+    public void GreenBlueSwitch()
+    {
+        // Reset objects when switching
+        ResetChangeables();
+
+        switch (colorOfLight)
+        {
+            case lightProperties.ColorOfLight.BlueLight:
+                MakeGreen(_light, _visualizationMaterial);
+                break;
+            case lightProperties.ColorOfLight.GreenLight:
+                MakeBlue(_light, _visualizationMaterial);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
 
     // --- Colour control ---
-    private void MakeRed(Light l)     { colorOfLight = lightProperties.ColorOfLight.RedLight;     l.color = Color.red; }
     private void MakeGreen(Light l, Material m)   
     { 
         colorOfLight = lightProperties.ColorOfLight.GreenLight;   
         l.color = Color.green; 
         m.color = Color.green;
     }
-
     private void MakeBlue(Light l, Material m)
     {
         colorOfLight = lightProperties.ColorOfLight.BlueLight;    
         l.color = Color.blue;
         m.color = Color.blue;
     }
-    private void MakeCyan(Light l)    { colorOfLight = lightProperties.ColorOfLight.CyanLight;    l.color = Color.cyan; }
-    private void MakeYellow(Light l)  { colorOfLight = lightProperties.ColorOfLight.YellowLight;  l.color = Color.yellow; }
-    private void MakeMagenta(Light l) { colorOfLight = lightProperties.ColorOfLight.MagentaLight; l.color = Color.magenta; }
-
-    public void ChangeColour(int howMany)
-    {
-        _colourIndex++;
-        _colourChangers[_colourIndex](_light);
-
-        if (_colourIndex == howMany)
-            _colourIndex = 0;
-    }
-
+    
     private void ResetChangeables()
     {
-        if (projectionType == lightProperties.ProjectionType.Lantern)
-        {
-            foreach (var changeable in _changeablesExited)   changeable.UnChange(true);
-            foreach (var changeable in _changeablesCurrent)  changeable.UnChange(true);
-            foreach (var changeable in _changeablesPrevious) changeable.UnChange(true);
-        }
-        else if (projectionType == lightProperties.ProjectionType.Torch)
-        {
-            _previousChangeable?.UnChange(true);
-            CurrentChangeable?.UnChange(true);
-        }
-    }
-    public void GreenBlueSwitch()
-    {
-        // Reset objects when switching
-        ResetChangeables();
+        // UnChange all items that are in any of the tracked lists
+        var all = new HashSet<IChangeable>();
 
-        // Swap between green and blue
-        if (colorOfLight == lightProperties.ColorOfLight.BlueLight)
-            MakeGreen(_light, _visualizationMaterial);
-        else if (colorOfLight == lightProperties.ColorOfLight.GreenLight)
-            MakeBlue(_light, _visualizationMaterial);
+        if (_changeablesExited != null)
+            foreach (var c in _changeablesExited) all.Add(c);
+
+        if (_changeablesCurrent != null)
+            foreach (var c in _changeablesCurrent) all.Add(c);
+
+        if (_changeablesPrevious != null)
+            foreach (var c in _changeablesPrevious) all.Add(c);
+
+        // UnChange each (true indicates a forced reset, same as you used before)
+        foreach (var changeable in all)
+        {
+            if (changeable != null)
+                changeable.UnChange(true);
+        }
+
+        // Clear our internal trackers
+        _changeablesExited?.Clear();
+        _changeablesCurrent?.Clear();
+        _changeablesPrevious?.Clear();
+        OverlapData.Clear();
     }
 
+    
     // --- Visual & light mode setup ---
     private void TorchProjectionProperties(Light l)
     {
@@ -300,4 +289,25 @@ private void LateUpdate()
         LanternProjectionProperties(_light);
         _lightVisualization = lanternVisualization;
     }
+    
+    //NOT CURRENTLY IN USE
+    
+    // private float GetRadius()
+    // {
+    //     return Mathf.Abs(Vector3.Distance(transform.position, torchHitPoint) * Mathf.Tan(spreadOfTorchLight * Mathf.Deg2Rad));
+    // }
+    
+    // private void MakeRed(Light l)     { colorOfLight = lightProperties.ColorOfLight.RedLight;     l.color = Color.red; }
+    // private void MakeCyan(Light l)    { colorOfLight = lightProperties.ColorOfLight.CyanLight;    l.color = Color.cyan; }
+    // private void MakeYellow(Light l)  { colorOfLight = lightProperties.ColorOfLight.YellowLight;  l.color = Color.yellow; }
+    // private void MakeMagenta(Light l) { colorOfLight = lightProperties.ColorOfLight.MagentaLight; l.color = Color.magenta; }
+    //
+    // public void ChangeColour(int howMany)
+    // {
+    //     _colourIndex++;
+    //     _colourChangers[_colourIndex](_light);
+    //
+    //     if (_colourIndex == howMany)
+    //         _colourIndex = 0;
+    // }
 }

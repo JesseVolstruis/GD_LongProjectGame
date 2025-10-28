@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveInput;
     private Vector3 _velocity;
     private bool _grounded;
+    
+    [SerializeField] private float coyoteTime = 0.2f;
+    private float _coyoteTimeCounter;
 
     // --- Interaction state ---
     private GameObject _inPickUpRange;
@@ -106,6 +109,16 @@ public class PlayerController : MonoBehaviour
 
         // Apply movement + gravity
         _controller.Move((move * moveSpeed + _velocity) * Time.deltaTime);
+        
+        //CoyoteTime
+        if (_grounded)
+        {
+            _coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            _coyoteTimeCounter -= Time.deltaTime;
+        }
     }
 
     // --- Value setup ---
@@ -115,12 +128,14 @@ public class PlayerController : MonoBehaviour
         turnSpeed    = playerValues.turnSpeed;
         jumpHeight   = playerValues.jumpHeight;
         gravityValue = playerValues.gravityValue;
+        coyoteTime    = playerValues.coyoteTime;
     }
 
     private void Jump()
     {
-        if (_controller.isGrounded)
+        if (_coyoteTimeCounter > 0)
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityValue);
+        _coyoteTimeCounter = 0f;
     }
 
     // --- Interaction logic ---
