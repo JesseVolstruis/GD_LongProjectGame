@@ -7,7 +7,6 @@
     <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/cyanChangeable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/cyanChangeable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/overlapChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/overlapChecker.cs" afterDir="false" />
     </list>
@@ -22,6 +21,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/CharacterCOntroller/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/GreenChangeable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/IChangeable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/overlapChecker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/exitTriggers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/sceneManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -140,7 +140,8 @@
       <workItem from="1761052722606" duration="4429000" />
       <workItem from="1761574548858" duration="9289000" />
       <workItem from="1761635768681" duration="833000" />
-      <workItem from="1761654554353" duration="7739000" />
+      <workItem from="1761654554353" duration="8300000" />
+      <workItem from="1761670134197" duration="1842000" />
     </task>
     <servers />
   </component>

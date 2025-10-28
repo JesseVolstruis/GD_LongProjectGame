@@ -19,6 +19,7 @@ public class overlapChecker : MonoBehaviour
     private List<(IChangeable changeable, lightProperties.ColorOfLight colour, Transform transform)> _notOverlappingA;
     private List<(IChangeable changeable, lightProperties.ColorOfLight colour, Transform transform)> _notOverlappingB;
     
+    private Dictionary<IChangeable, lightProperties.ColorOfLight> _previousFrameStates = new();
     void Start()
     {
         colorA = lightA.colorOfLight;
@@ -36,42 +37,73 @@ public class overlapChecker : MonoBehaviour
         bool coloursAreDifferent = lightA.colorOfLight != lightB.colorOfLight;
 
         // --- Find overlaps based on IChangeable identity ---
-        _overlapping = inLightA
+        var overlapping = inLightA
             .Where(a => inLightB.Any(b => b.changeable == a.changeable))
             .ToList();
 
         // Separate unique changeables for A and B
-        _notOverlappingA = inLightA
-            .Where(a => !_overlapping.Any(o => o.changeable == a.changeable))
+        var notOverlappingA = inLightA
+            .Where(a => !overlapping.Any(o => o.changeable == a.changeable))
             .ToList();
 
-        _notOverlappingB = inLightB
-            .Where(b => !_overlapping.Any(o => o.changeable == b.changeable))
+        var notOverlappingB = inLightB
+            .Where(b => !overlapping.Any(o => o.changeable == b.changeable))
             .ToList();
 
-        // --- Apply changes ---
+        // --- Build this frame’s "actual colour" map ---
+        Dictionary<IChangeable, lightProperties.ColorOfLight> currentFrameStates = new();
+
         if (coloursAreDifferent)
         {
-            foreach (var entry in _overlapping)
-                entry.changeable.Change(lightProperties.ColorOfLight.CyanLight, null);
-            
-            foreach (var entry in _notOverlappingA)
-                entry.changeable.Change(entry.colour, entry.transform);
-            foreach (var entry in _notOverlappingB)
-                entry.changeable.Change(entry.colour, entry.transform);
+            // Cyan overrides both if different colours
+            foreach (var entry in overlapping)
+                currentFrameStates[entry.changeable] = lightProperties.ColorOfLight.CyanLight;
+
+            foreach (var entry in notOverlappingA)
+                currentFrameStates[entry.changeable] = entry.Item2;
+
+            foreach (var entry in notOverlappingB)
+                currentFrameStates[entry.changeable] = entry.Item2;
         }
         else
         {
-            foreach (var entry in _overlapping)
-                entry.changeable.Change(entry.colour, entry.transform);
-            foreach (var entry in _notOverlappingA)
-                entry.changeable.Change(entry.colour, entry.transform);
-            foreach (var entry in _notOverlappingB)
-                entry.changeable.Change(entry.colour, entry.transform);
+            // Same colour lights just reinforce
+            foreach (var entry in overlapping)
+                currentFrameStates[entry.changeable] = entry.Item2;
+
+            foreach (var entry in notOverlappingA)
+                currentFrameStates[entry.changeable] = entry.Item2;
+
+            foreach (var entry in notOverlappingB)
+                currentFrameStates[entry.changeable] = entry.Item2;
         }
+
+        // --- Compare to previous frame ---
+        // 1. Handle new entries or colour changes
+        foreach (var kvp in currentFrameStates)
+        {
+            var changeable = kvp.Key;
+            var newColor = kvp.Value;
+
+            if (!_previousFrameStates.TryGetValue(changeable, out var oldColor) || oldColor != newColor)
+            {
+                changeable.Change(newColor, null);
+            }
+        }
+
+        // 2. Handle objects that left all lights
+        foreach (var kvp in _previousFrameStates)
+        {
+            if (!currentFrameStates.ContainsKey(kvp.Key))
+            {
+                kvp.Key.UnChange(true);
+            }
+        }
+
+        // --- Store current as previous for next frame ---
+        _previousFrameStates = currentFrameStates;
     }
-
-
+    
     private List<(IChangeable changeable, lightProperties.ColorOfLight colour, Transform transform)> 
         CheckOverlap(
             List<(IChangeable changeable, lightProperties.ColorOfLight colour, Transform transform)> lightARange,

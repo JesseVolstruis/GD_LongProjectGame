@@ -93,11 +93,11 @@ public class LightSource : MonoBehaviour
         var exited  = prev.Except(current).ToList();
 
         // Handle newly entered objects
-        foreach (var changeable in entered)
-        {
+       // foreach (var changeable in entered)
+       // {
             // Do the change here if desired (original code had commented out Change)
-            changeable.Change(colorOfLight, _thisLightSource);
-        }
+       //     changeable.Change(colorOfLight, _thisLightSource);
+       // }
 
         // Handle exited objects
         foreach (var changeable in exited)
