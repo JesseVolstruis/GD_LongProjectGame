@@ -10,6 +10,7 @@ TagManager:
   - Combined Mesh
   - Blue
   - Ground
+  - Tool
   layers:
   - Default
   - TransparentFX

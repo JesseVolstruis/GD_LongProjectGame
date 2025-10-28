@@ -4,10 +4,13 @@ using UnityEngine;
 public class button : MonoBehaviour
 {
     public bool isPressed;
+    public bool toolButton;
     private bool _countDown = false;
     
     private float _countDownTimer = 0;
     [SerializeField] private float countDownTime = 0.5f;
+    
+
     private void Update()
     {
         if (!_countDown) return;
@@ -15,15 +18,24 @@ public class button : MonoBehaviour
         _countDownTimer += Time.deltaTime;
         if (!(_countDownTimer >= countDownTime)) return;
         
-        isPressed = true;
         _countDown = false;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Blue"))
+        if (toolButton)
         {
-            Pressed();
+            if (other.CompareTag("Tool"))
+            {
+                Pressed();
+            }
+        }
+        else
+        {
+            if (other.CompareTag("Player") || other.CompareTag("Blue"))
+            {
+                Pressed();
+            }
         }
     }
     void OnTriggerExit(Collider other)

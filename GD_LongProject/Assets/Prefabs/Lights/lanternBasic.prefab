@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: followTarget
       value: 
       objectReference: {fileID: 1711822509717662120}
+    - target: {fileID: 299534234234180277, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0675
+      objectReference: {fileID: 0}
+    - target: {fileID: 299534234234180277, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.095
+      objectReference: {fileID: 0}
     - target: {fileID: 803071403153528976, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: m_Layer
       value: 2
@@ -78,11 +86,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4281433833917925622, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: m_Name
-      value: lanternBasic
+      value: LanternBasic
       objectReference: {fileID: 0}
     - target: {fileID: 4281433833917925622, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281433833917925622, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+      propertyPath: m_TagString
+      value: Tool
       objectReference: {fileID: 0}
     - target: {fileID: 4803192059161537740, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: m_LocalScale.x
