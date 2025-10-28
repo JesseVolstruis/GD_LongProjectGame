@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AssetIntegration.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AssetIntegration.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/cyanChangeable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/cyanChangeable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/materials/tester.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/materials/tester.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/overlapChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/overlapChecker.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,11 +22,13 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/CharacterCOntroller/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/GreenChangeable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/overlapChecker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/exitTriggers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/sceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@e2c83221d2dc/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@087c6d6dbb7d/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 1
@@ -135,13 +138,16 @@
       <workItem from="1760967027199" duration="7925000" />
       <workItem from="1760989098501" duration="1810000" />
       <workItem from="1761052722606" duration="4429000" />
-      <workItem from="1761574548858" duration="9254000" />
+      <workItem from="1761574548858" duration="9289000" />
+      <workItem from="1761635768681" duration="833000" />
+      <workItem from="1761654554353" duration="7739000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />

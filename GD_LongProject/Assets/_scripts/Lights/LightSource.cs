@@ -45,14 +45,13 @@ public class LightSource : MonoBehaviour
     
     
     // --- Colour switching ---
-    private int _colourIndex;
+    //private int _colourIndex;
 
     [HideInInspector] public Vector3 torchHitPoint; 
     [HideInInspector] public float radiusOfTorch;
 
     // --- For Overlap Checking ---
-    public List<(IChangeable changeable, lightProperties.ColorOfLight, Transform transform)> OverlapData
-        = new List<(IChangeable, lightProperties.ColorOfLight, Transform)>();
+    public List<(IChangeable changeable, lightProperties.ColorOfLight, Transform transform)> OverlapData = new();
     private void Start()
     {
         _playerLayerMask = LayerMask.GetMask("Player");
@@ -60,40 +59,59 @@ public class LightSource : MonoBehaviour
         _mask = ~(_playerLayerMask | _ignoreRaycastLayerMask);
         _thisLightSource = transform.root;
         _light = GetComponent<Light>();
-        //_torchVisualsCylinder = torchVisualization.transform.GetChild(0).gameObject;
         AssignLightProperties();
     }
 
-private void LateUpdate()
-{
-    if (_changeablesCurrent != null)
+    private void LateUpdate()
     {
-        _changeablesPrevious = _changeablesCurrent;
-    }
-    switch (projectionType)
-    {
-        // --- Lantern Mode ---
-        case lightProperties.ProjectionType.Lantern:
-            _changeablesCurrent  = LanternLook(transform.position, radialRangeOfLantern);
-            break;
-        // --- Torch Mode ---
-        case lightProperties.ProjectionType.Torch:
-            _changeablesCurrent   = TorchLook(transform.position, forwardRangeOfTorch);
-            break;
-        default:
-            throw new ArgumentOutOfRangeException();
-    }
+        // Ensure OverlapData only contains this frame's hits
+        OverlapData.Clear();
 
-    if (_changeablesCurrent != null)
-    {
-        foreach (var changeable in _changeablesCurrent)
+        // Get current hits depending on projection type
+        List<IChangeable> current = projectionType switch
+        {
+            lightProperties.ProjectionType.Lantern => LanternLook(transform.position, radialRangeOfLantern),
+            lightProperties.ProjectionType.Torch   => TorchLook(transform.position, forwardRangeOfTorch),
+            _ => new List<IChangeable>()
+        };
+
+        // Normalize null -> empty list (so we can safely Except/Any)
+        current = current ?? new List<IChangeable>();
+
+        // Fill OverlapData (unique per IChangeable) — avoid duplicates
+        var seen = new HashSet<IChangeable>();
+        foreach (var changeable in current)
+        {
+            if (changeable == null) continue;
+            if (seen.Add(changeable))
+                OverlapData.Add((changeable, colorOfLight, transform));
+        }
+
+        // Compute entered & exited using copies (no reference aliasing)
+        var prev = _changeablesPrevious ?? new List<IChangeable>();
+        var entered = current.Except(prev).ToList();
+        var exited  = prev.Except(current).ToList();
+
+        // Handle newly entered objects
+        foreach (var changeable in entered)
+        {
+            // Do the change here if desired (original code had commented out Change)
             changeable.Change(colorOfLight, _thisLightSource);
+        }
+
+        // Handle exited objects
+        foreach (var changeable in exited)
+        {
+            changeable.UnChange(false);
+        }
+
+        // Finally set previous to a copy of current for next frame
+        _changeablesPrevious = new List<IChangeable>(current);
+
+        // Also keep _changeablesCurrent for other uses in your class if needed
+        _changeablesCurrent = new List<IChangeable>(current);
     }
 
-    if (_changeablesCurrent != null) _changeablesExited = _changeablesPrevious.Except(_changeablesCurrent).ToList();
-    foreach (var changeable in _changeablesExited)
-        changeable.UnChange(false);
-}
 
     // --- Torch helpers ---
     private List<IChangeable> TorchLook(Vector3 origin, float forwardRange)    
@@ -152,13 +170,13 @@ private void LateUpdate()
         // Set initial colour
         switch (colorOfLight)
         {
-            case lightProperties.ColorOfLight.WhiteLight:   _light.color = Color.white;   _colourIndex = 6; break;
-            case lightProperties.ColorOfLight.CyanLight:    _light.color = Color.cyan;    _colourIndex = 3; break;
-            case lightProperties.ColorOfLight.YellowLight:  _light.color = Color.yellow;  _colourIndex = 4; break;
-            case lightProperties.ColorOfLight.MagentaLight: _light.color = Color.magenta; _colourIndex = 5; break;
-            case lightProperties.ColorOfLight.RedLight:     _light.color = Color.red;     _colourIndex = 0; break;
-            case lightProperties.ColorOfLight.GreenLight:   _light.color = Color.green;   _colourIndex = 1; break;
-            case lightProperties.ColorOfLight.BlueLight:    _light.color = Color.blue;    _colourIndex = 2; break;
+            case lightProperties.ColorOfLight.WhiteLight:   _light.color = Color.white;    break;
+            case lightProperties.ColorOfLight.CyanLight:    _light.color = Color.cyan;    break;
+            case lightProperties.ColorOfLight.YellowLight:  _light.color = Color.yellow;  break;
+            case lightProperties.ColorOfLight.MagentaLight: _light.color = Color.magenta;  break;
+            case lightProperties.ColorOfLight.RedLight:     _light.color = Color.red;     break;
+            case lightProperties.ColorOfLight.GreenLight:   _light.color = Color.green;    break;
+            case lightProperties.ColorOfLight.BlueLight:    _light.color = Color.blue;     break;
             default: throw new ArgumentOutOfRangeException();
         }
 
@@ -208,16 +226,32 @@ private void LateUpdate()
     
     private void ResetChangeables()
     {
+        // UnChange all items that are in any of the tracked lists
+        var all = new HashSet<IChangeable>();
+
         if (_changeablesExited != null)
-            foreach (var changeable in _changeablesExited)
-                changeable.UnChange(true);
+            foreach (var c in _changeablesExited) all.Add(c);
+
         if (_changeablesCurrent != null)
-            foreach (var changeable in _changeablesCurrent)
-                changeable.UnChange(true);
+            foreach (var c in _changeablesCurrent) all.Add(c);
+
         if (_changeablesPrevious != null)
-            foreach (var changeable in _changeablesPrevious)
+            foreach (var c in _changeablesPrevious) all.Add(c);
+
+        // UnChange each (true indicates a forced reset, same as you used before)
+        foreach (var changeable in all)
+        {
+            if (changeable != null)
                 changeable.UnChange(true);
+        }
+
+        // Clear our internal trackers
+        _changeablesExited?.Clear();
+        _changeablesCurrent?.Clear();
+        _changeablesPrevious?.Clear();
+        OverlapData.Clear();
     }
+
     
     // --- Visual & light mode setup ---
     private void TorchProjectionProperties(Light l)
