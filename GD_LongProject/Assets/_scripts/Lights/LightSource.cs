@@ -84,7 +84,7 @@ public class LightSource : MonoBehaviour
         {
             if (changeable == null) continue;
             if (seen.Add(changeable))
-                OverlapData.Add((changeable, colorOfLight, transform));
+                OverlapData.Add((changeable, colorOfLight, _thisLightSource));
         }
 
         // Compute entered & exited using copies (no reference aliasing)

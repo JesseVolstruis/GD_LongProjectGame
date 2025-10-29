@@ -41,7 +41,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _edgeFallOff: 0.77
-    - _glowStrength: 17.81
+    - _glowStrength: 2.75
     - _opacity: 0.1
     m_Colors:
     - _Color: {r: 0, g: 0, b: 1, a: 0}

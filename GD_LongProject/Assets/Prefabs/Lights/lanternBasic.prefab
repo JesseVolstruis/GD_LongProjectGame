@@ -40,6 +40,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 3910245310440535770, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4094068546371413534, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.4
