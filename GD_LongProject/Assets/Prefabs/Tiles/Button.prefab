@@ -123,7 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPressed: 0
-  countDownTime: 0.5
+  toolButton: 0
+  countDownTime: 0.2
 --- !u!1 &5497842983722590467
 GameObject:
   m_ObjectHideFlags: 0

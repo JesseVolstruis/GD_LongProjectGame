@@ -16,9 +16,12 @@ public class button : MonoBehaviour
         if (!_countDown) return;
         
         _countDownTimer += Time.deltaTime;
-        if (!(_countDownTimer >= countDownTime)) return;
+        if (_countDownTimer >= countDownTime)
+        {
+            isPressed = true;
+            _countDown = false;
+        }
         
-        _countDown = false;
     }
 
     void OnTriggerEnter(Collider other)
@@ -40,7 +43,20 @@ public class button : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        Released();
+        if (toolButton)
+        {
+            if (other.CompareTag("Tool"))
+            {
+                Released();
+            }
+        }
+        else
+        {
+            if (other.CompareTag("Player") || other.CompareTag("Blue"))
+            {
+                Released();
+            }
+        }
     }
 
     private void Pressed()
