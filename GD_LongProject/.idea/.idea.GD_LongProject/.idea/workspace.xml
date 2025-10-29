@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" afterDir="false" />
-    </list>
+    <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,7 +137,7 @@
       <workItem from="1761635768681" duration="833000" />
       <workItem from="1761654554353" duration="8300000" />
       <workItem from="1761670134197" duration="4137000" />
-      <workItem from="1761742675769" duration="7171000" />
+      <workItem from="1761742675769" duration="7776000" />
     </task>
     <servers />
   </component>

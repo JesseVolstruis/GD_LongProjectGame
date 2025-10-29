@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8108462916457685817}
   - component: {fileID: 1069223369190169395}
   - component: {fileID: 7456628727610328169}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 920995993048027564}
   - component: {fileID: 6229204304531186209}
   - component: {fileID: 7420495423975169305}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -225,7 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8941419292122104023}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model_Lantern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 8908476556037190877}
   - component: {fileID: 647933020514179777}
   - component: {fileID: 4904218578221238160}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,9 +423,25 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -3792773078498812508, guid: 66c867d719825c4449772ea880fb231b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -1545476444600196597, guid: 66c867d719825c4449772ea880fb231b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 66c867d719825c4449772ea880fb231b, type: 3}
       propertyPath: m_Name
       value: LanternJoined
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 66c867d719825c4449772ea880fb231b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904275632119364326, guid: 66c867d719825c4449772ea880fb231b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

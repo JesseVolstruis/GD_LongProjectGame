@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4281433833917925622, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: m_Name
-      value: LanternBasic
+      value: lanternBasic
       objectReference: {fileID: 0}
     - target: {fileID: 4281433833917925622, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: m_Layer
@@ -154,7 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6380447446744599989, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6380447446744599989, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: m_IsActive
@@ -182,7 +182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7065062372692071033, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7421309055805729404, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: m_Layer
@@ -190,7 +190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7502870270640629929, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7702356968678251102, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: m_Color.b

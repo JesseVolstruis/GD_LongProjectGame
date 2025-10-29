@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2987607079596372411}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model_Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3102107419552961818}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 3578166469474565795}
   - component: {fileID: 7746766796692310505}
   - component: {fileID: 8277978319227402805}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 720479845723542880}
   - component: {fileID: 8582100891804249161}
   - component: {fileID: 3684654765606108121}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: casing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -348,9 +348,25 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5055779229870624550, guid: bd5d4c221e73e5e4ab4cb6e8323a310f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -4294229318752049323, guid: bd5d4c221e73e5e4ab4cb6e8323a310f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 514837031503263995, guid: bd5d4c221e73e5e4ab4cb6e8323a310f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bd5d4c221e73e5e4ab4cb6e8323a310f, type: 3}
       propertyPath: m_Name
       value: flashlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd5d4c221e73e5e4ab4cb6e8323a310f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
