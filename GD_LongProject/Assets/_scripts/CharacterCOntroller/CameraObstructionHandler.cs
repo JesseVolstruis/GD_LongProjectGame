@@ -18,10 +18,11 @@ public class CameraObstructionHandler : MonoBehaviour
     void LateUpdate()
     {
         Vector3 direction = player.position - transform.position;
-        float distance = direction.magnitude;
+        Vector3 origin = transform.position + transform.forward * sphereRadius;
+        float distance = direction.magnitude - 2.3f*sphereRadius;
 
         // SphereCastAll to detect all tiles in the way
-        RaycastHit[] hits = Physics.SphereCastAll(transform.position, sphereRadius, direction, distance, obstructionMask);
+        RaycastHit[] hits = Physics.SphereCastAll(origin, sphereRadius, direction, distance, obstructionMask);
 
         HashSet<Renderer> currentlyHit = new HashSet<Renderer>();
         foreach (var hit in hits)

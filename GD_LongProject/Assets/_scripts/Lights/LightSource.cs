@@ -2,10 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class LightSource : MonoBehaviour
 {
     private static readonly int FadeDistance = Shader.PropertyToID("_fadeDistance");
+    private static readonly int Origin = Shader.PropertyToID("_origin");
 
     [Header("Initial Value Data")]
     public lightProperties lightProperties;     // ScriptableObject with initial settings
@@ -133,8 +135,10 @@ public class LightSource : MonoBehaviour
     
     private void TorchShaderLogic(Material material)
     {
-        float fadeDistance = (forwardRangeOfTorch - TorchActualDistance(forwardRangeOfTorch))/forwardRangeOfTorch;
-        material.SetFloat(FadeDistance, fadeDistance  +1.8f);
+        float length = _lightVisualization.GetComponentInChildren<Renderer>().bounds.size.y;
+        float fadeDistance = TorchActualDistance(forwardRangeOfTorch)/forwardRangeOfTorch;
+        material.SetFloat(FadeDistance, fadeDistance);
+        material.SetFloat(Origin, length);
     }
 
     private float TorchActualDistance(float forwardRange)
