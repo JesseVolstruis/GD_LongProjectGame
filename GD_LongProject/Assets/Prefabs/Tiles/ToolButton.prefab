@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5585880334890179349}
   - component: {fileID: 805273814039157055}
   m_Layer: 0
-  m_Name: Button
+  m_Name: ToolButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 451d4e77049380944926e0773ab64874, type: 2}
+  - {fileID: 2100000, guid: 5b173692e51f4d045973992895039d20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPressed: 0
-  toolButton: 0
+  toolButton: 1
   isPressedMaterial: {fileID: 2100000, guid: 1b90bf585d42fb141be1532279e69355, type: 2}
   changingColorObject: {fileID: 3398647717244459035}
   countDownTime: 0.2
@@ -210,7 +210,7 @@ PrefabInstance:
     - target: {fileID: -5648767689465423854, guid: bcc7bbe9fe8c6bf4b93b91db417ca3cc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 451d4e77049380944926e0773ab64874, type: 2}
+      objectReference: {fileID: 2100000, guid: 5b173692e51f4d045973992895039d20, type: 2}
     - target: {fileID: 919132149155446097, guid: bcc7bbe9fe8c6bf4b93b91db417ca3cc, type: 3}
       propertyPath: m_Name
       value: Giant Button

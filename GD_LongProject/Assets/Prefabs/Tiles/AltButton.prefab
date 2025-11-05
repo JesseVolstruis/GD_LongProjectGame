@@ -124,6 +124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPressed: 0
   toolButton: 0
+  isPressedMaterial: {fileID: 2100000, guid: 1b90bf585d42fb141be1532279e69355, type: 2}
+  changingColorObject: {fileID: 1641083045011529105}
   countDownTime: 0.2
 --- !u!1 &7663466848314435680
 GameObject:
@@ -218,6 +220,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcc7bbe9fe8c6bf4b93b91db417ca3cc, type: 3}
+--- !u!1 &1641083045011529105 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6821887585681450876, guid: bcc7bbe9fe8c6bf4b93b91db417ca3cc, type: 3}
+  m_PrefabInstance: {fileID: 5218118118393821933}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5755815507351166214 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bcc7bbe9fe8c6bf4b93b91db417ca3cc, type: 3}
