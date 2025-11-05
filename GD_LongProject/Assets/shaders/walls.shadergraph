@@ -49,10 +49,13 @@
             "m_Id": "4aeec24325fa4b6c8b880b12966f677c"
         },
         {
-            "m_Id": "c3ed4a1a7c4f4a228f5e65455790edf0"
+            "m_Id": "7c28ccf7d2c24ccbb24cd095c2232d1f"
         },
         {
-            "m_Id": "7c28ccf7d2c24ccbb24cd095c2232d1f"
+            "m_Id": "c9c3db5f362746cfad6b1b8b72254b9b"
+        },
+        {
+            "m_Id": "70240c7b11384049bf7e6f81b7dea283"
         }
     ],
     "m_GroupDatas": [],
@@ -132,7 +135,10 @@
                 "m_Id": "4aeec24325fa4b6c8b880b12966f677c"
             },
             {
-                "m_Id": "c3ed4a1a7c4f4a228f5e65455790edf0"
+                "m_Id": "c9c3db5f362746cfad6b1b8b72254b9b"
+            },
+            {
+                "m_Id": "70240c7b11384049bf7e6f81b7dea283"
             }
         ]
     },
@@ -456,6 +462,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "430a66d8d39f4303ab1c170227a92704",
+    "m_Id": 0,
+    "m_DisplayName": "Alpha Clip Threshold",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "AlphaClipThreshold",
+    "m_StageCapability": 2,
+    "m_Value": 0.5,
+    "m_DefaultValue": 0.5,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "4aeec24325fa4b6c8b880b12966f677c",
     "m_Group": {
@@ -725,6 +746,40 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "70240c7b11384049bf7e6f81b7dea283",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.AlphaClipThreshold",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "430a66d8d39f4303ab1c170227a92704"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.AlphaClipThreshold"
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "76cc835eac7a4b4db554af03b531b481",
     "m_Id": 0,
@@ -791,8 +846,8 @@
     "m_CustomSlotLabel": "",
     "m_DismissedVersion": 0,
     "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
+    "overrideHLSLDeclaration": true,
+    "hlslDeclarationOverride": 2,
     "m_Hidden": false,
     "m_Value": 1.0,
     "m_FloatType": 0,
@@ -926,13 +981,13 @@
     "m_ActiveSubTarget": {
         "m_Id": "52d909fbd5974246b98cc3d785bd28a5"
     },
-    "m_AllowMaterialOverride": false,
-    "m_SurfaceType": 0,
+    "m_AllowMaterialOverride": true,
+    "m_SurfaceType": 1,
     "m_ZTestMode": 4,
     "m_ZWriteControl": 0,
     "m_AlphaMode": 0,
     "m_RenderFace": 2,
-    "m_AlphaClip": true,
+    "m_AlphaClip": false,
     "m_CastShadows": false,
     "m_ReceiveShadows": false,
     "m_DisableTint": false,
@@ -961,11 +1016,11 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
-    "m_ObjectId": "c3ed4a1a7c4f4a228f5e65455790edf0",
+    "m_ObjectId": "c9c3db5f362746cfad6b1b8b72254b9b",
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "SurfaceDescription.AlphaClipThreshold",
+    "m_Name": "SurfaceDescription.Specular",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -978,7 +1033,7 @@
     },
     "m_Slots": [
         {
-            "m_Id": "f0c971679f3c4be897a7b9df8aed51e2"
+            "m_Id": "ed8829baee5a47e5b7f6a11b83e44ab7"
         }
     ],
     "synonyms": [],
@@ -989,7 +1044,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_SerializedDescriptor": "SurfaceDescription.AlphaClipThreshold"
+    "m_SerializedDescriptor": "SurfaceDescription.Specular"
 }
 
 {
@@ -1058,17 +1113,32 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "f0c971679f3c4be897a7b9df8aed51e2",
+    "m_Type": "UnityEditor.ShaderGraph.ColorRGBMaterialSlot",
+    "m_ObjectId": "ed8829baee5a47e5b7f6a11b83e44ab7",
     "m_Id": 0,
-    "m_DisplayName": "Alpha Clip Threshold",
+    "m_DisplayName": "Specular Color",
     "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "AlphaClipThreshold",
+    "m_ShaderOutputName": "Specular",
     "m_StageCapability": 2,
-    "m_Value": 0.5,
-    "m_DefaultValue": 0.5,
-    "m_Labels": []
+    "m_Value": {
+        "x": 0.5,
+        "y": 0.5,
+        "z": 0.5
+    },
+    "m_DefaultValue": {
+        "x": 0.5,
+        "y": 0.5,
+        "z": 0.5
+    },
+    "m_Labels": [],
+    "m_ColorMode": 0,
+    "m_DefaultColor": {
+        "r": 0.5,
+        "g": 0.5,
+        "b": 0.5,
+        "a": 1.0
+    }
 }
 
 {

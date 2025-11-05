@@ -6,14 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/WallBlocks/NormalBlock/Materials/NormalWall_Mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/WallBlocks/NormalBlock/Materials/NormalWall_Mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Wall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Wall.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/materials/fadeAway.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/materials/fadeAway.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/materials/tester.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/materials/tester.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/materials/volumetric.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/materials/volumetric.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/CharacterCOntroller/CameraObstructionHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/CharacterCOntroller/CameraObstructionHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/shaders/fadeAway.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/shaders/fadeAway.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/shaders/wallTemp.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/shaders/wallTemp.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/shaders/walls.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/shaders/walls.shadergraph" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +22,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/_scripts/CharacterCOntroller/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_scripts/CharacterController/CameraObstructionHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_scripts/CharacterController/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/GreenChangeable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/IChangeable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/overlapChecker.cs" root0="FORCE_HIGHLIGHTING" />
@@ -150,7 +149,9 @@
       <workItem from="1761742675769" duration="8975000" />
       <workItem from="1761766464182" duration="1239000" />
       <workItem from="1761838368710" duration="7887000" />
-      <workItem from="1762277350933" duration="5112000" />
+      <workItem from="1762277350933" duration="7053000" />
+      <workItem from="1762326272569" duration="1638000" />
+      <workItem from="1762342267477" duration="6596000" />
     </task>
     <servers />
   </component>
