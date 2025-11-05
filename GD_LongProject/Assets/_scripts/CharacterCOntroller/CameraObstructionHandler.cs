@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,61 +5,57 @@ public class CameraObstructionHandler : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform player;
+    [SerializeField] private Camera thisCamera;
 
     [Header("Settings")]
     [SerializeField] private LayerMask obstructionMask;
     [SerializeField] private float sphereRadius = 0.5f;
-    [SerializeField] private float fadeSpeed = 5f; // How quickly tiles fade in/out
-    [SerializeField] private float minAlpha = 0f;  // Minimum alpha for faded tiles
+    [SerializeField] private float fadeSpeed = 5f;
+    [SerializeField] private float minAlpha = 0f;
 
-    private Dictionary<Renderer, float> _fadingObjects = new Dictionary<Renderer, float>();
+    private Dictionary<ObstructionFadeTarget, float> _fadingObjects = new Dictionary<ObstructionFadeTarget, float>();
+    private float _buffer = 2.3f;
 
     void LateUpdate()
     {
         Vector3 direction = player.position - transform.position;
-        float distance = direction.magnitude;
+        Vector3 origin = transform.position + transform.forward * sphereRadius;
+        float distance = direction.magnitude - _buffer * sphereRadius;
 
-        // SphereCastAll to detect all tiles in the way
-        RaycastHit[] hits = Physics.SphereCastAll(transform.position, sphereRadius, direction, distance, obstructionMask);
+        RaycastHit[] hits = Physics.SphereCastAll(origin, sphereRadius, direction, distance, obstructionMask);
 
-        HashSet<Renderer> currentlyHit = new HashSet<Renderer>();
+        HashSet<ObstructionFadeTarget> currentlyHit = new HashSet<ObstructionFadeTarget>();
+
         foreach (var hit in hits)
         {
-            Renderer rend = hit.collider.GetComponentInChildren<Renderer>();
-            if (rend != null)
+            ObstructionFadeTarget target = hit.collider.GetComponent<ObstructionFadeTarget>();
+            if (target != null)
             {
-                currentlyHit.Add(rend);
-                if (!_fadingObjects.ContainsKey(rend))
-                {
-                    _fadingObjects[rend] = rend.material.color.a; // Store current alpha
-                }
+                
+                currentlyHit.Add(target);
+                if (!_fadingObjects.ContainsKey(target))
+                    _fadingObjects[target] = target.GetAlphaForCamera(thisCamera);
             }
         }
 
-        // Fade in/out logic
-        List<Renderer> keys = new List<Renderer>(_fadingObjects.Keys);
-        foreach (var rend in keys)
-        {
-            Color color = rend.material.color;
+        List<ObstructionFadeTarget> keys = new List<ObstructionFadeTarget>(_fadingObjects.Keys);
 
-            if (currentlyHit.Contains(rend))
-            {
-                // Fade OUT
-                color.a = Mathf.Lerp(color.a, minAlpha, Time.deltaTime * fadeSpeed);
-            }
+        foreach (var target in keys)
+        {
+            float currentAlpha = _fadingObjects[target];
+
+            if (currentlyHit.Contains(target))
+                currentAlpha = Mathf.Lerp(currentAlpha, minAlpha, Time.deltaTime * fadeSpeed);
             else
             {
-                // Fade IN
-                color.a = Mathf.Lerp(color.a, 1f, Time.deltaTime * fadeSpeed);
-
-                // Remove from dictionary once fully visible
-                if (Mathf.Abs(color.a - 1f) < 0.01f)
-                {
-                    _fadingObjects.Remove(rend);
-                }
+                currentAlpha = Mathf.Lerp(currentAlpha, 1f, Time.deltaTime * fadeSpeed);
+                if (Mathf.Abs(currentAlpha - 1f) < 0.01f)
+                    _fadingObjects.Remove(target);
             }
 
-            rend.material.color = color;
+            _fadingObjects[target] = currentAlpha;
+            target.SetAlphaForCamera(thisCamera, currentAlpha);
+            //Debug.Log($"{target.name} alpha for {thisCamera.name}: {currentAlpha}");
         }
     }
 }

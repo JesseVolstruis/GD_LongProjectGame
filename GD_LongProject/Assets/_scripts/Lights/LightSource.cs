@@ -2,9 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class LightSource : MonoBehaviour
-{ 
+{
+    private static readonly int FadeDistance = Shader.PropertyToID("_fadeDistance");
+    private static readonly int Origin = Shader.PropertyToID("_origin");
+
     [Header("Initial Value Data")]
     public lightProperties lightProperties;     // ScriptableObject with initial settings
     
@@ -71,10 +75,11 @@ public class LightSource : MonoBehaviour
         List<IChangeable> current = projectionType switch
         {
             lightProperties.ProjectionType.Lantern => LanternLook(transform.position, radialRangeOfLantern),
-            lightProperties.ProjectionType.Torch   => TorchLook(transform.position, forwardRangeOfTorch),
+            lightProperties.ProjectionType.Torch   => TorchLook(transform.position,  TorchActualDistance(forwardRangeOfTorch)), 
             _ => new List<IChangeable>()
         };
 
+        TorchShaderLogic(_visualizationMaterial);
         // Normalize null -> empty list (so we can safely Except/Any)
         current = current ?? new List<IChangeable>();
 
@@ -126,6 +131,29 @@ public class LightSource : MonoBehaviour
                 changeables.Add(changeable);
         }
         return changeables;
+    }
+    
+    private void TorchShaderLogic(Material material)
+    {
+        float length = _lightVisualization.GetComponentInChildren<Renderer>().bounds.size.y;
+        float fadeDistance = TorchActualDistance(forwardRangeOfTorch)/forwardRangeOfTorch;
+        material.SetFloat(FadeDistance, fadeDistance);
+        material.SetFloat(Origin, length);
+    }
+
+    private float TorchActualDistance(float forwardRange)
+    {
+        Debug.DrawRay(transform.position, transform.forward * forwardRange, Color.red);
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        if (Physics.SphereCast(ray, horizontalRangeOfTorch, out hit, forwardRange ))
+        {
+            if (hit.collider.CompareTag("Blue"))
+            {
+                return hit.distance;
+            }
+        }
+        return forwardRange;
     }
 
     // --- Lantern helpers ---
