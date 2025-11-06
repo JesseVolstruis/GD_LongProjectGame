@@ -13,8 +13,8 @@ public class CameraObstructionHandler : MonoBehaviour
     [SerializeField] private float fadeSpeed = 5f;
     [SerializeField] private float minAlpha = 0f;
 
-    private Dictionary<ObstructionFadeTarget, float> _fadingObjects = new Dictionary<ObstructionFadeTarget, float>();
-    private float _buffer = 2.3f;
+    private readonly Dictionary<ObstructionFadeTarget, float> _fadingObjects = new();
+    private const float _buffer = 2.3f;
 
     void LateUpdate()
     {
@@ -24,22 +24,22 @@ public class CameraObstructionHandler : MonoBehaviour
 
         RaycastHit[] hits = Physics.SphereCastAll(origin, sphereRadius, direction, distance, obstructionMask);
 
-        HashSet<ObstructionFadeTarget> currentlyHit = new HashSet<ObstructionFadeTarget>();
+        HashSet<ObstructionFadeTarget> currentlyHit = new();
 
+        // Identify all currently hit obstructions
         foreach (var hit in hits)
         {
             ObstructionFadeTarget target = hit.collider.GetComponent<ObstructionFadeTarget>();
             if (target != null)
             {
-                
                 currentlyHit.Add(target);
                 if (!_fadingObjects.ContainsKey(target))
                     _fadingObjects[target] = target.GetAlphaForCamera(thisCamera);
             }
         }
 
-        List<ObstructionFadeTarget> keys = new List<ObstructionFadeTarget>(_fadingObjects.Keys);
-
+        // Update fade values
+        List<ObstructionFadeTarget> keys = new(_fadingObjects.Keys);
         foreach (var target in keys)
         {
             float currentAlpha = _fadingObjects[target];
@@ -50,12 +50,15 @@ public class CameraObstructionHandler : MonoBehaviour
             {
                 currentAlpha = Mathf.Lerp(currentAlpha, 1f, Time.deltaTime * fadeSpeed);
                 if (Mathf.Abs(currentAlpha - 1f) < 0.01f)
+                {
                     _fadingObjects.Remove(target);
+                    continue;
+                }
             }
 
             _fadingObjects[target] = currentAlpha;
             target.SetAlphaForCamera(thisCamera, currentAlpha);
-            //Debug.Log($"{target.name} alpha for {thisCamera.name}: {currentAlpha}");
+            target.ForceApplyForCamera(thisCamera); // Apply immediately for this camera only
         }
     }
 }

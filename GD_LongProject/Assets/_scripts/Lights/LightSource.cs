@@ -8,6 +8,7 @@ public class LightSource : MonoBehaviour
 {
     private static readonly int FadeDistance = Shader.PropertyToID("_fadeDistance");
     private static readonly int Origin = Shader.PropertyToID("_origin");
+    private static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
 
     [Header("Initial Value Data")]
     public lightProperties lightProperties;     // ScriptableObject with initial settings
@@ -238,18 +239,28 @@ public class LightSource : MonoBehaviour
         }
     }
 
+    
     // --- Colour control ---
+    
+    Color _green = new Color(0f, 1f, 0f, 0f);
+    Color _blue = new Color(0f, 0f, 1f, 0f);
+    
     private void MakeGreen(Light l, Material m)   
     { 
+        m.EnableKeyword("_EMISSION");
         colorOfLight = lightProperties.ColorOfLight.GreenLight;   
         l.color = Color.green; 
-        m.color = Color.green;
+        m.color = _green;
+        m.SetColor(EmissionColor, Color.green * 0.5f);
+        
     }
     private void MakeBlue(Light l, Material m)
     {
+        m.EnableKeyword("_EMISSION");
         colorOfLight = lightProperties.ColorOfLight.BlueLight;    
         l.color = Color.blue;
-        m.color = Color.blue;
+        m.color = _blue;
+        m.SetColor(EmissionColor, Color.blue);
     }
     
     private void ResetChangeables()

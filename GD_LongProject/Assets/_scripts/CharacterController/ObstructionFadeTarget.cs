@@ -11,7 +11,6 @@ public class ObstructionFadeTarget : MonoBehaviour
     {
         renderers = GetComponentsInChildren<Renderer>();
     }
-    
 
     public float GetAlphaForCamera(Camera cam)
     {

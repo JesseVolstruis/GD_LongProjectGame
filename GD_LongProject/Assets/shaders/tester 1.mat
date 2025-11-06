@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: volumetricLight
-  m_Shader: {fileID: -6465566751694194690, guid: e8e440c98b1df424da71f042c91a07e9, type: 3}
+  m_Name: tester 1
+  m_Shader: {fileID: -6465566751694194690, guid: 04540bd4f2602dd4ab8102918f3e60af, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -40,15 +40,12 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _edgeFallOff: 0.77
-    - _glowStrength: 6.28
-    - _opacity: 1
     m_Colors:
-    - _Color: {r: 0, g: 1, b: 0, a: 0}
-    - _EmmissionColor: {r: 0, g: 1, b: 0, a: 0}
+    - _Color: {r: 0, g: 0, b: 1, a: 0}
+    - _Emission_Colour: {r: 0, g: 0, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &921793053618181313
+--- !u!114 &8116001310225663196
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

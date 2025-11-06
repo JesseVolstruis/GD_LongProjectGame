@@ -6,17 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/AltButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/AltButton.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Button.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Button.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Gate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Gate.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/3D Rule Tiles/Materials/Button.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/3D Rule Tiles/Materials/Button.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/WallBlocks/NormalBlock/Materials/NormalWall_Mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/WallBlocks/NormalBlock/Materials/NormalWall_Mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AssetIntegration.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AssetIntegration.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/cyanChangeable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/cyanChangeable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/gates/button.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/gates/button.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/prefabs/CyanChangeable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/prefabs/CyanChangeable.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/CharacterController/ObstructionFadeTarget.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/CharacterController/ObstructionFadeTarget.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/materials/clear 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/materials/clear 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/materials/clear.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/materials/clear.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/materials/volumetricLight.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/materials/volumetricLight.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/shaders/fadeAway.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/shaders/fadeAway.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/shaders/volumetric.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/shaders/volumetric.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/shaders/wallTemp.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/shaders/wallTemp.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/shaders/walls.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/shaders/walls.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,6 +159,7 @@
       <workItem from="1762326272569" duration="1638000" />
       <workItem from="1762342267477" duration="6596000" />
       <workItem from="1762367375634" duration="4467000" />
+      <workItem from="1762433105103" duration="3309000" />
     </task>
     <servers />
   </component>
