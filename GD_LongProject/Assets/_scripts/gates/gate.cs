@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class gate : MonoBehaviour
 {
+    private static readonly int Open = Animator.StringToHash("Open");
     [SerializeField] private bool constantPressure = false;
     [SerializeField] private List<button> buttons;
     
+    private Animator _animator;
+    
     private bool _open;
     private BoxCollider _gateCollider;
-
-    /// <summary>
-    /// TEMPORARY GOTTA ADD ANIMATIONS
-    /// </summary>
-    //[SerializeField] private MeshRenderer barsMeshRenderer;
+    
     [SerializeField] private GameObject barsGameObject;
     void Start()
     {
         _gateCollider = GetComponent<BoxCollider>();
-       //barsMeshRenderer =  GetComponent<MeshRenderer>();
-       
+        _animator = GetComponentInChildren<Animator>();
     }
     void Update()
     {
@@ -36,8 +34,7 @@ public class gate : MonoBehaviour
     {
         _open = buttons.All(b => b.isPressed);
         _gateCollider.enabled = !_open;
-        //barsMeshRenderer.enabled = !_open;
-        barsGameObject.SetActive(!_open);
+        _animator.SetBool(Open, _open);
     }
 
     private void StayOpen()
@@ -49,6 +46,6 @@ public class gate : MonoBehaviour
 
         if (!_open) return;
         _gateCollider.enabled = false;
-        barsGameObject.SetActive(false);
+        _animator.SetBool(Open, _open);
     }
 }
