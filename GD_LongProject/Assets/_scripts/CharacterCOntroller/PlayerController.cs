@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravityValue = -9.81f;
     public bool faceMoveDirection = true;          // Determines if player rotates to match move direction
 
+    [Header("Sounds")]
+    [SerializeField] private AudioClip jumpSound;
     // --- Input Actions ---
     private PlayerInput _playerInput;
     private InputAction _moveAction;
@@ -133,6 +135,8 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        SoundManager.Instance.PlaySoundFX(jumpSound,transform,1f);
+        
         if (_coyoteTimeCounter > 0)
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityValue);
         _coyoteTimeCounter = 0f;

@@ -412,6 +412,7 @@ MonoBehaviour:
   rotate: 0
   rotationAxis: {x: 0, y: 1, z: 0}
   rotateSpeed: 60
+  cyanSound: {fileID: 8300000, guid: 683404984da0e2d4391638d7cff605d8, type: 3}
 --- !u!1 &8749553943386756180
 GameObject:
   m_ObjectHideFlags: 0

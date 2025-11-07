@@ -212,9 +212,11 @@ public class LightSource : MonoBehaviour
         _visualizationMaterial = _lightVisualization.GetComponentInChildren<Renderer>().material;
     }
     
+    [SerializeField] private AudioClip switchSound;
     // --- On/Off ---
     public void SwitchOnOff()
     {
+        SoundManager.Instance.PlaySoundFX(switchSound,transform,1f);
         ResetChangeables();
         _light.enabled = !_light.enabled;
         lightOn = !lightOn;

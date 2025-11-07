@@ -433,6 +433,7 @@ MonoBehaviour:
   jumpHeight: 1
   gravityValue: -9.81
   faceMoveDirection: 1
+  jumpSound: {fileID: 8300000, guid: f63740e1edc69914dbd570a6d02de284, type: 3}
   coyoteTime: 0.2
 --- !u!114 &1604063202232634458
 MonoBehaviour:

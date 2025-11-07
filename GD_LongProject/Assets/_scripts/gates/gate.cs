@@ -7,18 +7,21 @@ public class gate : MonoBehaviour
     private static readonly int Open = Animator.StringToHash("Open");
     [SerializeField] private bool constantPressure = false;
     [SerializeField] private List<button> buttons;
-    
+
+    [SerializeField] private AudioClip openSound;
     private Animator _animator;
-    
+
     private bool _open;
+    private bool _previousOpen; // <— track previous state
     private BoxCollider _gateCollider;
     
-    [SerializeField] private GameObject barsGameObject;
     void Start()
     {
         _gateCollider = GetComponent<BoxCollider>();
         _animator = GetComponentInChildren<Animator>();
+        _previousOpen = _open; // initialize
     }
+
     void Update()
     {
         if (constantPressure)
@@ -29,7 +32,16 @@ public class gate : MonoBehaviour
         {
             StayOpen();
         }
+
+        // ✅ detect change in open state
+        if (_open != _previousOpen)
+        {
+            if (_open)
+                PlaySound(); // only play when opening, not closing (optional)
+            _previousOpen = _open;
+        }
     }
+
     private void ConstantPressure()
     {
         _open = buttons.All(b => b.isPressed);
@@ -45,7 +57,13 @@ public class gate : MonoBehaviour
         }
 
         if (!_open) return;
+
         _gateCollider.enabled = false;
         _animator.SetBool(Open, _open);
+    }
+
+    private void PlaySound()
+    {
+        SoundManager.Instance.PlaySoundFX(openSound, transform, 1f);
     }
 }

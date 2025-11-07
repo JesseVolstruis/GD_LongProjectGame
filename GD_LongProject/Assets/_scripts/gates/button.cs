@@ -5,10 +5,10 @@ public class button : MonoBehaviour
 {
     public bool isPressed;
     public bool toolButton;
-    private Color _pressedColor = Color.grey;
+    private readonly Color _pressedColor = Color.grey;
     private Color _normalColor;
     [SerializeField] private GameObject changingColorObject;
-    
+    [SerializeField] private AudioClip buttonSound;
     private bool _countDown = false;
     
     private float _countDownTimer = 0;
@@ -71,14 +71,22 @@ public class button : MonoBehaviour
 
     private void Pressed()
     {
+        PlaySound();
         _countDownTimer = 0f;
         _countDown = true;
     }
 
     private void Released()
     {
+        //PlaySound();
         isPressed = false;
         _countDown = false;
         _countDownTimer = 0f;
+    }
+
+    private void PlaySound()
+    {
+        SoundManager.Instance.PlaySoundFX(buttonSound, transform,1f);
+
     }
 }

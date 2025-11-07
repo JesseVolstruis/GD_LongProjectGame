@@ -6,17 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/Gate/Gate_Animation.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/Gate/Gate_Animation.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/Gate/Gate_GateOpen.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/Gate/Gate_GateOpen.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Gate/Gate_Animation.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Gate/Gate_Animation.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/LightSource.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/LightSource.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/Player1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player/Player1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/AltButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/AltButton.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/AltGate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/AltGate.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/BlueBlock.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/BlueBlock.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Branch.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Branch.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Button.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Button.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Gate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/Gate.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/ToolButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/ToolButton.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/ToolGate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/ToolGate.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/AssetIntegration.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AssetIntegration.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/GreenChangeable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/GreenChangeable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/blueChangeable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/blueChangeable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/cyanChangeable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/cyanChangeable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/gates/button.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/gates/button.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_scripts/gates/gate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/gates/gate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/shaders/fadeAway.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/shaders/fadeAway.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/shaders/volumetric.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/shaders/volumetric.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/shaders/walls.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/shaders/walls.shadergraph" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,6 +168,7 @@
       <workItem from="1762367375634" duration="4467000" />
       <workItem from="1762433105103" duration="3578000" />
       <workItem from="1762527198586" duration="4615000" />
+      <workItem from="1762541875350" duration="4500000" />
     </task>
     <servers />
   </component>

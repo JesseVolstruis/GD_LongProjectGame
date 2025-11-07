@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constantPressure: 0
   buttons: []
-  barsGameObject: {fileID: 5301521980384139863}
+  openSound: {fileID: 8300000, guid: 07e7d7cfe92b98648965b27cad94d551, type: 3}
 --- !u!1001 &6290471247447736160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 16d7a84a1c5efaa4cb0fa8d38132b44d, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0

@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leaf: {fileID: 6636285511912633502}
+  greenSound: {fileID: 8300000, guid: a6a0b0617e56e594d8bb742147f4e155, type: 3}
 --- !u!1 &4535974910553349387
 GameObject:
   m_ObjectHideFlags: 0
