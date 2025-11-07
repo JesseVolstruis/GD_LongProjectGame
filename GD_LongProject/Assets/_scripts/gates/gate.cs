@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class gate : MonoBehaviour
 {
+    private static readonly int Open = Animator.StringToHash("Open");
     [SerializeField] private bool constantPressure = false;
     [SerializeField] private List<button> buttons;
-    
-    private bool _open;
-    private BoxCollider _gateCollider;
 
-    /// <summary>
-    /// TEMPORARY GOTTA ADD ANIMATIONS
-    /// </summary>
-    //[SerializeField] private MeshRenderer barsMeshRenderer;
-    [SerializeField] private GameObject barsGameObject;
+    [SerializeField] private AudioClip openSound;
+    private Animator _animator;
+
+    private bool _open;
+    private bool _previousOpen; // <— track previous state
+    private BoxCollider _gateCollider;
+    
     void Start()
     {
         _gateCollider = GetComponent<BoxCollider>();
-       //barsMeshRenderer =  GetComponent<MeshRenderer>();
-       
+        _animator = GetComponentInChildren<Animator>();
+        _previousOpen = _open; // initialize
     }
+
     void Update()
     {
         if (constantPressure)
@@ -31,13 +32,21 @@ public class gate : MonoBehaviour
         {
             StayOpen();
         }
+
+        // ✅ detect change in open state
+        if (_open != _previousOpen)
+        {
+            if (_open)
+                PlaySound(); // only play when opening, not closing (optional)
+            _previousOpen = _open;
+        }
     }
+
     private void ConstantPressure()
     {
         _open = buttons.All(b => b.isPressed);
         _gateCollider.enabled = !_open;
-        //barsMeshRenderer.enabled = !_open;
-        barsGameObject.SetActive(!_open);
+        _animator.SetBool(Open, _open);
     }
 
     private void StayOpen()
@@ -48,7 +57,13 @@ public class gate : MonoBehaviour
         }
 
         if (!_open) return;
+
         _gateCollider.enabled = false;
-        barsGameObject.SetActive(false);
+        _animator.SetBool(Open, _open);
+    }
+
+    private void PlaySound()
+    {
+        SoundManager.Instance.PlaySoundFX(openSound, transform, 1f);
     }
 }

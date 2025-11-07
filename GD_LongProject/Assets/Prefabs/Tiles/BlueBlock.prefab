@@ -104,6 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabDelay: 0.1
   releaseDelay: 0.2
+  blueSound: {fileID: 8300000, guid: ff9afcb1d6c11044d9becd7aa7a27d86, type: 3}
 --- !u!54 &3299647218420623825
 Rigidbody:
   m_ObjectHideFlags: 0

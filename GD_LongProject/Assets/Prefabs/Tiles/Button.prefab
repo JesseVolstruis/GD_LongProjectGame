@@ -124,8 +124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPressed: 0
   toolButton: 0
-  isPressedMaterial: {fileID: 2100000, guid: 1b90bf585d42fb141be1532279e69355, type: 2}
   changingColorObject: {fileID: 3398647717244459035}
+  buttonSound: {fileID: 8300000, guid: 84a3d02a9ebd33443933e3e76262355e, type: 3}
   countDownTime: 0.2
 --- !u!1 &5497842983722590467
 GameObject:

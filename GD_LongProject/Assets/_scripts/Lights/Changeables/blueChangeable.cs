@@ -84,9 +84,12 @@ public class blueChangeable : MonoBehaviour, IChangeable
         }
     }
 
+    [SerializeField] private AudioClip blueSound;
     private void Grab()
     {
         if (_isChanged) return;
+        
+        SoundManager.Instance.PlaySoundFX(blueSound,transform,1f);
 
         var grabAnchor = _player.GetComponentInChildren<GrabAnchorFollower>();
         if (grabAnchor == null) return;
