@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     private InputAction _interactAction;
     private InputAction _switchColourAction;
 
-    // Cached callback delegates (avoid garbage allocation every frame)
+    // Cached callback delegates (avoid rubbish allocation every frame)
     private Action<InputAction.CallbackContext> _jumpHandler;
     private Action<InputAction.CallbackContext> _switchHandler;
     private Action<InputAction.CallbackContext> _interactHandler;
@@ -49,6 +49,13 @@ public class PlayerController : MonoBehaviour
     private LightSource _lightSource;
     private bool _holdingLight;   
 
+    // --- Animations ---
+    private static readonly int IsWalkingAnimBool = Animator.StringToHash("IsWalking");
+    private static readonly int JumpAnimTrigger = Animator.StringToHash("Jump");
+    private static readonly int HasItemAnimBool = Animator.StringToHash("HasItem");
+    
+    [SerializeField] private Animator animator;
+    
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -98,6 +105,9 @@ public class PlayerController : MonoBehaviour
         Vector3 right   = cameraTransform.right;   right.y = 0;   right.Normalize();
         Vector3 move    = forward * _moveInput.y + right * _moveInput.x;
 
+        bool isMoving = move.sqrMagnitude > 0.01f;
+        animator.SetBool(IsWalkingAnimBool, isMoving);
+        
         // Smooth rotation toward move direction
         if (faceMoveDirection && move.sqrMagnitude > 0.01f)
         {
@@ -130,15 +140,25 @@ public class PlayerController : MonoBehaviour
         turnSpeed    = playerValues.turnSpeed;
         jumpHeight   = playerValues.jumpHeight;
         gravityValue = playerValues.gravityValue;
-        coyoteTime    = playerValues.coyoteTime;
+        coyoteTime   = playerValues.coyoteTime;
     }
 
     private void Jump()
     {
-        SoundManager.Instance.PlaySoundFX(jumpSound,transform,1f);
-        
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySoundFX(jumpSound,transform,1f);
+        }
+        else
+        {
+            Debug.Log("No Sound Played for jump");
+        }
+
         if (_coyoteTimeCounter > 0)
+        {
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravityValue);
+            animator.SetTrigger(JumpAnimTrigger);
+        }
         _coyoteTimeCounter = 0f;
     }
 
@@ -176,7 +196,8 @@ public class PlayerController : MonoBehaviour
     private void PickUp(Transform holdHere, Transform holdThis)
     {
         _holdingLight = true;
-
+        animator.SetBool(HasItemAnimBool, true);
+        
         // Disable physics + attach to player
         var rb = holdThis.GetComponent<Rigidbody>();
         rb.isKinematic = true;
@@ -214,6 +235,7 @@ public class PlayerController : MonoBehaviour
         heldLight.GetComponentInChildren<BoxCollider>().enabled = true;
 
         _holdingLight = false;
+        animator.SetBool(HasItemAnimBool, false);
         _lightSource = null;
         faceMoveDirection = true;
     }

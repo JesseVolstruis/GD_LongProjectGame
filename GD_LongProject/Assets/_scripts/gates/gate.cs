@@ -64,6 +64,6 @@ public class gate : MonoBehaviour
 
     private void PlaySound()
     {
-        SoundManager.Instance.PlaySoundFX(openSound, transform, 1f);
+        if(SoundManager.Instance != null) SoundManager.Instance.PlaySoundFX(openSound, transform, 1f);
     }
 }

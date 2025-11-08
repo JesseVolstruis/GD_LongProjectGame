@@ -77,7 +77,7 @@ public class cyanChangeable : MonoBehaviour, IChangeable
         if (shouldBeCyan && !_isCyan)
         {
             _isCyan = true;
-            SoundManager.Instance.PlaySoundFX(cyanSound, transform, 1f);
+            if(SoundManager.Instance != null) SoundManager.Instance.PlaySoundFX(cyanSound, transform, 1f);
             moveSpeed = 0f;
             rotateSpeed = 0f;
             if (rotate)

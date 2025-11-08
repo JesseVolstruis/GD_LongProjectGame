@@ -6,38 +6,37 @@ public class animation : MonoBehaviour
     private static readonly int Jump = Animator.StringToHash("Jump");
     private static readonly int HasItem = Animator.StringToHash("HasItem");
 
-    private bool hasItem = false;
+    private bool _hasItem = false;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-   [SerializeField] Animator animator;
+   private Animator _animator;
+   
     void Start()
     {
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
     void Update()
     {
         //WALK n STOP
         if (Input.GetKey(KeyCode.W))
         {
-            animator.SetBool(IsWalking, true);
+            _animator.SetBool(IsWalking, true);
         }
         if (!Input.GetKey(KeyCode.W))
         {
-            animator.SetBool(IsWalking, false);
+            _animator.SetBool(IsWalking, false);
         }
         
         //Item
         if (Input.GetKeyDown(KeyCode.E))
         {
-            hasItem = !hasItem;
-            animator.SetBool(HasItem, hasItem);
+            _hasItem = !_hasItem;
+            _animator.SetBool(HasItem, _hasItem);
         }
         
         //JUMP
         if (Input.GetKey(KeyCode.Space))
         {
-            animator.SetTrigger(Jump);
-            
+            _animator.SetTrigger(Jump);
         }
         
     }

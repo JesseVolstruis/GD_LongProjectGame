@@ -89,7 +89,7 @@ public class blueChangeable : MonoBehaviour, IChangeable
     {
         if (_isChanged) return;
         
-        SoundManager.Instance.PlaySoundFX(blueSound,transform,1f);
+        if(SoundManager.Instance != null) SoundManager.Instance.PlaySoundFX(blueSound,transform,1f);
 
         var grabAnchor = _player.GetComponentInChildren<GrabAnchorFollower>();
         if (grabAnchor == null) return;

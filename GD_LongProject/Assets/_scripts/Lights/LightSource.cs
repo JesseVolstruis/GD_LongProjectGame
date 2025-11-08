@@ -216,7 +216,7 @@ public class LightSource : MonoBehaviour
     // --- On/Off ---
     public void SwitchOnOff()
     {
-        SoundManager.Instance.PlaySoundFX(switchSound,transform,1f);
+        if(SoundManager.Instance != null) SoundManager.Instance.PlaySoundFX(switchSound,transform,1f);
         ResetChangeables();
         _light.enabled = !_light.enabled;
         lightOn = !lightOn;
