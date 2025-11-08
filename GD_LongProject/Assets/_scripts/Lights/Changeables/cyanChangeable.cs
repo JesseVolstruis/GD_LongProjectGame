@@ -51,7 +51,7 @@ public class cyanChangeable : MonoBehaviour, IChangeable
         if (move)
         {
             moveObject.transform.position = Vector3.MoveTowards(moveObject.transform.position, targets[_currentTarget].position, moveSpeed * Time.deltaTime);
-            if (transform.position == targets[_currentTarget].position)
+            if (moveObject.transform.position == targets[_currentTarget].position)
             {
                 NextTarget();
             }
