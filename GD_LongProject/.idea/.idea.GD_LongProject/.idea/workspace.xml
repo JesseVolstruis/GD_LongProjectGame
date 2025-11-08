@@ -6,15 +6,32 @@
   <component name="ChangeListManager">
     <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/Model_Lantern.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/Model_Lantern.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/Model_Torch.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/Model_Torch.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Animations.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Animations/Player Gray Anim.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Animations/Player Gray Anim.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Branches and Leaves.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Branches and Leaves.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Exit Door.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Exit Door.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Giant Button.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Giant Button.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Grass_Block.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Grass_Block.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Ground_Stone.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Ground_Stone.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Player2_Gray.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/Player2_Gray.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/UI Stuff.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/UI Stuff/Canvas.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/UI Stuff/Canvas.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/flashlight.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/Thoriso's Assets/flashlight.fbx.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/TorchBasic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/TorchBasic.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/lanternBasic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/lanternBasic.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/cyanChangeable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/cyanChangeable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Thoriso.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Thoriso.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/CharacterCOntroller/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/CharacterCOntroller/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/ParentPlatform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/ParentPlatform.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +176,7 @@
       <workItem from="1762433105103" duration="3578000" />
       <workItem from="1762527198586" duration="4615000" />
       <workItem from="1762541875350" duration="4500000" />
-      <workItem from="1762590779837" duration="3431000" />
+      <workItem from="1762590779837" duration="4503000" />
     </task>
     <servers />
   </component>
