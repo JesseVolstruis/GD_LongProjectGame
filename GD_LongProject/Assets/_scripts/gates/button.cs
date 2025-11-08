@@ -86,7 +86,6 @@ public class button : MonoBehaviour
 
     private void PlaySound()
     {
-        SoundManager.Instance.PlaySoundFX(buttonSound, transform,1f);
-
+        if(SoundManager.Instance != null) SoundManager.Instance.PlaySoundFX(buttonSound, transform,1f);
     }
 }

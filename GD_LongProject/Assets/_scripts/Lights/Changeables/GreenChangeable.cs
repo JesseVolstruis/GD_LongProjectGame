@@ -18,7 +18,7 @@ public class GreenChangeable : MonoBehaviour, IChangeable
         {
             _isGreen = true;
             leaf.SetActive(true);
-            SoundManager.Instance.PlaySoundFX(greenSound, transform, 1f);
+            if(SoundManager.Instance != null) SoundManager.Instance.PlaySoundFX(greenSound, transform, 1f);
         }
         else if (!shouldBeGreen && _isGreen)
         {
