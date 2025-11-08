@@ -198,6 +198,8 @@ public class PlayerController : MonoBehaviour
 
     private void PutDown()
     {
+        if(!_grounded) return;
+        
         Transform heldLight = _lightSource.transform;
 
         heldLight.SetParent(null);
