@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour
         Transform heldLight = _lightSource.transform;
 
         heldLight.SetParent(null);
-        heldLight.position = lanternHoldPosition.position;   // ⚠️ always uses lantern pos (bug if torch?)
+        heldLight.position = lanternHoldPosition.position;  
         heldLight.rotation = lanternHoldPosition.rotation;
 
         var rb = heldLight.GetComponent<Rigidbody>();

@@ -3,18 +3,21 @@ using UnityEngine;
 
 public class ParentPlatform : MonoBehaviour
 {
+    [SerializeField] private cyanChangeable cyanChangeable;
+    
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
-        if (other.CompareTag("Player") || other.CompareTag("Tool"))
+        if (cyanChangeable.rotating) return;
+        if (other.CompareTag("Player") || other.CompareTag("Tool") || other.CompareTag("Blue"))
         {
-            other.transform.SetParent(transform);
+            other.transform.SetParent(transform.parent);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Tool"))
+        if (cyanChangeable.rotating) return;
+        if (other.CompareTag("Player") || other.CompareTag("Tool")  || other.CompareTag("Blue"))
         {
             other.transform.SetParent(null);
         }

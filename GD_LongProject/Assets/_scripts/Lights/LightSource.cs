@@ -149,10 +149,10 @@ public class LightSource : MonoBehaviour
         RaycastHit hit;
         if (Physics.SphereCast(ray, horizontalRangeOfTorch, out hit, forwardRange ))
         {
-            if (hit.collider.CompareTag("Blue"))
-            {
-                return hit.distance;
-            }
+            // if (hit.collider.CompareTag("Blue"))
+            // {
+            //     return hit.distance;
+            // }
         }
         return forwardRange;
     }
@@ -330,25 +330,5 @@ public class LightSource : MonoBehaviour
         LanternProjectionProperties(_light);
         _lightVisualization = lanternVisualization;
     }
-    
-    //NOT CURRENTLY IN USE
-    
-    // private float GetRadius()
-    // {
-    //     return Mathf.Abs(Vector3.Distance(transform.position, torchHitPoint) * Mathf.Tan(spreadOfTorchLight * Mathf.Deg2Rad));
-    // }
-    
-    // private void MakeRed(Light l)     { colorOfLight = lightProperties.ColorOfLight.RedLight;     l.color = Color.red; }
-    // private void MakeCyan(Light l)    { colorOfLight = lightProperties.ColorOfLight.CyanLight;    l.color = Color.cyan; }
-    // private void MakeYellow(Light l)  { colorOfLight = lightProperties.ColorOfLight.YellowLight;  l.color = Color.yellow; }
-    // private void MakeMagenta(Light l) { colorOfLight = lightProperties.ColorOfLight.MagentaLight; l.color = Color.magenta; }
-    //
-    // public void ChangeColour(int howMany)
-    // {
-    //     _colourIndex++;
-    //     _colourChangers[_colourIndex](_light);
-    //
-    //     if (_colourIndex == howMany)
-    //         _colourIndex = 0;
-    // }
+
 }

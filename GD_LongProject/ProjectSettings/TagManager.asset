@@ -11,6 +11,7 @@ TagManager:
   - Blue
   - Ground
   - Tool
+  - ToolCasing
   layers:
   - Default
   - TransparentFX

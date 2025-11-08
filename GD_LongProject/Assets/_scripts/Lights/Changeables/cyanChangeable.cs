@@ -23,11 +23,14 @@ public class cyanChangeable : MonoBehaviour, IChangeable
     public float rotateSpeed = 2f;
 
     [SerializeField] private AudioClip cyanSound;
+    
+    [SerializeField] private GameObject moveObject;
 
     private float _saveMoveSpeed;
     private float _saveRotateSpeed;
-
-    private bool _isCyan; // <— track current cyan state
+    
+    private bool _isCyan; 
+    public bool rotating = false;
 
     void Start()
     {
@@ -40,13 +43,14 @@ public class cyanChangeable : MonoBehaviour, IChangeable
         // ROTATE
         if (rotate)
         {
-            transform.Rotate(rotationAxis * rotateSpeed * Time.deltaTime);
+            rotating = true;
+            moveObject.transform.Rotate(rotationAxis * rotateSpeed * Time.deltaTime);
         }
 
         // MOVE
         if (move)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targets[_currentTarget].position, moveSpeed * Time.deltaTime);
+            moveObject.transform.position = Vector3.MoveTowards(moveObject.transform.position, targets[_currentTarget].position, moveSpeed * Time.deltaTime);
             if (transform.position == targets[_currentTarget].position)
             {
                 NextTarget();
@@ -76,6 +80,10 @@ public class cyanChangeable : MonoBehaviour, IChangeable
             SoundManager.Instance.PlaySoundFX(cyanSound, transform, 1f);
             moveSpeed = 0f;
             rotateSpeed = 0f;
+            if (rotate)
+            {
+                rotating = false;
+            }
         }
         else if (!shouldBeCyan && _isCyan)
         {
@@ -91,5 +99,9 @@ public class cyanChangeable : MonoBehaviour, IChangeable
         _isCyan = false;
         moveSpeed = _saveMoveSpeed;
         rotateSpeed = _saveRotateSpeed;
+        if (rotate)
+        {
+            rotating = true;
+        }
     }
 }
