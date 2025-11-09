@@ -196,7 +196,7 @@ public class PlayerController : MonoBehaviour
     private void PickUp(Transform holdHere, Transform holdThis)
     {
         _holdingLight = true;
-        animator.SetBool(HasItemAnimBool, true);
+         animator.SetBool(HasItemAnimBool, true);
         
         // Disable physics + attach to player
         var rb = holdThis.GetComponent<Rigidbody>();

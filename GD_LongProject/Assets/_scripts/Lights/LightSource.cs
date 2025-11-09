@@ -253,7 +253,7 @@ public class LightSource : MonoBehaviour
         colorOfLight = lightProperties.ColorOfLight.GreenLight;   
         l.color = Color.green; 
         m.color = _green;
-        m.SetColor(EmissionColor, Color.green * 0.5f);
+        m.SetColor(EmissionColor, Color.green * 0.1f);
         
     }
     private void MakeBlue(Light l, Material m)
