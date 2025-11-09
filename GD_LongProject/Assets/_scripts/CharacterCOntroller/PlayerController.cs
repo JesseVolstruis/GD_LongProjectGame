@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
     {
         if (SoundManager.Instance != null)
         {
-            SoundManager.Instance.PlaySoundFX(jumpSound,transform,1f);
+            SoundManager.Instance.PlaySoundFX(jumpSound,transform,0f);
         }
         else
         {
