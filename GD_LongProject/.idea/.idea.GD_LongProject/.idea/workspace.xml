@@ -5,33 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/Thoriso's Assets/Animations/Armature_ArmatureAction.001.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/Thoriso's Assets/Animations/Armature_ArmatureAction.001.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/Thoriso's Assets/Animations/Armature_ArmatureAction.002.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/Thoriso's Assets/Animations/Armature_ArmatureAction.002.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/Thoriso's Assets/Animations/Armature_ArmatureAction.003.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/Thoriso's Assets/Animations/Armature_ArmatureAction.003.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/Thoriso's Assets/Animations/Armature_ArmatureAction.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/Thoriso's Assets/Animations/Armature_ArmatureAction.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player1/Player1.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player1/Player1.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Idle.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Idle.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Idle.anim.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Jump.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Jump.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Jump.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Jump.anim.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Walk.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Walk.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Walk.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Walk.anim.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player2/Player2.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player2/Player2.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/TorchBasic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/TorchBasic.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/Player1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player/Player1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/Player2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player/Player2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AssetIntegration.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AssetIntegration.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dayna.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/ParentPlatform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/ParentPlatform.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/materials/clear.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/materials/clear.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/shaders/lightSource.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/shaders/lightSource.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
