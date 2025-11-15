@@ -45,7 +45,7 @@ public class LightSource : MonoBehaviour
     // --- Changeable tracking ---
     private List<IChangeable> _changeablesPrevious = new List<IChangeable>();
     private List<IChangeable> _changeablesCurrent  = new List<IChangeable>();  
-    private List<IChangeable> _changeablesExited   = new List<IChangeable>();   
+    private readonly List<IChangeable> _changeablesExited   = new List<IChangeable>();   
      
     private LayerMask _playerLayerMask;
     private int _ignoreRaycastLayerMask; 
@@ -59,7 +59,7 @@ public class LightSource : MonoBehaviour
     [HideInInspector] public float radiusOfTorch;
 
     // --- For Overlap Checking ---
-    public List<(IChangeable changeable, lightProperties.ColorOfLight, Transform transform)> OverlapData = new();
+    public readonly List<(IChangeable changeable, lightProperties.ColorOfLight, Transform transform)> OverlapData = new();
     private void Start()
     {
         switch (SceneManager.GetActiveScene().buildIndex)
@@ -109,7 +109,7 @@ public class LightSource : MonoBehaviour
         // Ensure OverlapData only contains this frame's hits
         OverlapData.Clear();
 
-        // Get current hits depending on projection type
+        // Get current hits depending on projection types
         List<IChangeable> current = projectionType switch
         {
             lightProperties.ProjectionType.Lantern => LanternLook(transform.position, radialRangeOfLantern),
@@ -118,7 +118,7 @@ public class LightSource : MonoBehaviour
         };
 
         TorchShaderLogic(_visualizationMaterial);
-        // Normalize null -> empty list (so we can safely Except/Any)
+        
         current = current ?? new List<IChangeable>();
 
         // Fill OverlapData (unique per IChangeable) — avoid duplicates
@@ -130,7 +130,7 @@ public class LightSource : MonoBehaviour
                 OverlapData.Add((changeable, colorOfLight, _thisLightSource));
         }
 
-        // Compute entered & exited using copies (no reference aliasing)
+        // Compute entered and exited using copies (no reference aliasing)
         var prev = _changeablesPrevious ?? new List<IChangeable>();
         var entered = current.Except(prev).ToList();
         var exited  = prev.Except(current).ToList();
@@ -141,7 +141,7 @@ public class LightSource : MonoBehaviour
             changeable.UnChange(false);
         }
 
-        // Finally set previous to a copy of current for next frame
+        // Finally, set previous to a copy of current for next frame
         _changeablesPrevious = new List<IChangeable>(current);
 
         // Also keep _changeablesCurrent for other uses in your class if needed
@@ -243,8 +243,6 @@ public class LightSource : MonoBehaviour
                 MakeBlue(_light, _visualizationMaterial);  break;
             default: throw new ArgumentOutOfRangeException();
         }
-
-        
     }
     
     [SerializeField] private AudioClip switchSound;
@@ -279,10 +277,10 @@ public class LightSource : MonoBehaviour
 
     
     // --- Colour control ---
-    
-    Color _green = new Color(0f, 1f, 0f, 0f);
-    Color _blue = new Color(0f, 0f, 1f, 0f);
-    Color _white = new Color(1f, 1f, 1f, 0f);
+
+    private readonly Color _green = new Color(0f, 1f, 0f, 0f);
+    private readonly Color _blue = new Color(0f, 0f, 1f, 0f);
+    private readonly Color _white = new Color(1f, 1f, 1f, 0f);
     
     private void MakeGreen(Light l, Material m)   
     { 
