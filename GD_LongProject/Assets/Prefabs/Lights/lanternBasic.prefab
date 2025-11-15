@@ -125,6 +125,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5327012212313482698}
     - target: {fileID: 5819965319017451409, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
+      propertyPath: gameStateMan
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b33384c365c30f448f6b84920f2d657, type: 2}
+    - target: {fileID: 5819965319017451409, guid: 1068f35d27ee9494fbd59bb9dcf6c5a1, type: 3}
       propertyPath: lanternModel
       value: 
       objectReference: {fileID: 8618613169925833219}

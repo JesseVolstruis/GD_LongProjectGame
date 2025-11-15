@@ -5,7 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/shaders/lightSource.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/shaders/lightSource.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Level_Concepts/Level0.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Level_Concepts/Level0.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/TorchBasic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/TorchBasic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lights/lanternBasic.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Lights/lanternBasic.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/Player2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player/Player2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level0.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level0.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Blue.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Blue.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Button.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Button.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Cyan.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Cyan.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Gate.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Gate.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Green.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Green.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Jump.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Jump.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Switch.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/Switch.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/animation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/animation.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +42,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/CharacterController/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/GreenChangeable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/IChangeable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/ParentPlatform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/overlapChecker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_scripts/_DatabaseScripts/GameState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/SoundMixerManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/exitTriggers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/sceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@e2c83221d2dc/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
@@ -153,6 +178,7 @@
       <workItem from="1762590779837" duration="4503000" />
       <workItem from="1762628241983" duration="4990000" />
       <workItem from="1762695081935" duration="90000" />
+      <workItem from="1763198920795" duration="5381000" />
     </task>
     <servers />
   </component>

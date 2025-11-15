@@ -3,9 +3,12 @@ using System.Linq;
 using UnityEngine;
 using System;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class LightSource : MonoBehaviour
 {
+    [SerializeField] private GameState gameStateMan;
+    
     private static readonly int FadeDistance = Shader.PropertyToID("_fadeDistance");
     private static readonly int Origin = Shader.PropertyToID("_origin");
     private static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
@@ -59,6 +62,41 @@ public class LightSource : MonoBehaviour
     public List<(IChangeable changeable, lightProperties.ColorOfLight, Transform transform)> OverlapData = new();
     private void Start()
     {
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 0:
+                gameStateMan.currentGameState = GameState.CurrentGameState.White;
+                break;
+            case 1:
+                gameStateMan.currentGameState = GameState.CurrentGameState.White;
+                break;
+            case 2:
+                gameStateMan.currentGameState = GameState.CurrentGameState.GreenOnly;
+                break;
+            case 3:
+                gameStateMan.currentGameState = GameState.CurrentGameState.GreenOnly;
+                break;
+            case 4:
+                gameStateMan.currentGameState = GameState.CurrentGameState.GreenOnly;
+                break;
+            case 5:
+                gameStateMan.currentGameState = GameState.CurrentGameState.GreenBlue;
+                break;
+            case 6:
+                gameStateMan.currentGameState = GameState.CurrentGameState.GreenBlue;
+                break;
+            case 7:
+                gameStateMan.currentGameState = GameState.CurrentGameState.GreenBlue;
+                break;
+            case 8:
+                gameStateMan.currentGameState = GameState.CurrentGameState.GreenBlue;
+                break;
+            case 9:
+                gameStateMan.currentGameState = GameState.CurrentGameState.GreenBlue;
+                break;
+            
+        }
+        
         _playerLayerMask = LayerMask.GetMask("Player");
         _ignoreRaycastLayerMask = 1 << LayerMask.NameToLayer("Ignore Raycast");
         _mask = ~(_playerLayerMask | _ignoreRaycastLayerMask);
@@ -66,7 +104,6 @@ public class LightSource : MonoBehaviour
         _light = GetComponent<Light>();
         AssignLightProperties();
     }
-
     private void LateUpdate()
     {
         // Ensure OverlapData only contains this frame's hits
@@ -97,14 +134,7 @@ public class LightSource : MonoBehaviour
         var prev = _changeablesPrevious ?? new List<IChangeable>();
         var entered = current.Except(prev).ToList();
         var exited  = prev.Except(current).ToList();
-
-        // Handle newly entered objects
-       // foreach (var changeable in entered)
-       // {
-            // Do the change here if desired (original code had commented out Change)
-       //     changeable.Change(colorOfLight, _thisLightSource);
-       // }
-
+        
         // Handle exited objects
         foreach (var changeable in exited)
         {
@@ -176,7 +206,7 @@ public class LightSource : MonoBehaviour
     private void AssignLightProperties()
     {
         // Copy values from ScriptableObject
-        colorOfLight        = lightProperties.currentColorOfLight;
+        colorOfLight = gameStateMan.currentGameState == GameState.CurrentGameState.White ? lightProperties.ColorOfLight.WhiteLight : lightProperties.currentColorOfLight;
         projectionType      = lightProperties.currentProjectionType;
         intensityOfLight    = lightProperties.intensityOfLight;
         radialRangeOfLantern= lightProperties.radialRangeOfLantern;
@@ -196,20 +226,25 @@ public class LightSource : MonoBehaviour
         lightOn = lightProperties.lightOn;
         _light.enabled = lightOn;
 
+        
+        _visualizationMaterial = _lightVisualization.GetComponentInChildren<Renderer>().material;
         // Set initial colour
         switch (colorOfLight)
         {
-            case lightProperties.ColorOfLight.WhiteLight:   _light.color = Color.white;    break;
+            case lightProperties.ColorOfLight.WhiteLight: _light.color = Color.white; 
+                MakeWhite(_light,_visualizationMaterial);    break;
             case lightProperties.ColorOfLight.CyanLight:    _light.color = Color.cyan;    break;
             case lightProperties.ColorOfLight.YellowLight:  _light.color = Color.yellow;  break;
             case lightProperties.ColorOfLight.MagentaLight: _light.color = Color.magenta;  break;
             case lightProperties.ColorOfLight.RedLight:     _light.color = Color.red;     break;
-            case lightProperties.ColorOfLight.GreenLight:   _light.color = Color.green;    break;
-            case lightProperties.ColorOfLight.BlueLight:    _light.color = Color.blue;     break;
+            case lightProperties.ColorOfLight.GreenLight:   _light.color = Color.green;
+                MakeGreen(_light, _visualizationMaterial);   break;
+            case lightProperties.ColorOfLight.BlueLight:    _light.color = Color.blue;
+                MakeBlue(_light, _visualizationMaterial);  break;
             default: throw new ArgumentOutOfRangeException();
         }
 
-        _visualizationMaterial = _lightVisualization.GetComponentInChildren<Renderer>().material;
+        
     }
     
     [SerializeField] private AudioClip switchSound;
@@ -225,6 +260,7 @@ public class LightSource : MonoBehaviour
     
     public void GreenBlueSwitch()
     {
+        if(gameStateMan.currentGameState != GameState.CurrentGameState.GreenBlue) return;
         // Reset objects when switching
         ResetChangeables();
 
@@ -246,6 +282,7 @@ public class LightSource : MonoBehaviour
     
     Color _green = new Color(0f, 1f, 0f, 0f);
     Color _blue = new Color(0f, 0f, 1f, 0f);
+    Color _white = new Color(1f, 1f, 1f, 0f);
     
     private void MakeGreen(Light l, Material m)   
     { 
@@ -263,6 +300,15 @@ public class LightSource : MonoBehaviour
         l.color = Color.blue;
         m.color = _blue;
         m.SetColor(EmissionColor, Color.blue);
+    }
+    
+    private void MakeWhite(Light l, Material m)
+    {
+        m.EnableKeyword("_EMISSION");
+        colorOfLight = lightProperties.ColorOfLight.WhiteLight;    
+        l.color = Color.white;
+        m.color = _white;
+        m.SetColor(EmissionColor, Color.white * 0.005f);
     }
     
     private void ResetChangeables()
