@@ -24,7 +24,7 @@ public class Other_UI_Manager : MonoBehaviour
     public void ChangeVolume()
     {
         AudioListener.volume = VolumeSlider.value;
-        Save();
+        AudioSave();
     }
     private void Load()
     {
@@ -36,15 +36,11 @@ public class Other_UI_Manager : MonoBehaviour
 
         VolumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
     }
-    private void Save()
+    public void AudioSave()
     {
         PlayerPrefs.SetFloat("musicVolume", VolumeSlider.value);
     }
-
-    public void StartupMenu()
-    {
-        hubPanel.SetActive(true);
-    }
+    
 
     public void RestartLevel()
     {
@@ -71,11 +67,6 @@ public class Other_UI_Manager : MonoBehaviour
         Application.Quit();
     }
 
-    public void Restart()
-    {
-
-        Time.timeScale = 1f;
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    
 }
+
