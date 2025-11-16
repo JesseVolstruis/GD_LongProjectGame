@@ -110,15 +110,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5841584917950650317, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.14509805
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5841584917950650317, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.11764707
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5841584917950650317, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.098039225
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6213906458595324833, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
       propertyPath: m_Enabled
@@ -142,7 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625940542971209649, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.611948
+      value: -15.895281
       objectReference: {fileID: 0}
     - target: {fileID: 8625940542971209649, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -168,68 +168,13 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 8034419882110986155, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
     - {fileID: 2597037029666202387, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
+    - {fileID: 3997023807499726661, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 406255754126180502, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
       insertIndex: 0
       addedObject: {fileID: 6135044092752010765}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6931470357468496461, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6560696108972426735}
-    - targetCorrespondingSourceObject: {fileID: 6931470357468496461, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2619484228247239149}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
---- !u!20 &1880442543397528476 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 5841584917950650317, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
-  m_PrefabInstance: {fileID: 5407088191239337041}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3114328885937370652 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6931470357468496461, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
-  m_PrefabInstance: {fileID: 5407088191239337041}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6560696108972426735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3114328885937370652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e616ca3a47bd1949b705b73244eee77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 5668511836247553223}
-  thisCamera: {fileID: 1880442543397528476}
-  obstructionMask:
-    serializedVersion: 2
-    m_Bits: 1
-  sphereRadius: 3
-  fadeSpeed: 20
-  minAlpha: 0
---- !u!114 &2619484228247239149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3114328885937370652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e616ca3a47bd1949b705b73244eee77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 5668511836247553223}
-  thisCamera: {fileID: 1880442543397528476}
-  obstructionMask:
-    serializedVersion: 2
-    m_Bits: 1
-  sphereRadius: 3
-  fadeSpeed: 20
-  minAlpha: 0
 --- !u!4 &5668511836247553223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 406255754126180502, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
