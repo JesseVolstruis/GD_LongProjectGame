@@ -39847,7 +39847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625940542971209649, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.345093
+      value: 5.011763
       objectReference: {fileID: 0}
     - target: {fileID: 8625940542971209649, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -47584,7 +47584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4376558993220817888, guid: a160fc9d016547341a9a7dcdeb4fae68, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.0117617
+      value: -13.3215685
       objectReference: {fileID: 0}
     - target: {fileID: 4376558993220817888, guid: a160fc9d016547341a9a7dcdeb4fae68, type: 3}
       propertyPath: m_LocalPosition.z
@@ -62291,6 +62291,77 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1719794375982856172, guid: f77993233bd43c74186ae1c911fccb2b, type: 3}
   m_PrefabInstance: {fileID: 316706561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &316871958
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2583075370128025548, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 190.81534
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583075370128025548, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 66.565414
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583075370128025548, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 30.510742
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583075370128025548, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583075370128025548, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583075370128025548, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583075370128025548, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583075370128025548, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583075370128025548, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583075370128025548, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365696598307021012, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+      propertyPath: m_Name
+      value: TransitionScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365696598307021012, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+--- !u!1 &316871959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3365696598307021012, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+  m_PrefabInstance: {fileID: 316871958}
+  m_PrefabAsset: {fileID: 0}
+--- !u!328 &316871960 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 3415863087321700111, guid: 1c8fec89c994e194480ef5fc575866a9, type: 3}
+  m_PrefabInstance: {fileID: 316871958}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &317605612
 PrefabInstance:
@@ -361630,6 +361701,14 @@ PrefabInstance:
       propertyPath: exitB
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6587936260536028632, guid: 98e63c9611e93644bb0abbe6f93deef7, type: 3}
+      propertyPath: videoPlayer
+      value: 
+      objectReference: {fileID: 316871960}
+    - target: {fileID: 6587936260536028632, guid: 98e63c9611e93644bb0abbe6f93deef7, type: 3}
+      propertyPath: transitionScreen
+      value: 
+      objectReference: {fileID: 316871959}
     - target: {fileID: 8762155182650229701, guid: 98e63c9611e93644bb0abbe6f93deef7, type: 3}
       propertyPath: m_Name
       value: reset plane
@@ -433143,3 +433222,4 @@ SceneRoots:
   - {fileID: 241525416}
   - {fileID: 599367027}
   - {fileID: 1755568894}
+  - {fileID: 316871958}

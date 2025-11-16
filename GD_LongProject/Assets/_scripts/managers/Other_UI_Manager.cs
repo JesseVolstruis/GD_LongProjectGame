@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Other_UI_Manager : MonoBehaviour
 {
-    [SerializeField] Slider VolumeSlider;
+    // [SerializeField] Slider VolumeSlider;
 
     public GameObject hubPanel;
 
@@ -23,7 +23,7 @@ public class Other_UI_Manager : MonoBehaviour
     }
     public void ChangeVolume()
     {
-        AudioListener.volume = VolumeSlider.value;
+       // AudioListener.volume = VolumeSlider.value;
         AudioSave();
     }
     private void Load()
@@ -34,11 +34,11 @@ public class Other_UI_Manager : MonoBehaviour
             return;
         }
 
-        VolumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+       // VolumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
     }
     public void AudioSave()
     {
-        PlayerPrefs.SetFloat("musicVolume", VolumeSlider.value);
+        //PlayerPrefs.SetFloat("musicVolume", VolumeSlider.value);
     }
     
 

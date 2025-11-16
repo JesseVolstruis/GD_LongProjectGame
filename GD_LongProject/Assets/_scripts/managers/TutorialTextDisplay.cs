@@ -10,6 +10,8 @@ public class TutorialTextDisplay : MonoBehaviour
 
     private Transform player;
 
+    private TutorialInteractable currentTutorialObject;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -20,12 +22,20 @@ public class TutorialTextDisplay : MonoBehaviour
     {
         TutorialInteractable closestObject = FindClosestTutorialObject();
 
-        if (closestObject != null)
+        if (currentTutorialObject != null && closestObject != currentTutorialObject)
+        {
+           currentTutorialObject.MarkAsTriggered();
+            currentTutorialObject = null;
+        }
+
+        if (closestObject != null && !closestObject.HasBeenTriggered())
         {
             textBox.SetActive(true);
             text.text = closestObject.GetText();
+
+            currentTutorialObject = closestObject;
         }
-        else
+        else if (closestObject == null || closestObject.HasBeenTriggered())
         {
             textBox.SetActive(false);
         }
