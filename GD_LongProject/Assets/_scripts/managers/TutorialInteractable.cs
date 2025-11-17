@@ -3,7 +3,8 @@ using UnityEngine;
 public class TutorialInteractable : MonoBehaviour
 {
     [SerializeField] private string displayText = "Tutorial message here";
-    [SerializeField] private GameObject permanentObject;
+    [SerializeField] private GameObject permanentObject1;
+    [SerializeField] private GameObject permanentObject2;
 
     private bool hasBeenTriggered = false;
 
@@ -22,9 +23,15 @@ public class TutorialInteractable : MonoBehaviour
         hasBeenTriggered = true;
 
        
-        if (permanentObject != null)
+        if (permanentObject1 != null )
         {
-            permanentObject.SetActive(true);
+            permanentObject1.SetActive(true);
+        }
+
+        if (permanentObject2 != null)
+        {
+
+            permanentObject2.SetActive(true);
         }
     }
 }
