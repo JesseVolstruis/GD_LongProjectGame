@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TutorialTextDisplay : MonoBehaviour
 {
     [SerializeField] private float maxDistance = 5f;
     [SerializeField] private GameObject textBox;
-    [SerializeField] private Text text;
+    [SerializeField] private TextMeshProUGUI text;
 
     private Transform player;
 
