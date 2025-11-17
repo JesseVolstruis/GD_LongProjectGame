@@ -57136,7 +57136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9054268610637973076, guid: 98e63c9611e93644bb0abbe6f93deef7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -21.1
+      value: -9.5
       objectReference: {fileID: 0}
     - target: {fileID: 9054268610637973076, guid: 98e63c9611e93644bb0abbe6f93deef7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -199621,7 +199621,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1672935023
 Transform:
   m_ObjectHideFlags: 0
@@ -223972,7 +223972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1874396006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -256748,21 +256748,22 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1380402767}
   - {fileID: 807836078}
   - {fileID: 1445482189}
   - {fileID: 1160277203}
+  - {fileID: 255497604}
   - {fileID: 1830321834}
   - {fileID: 509955118}
-  - {fileID: 255497604}
+  - {fileID: 1380402767}
+  - {fileID: 2060659533}
   - {fileID: 1247492370}
   - {fileID: 286941226}
   - {fileID: 541789734}
   - {fileID: 445983599}
   - {fileID: 1503108373}
   - {fileID: 1956856336}
-  - {fileID: 1672935023}
-  - {fileID: 1874396010}
-  - {fileID: 1027192555}
   - {fileID: 1460486368}
   - {fileID: 366060451}
+  - {fileID: 1027192555}
+  - {fileID: 1672935023}
+  - {fileID: 1874396010}

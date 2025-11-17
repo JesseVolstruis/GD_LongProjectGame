@@ -1,16 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 public class Other_UI_Manager : MonoBehaviour
 {
     // [SerializeField] Slider VolumeSlider;
 
     public GameObject hubPanel;
-
+    [SerializeField] GameObject buttonPanel;
+    
+    private float _time = 0f;
+    private float _duration;
     public void Start()
     {
+        _duration = SceneManager.GetActiveScene().buildIndex == 12 ? 10f : 7f;
         if (!PlayerPrefs.HasKey("musicVolume"))
         {
             PlayerPrefs.SetFloat("musicVolume", 1);
@@ -21,6 +22,15 @@ public class Other_UI_Manager : MonoBehaviour
             Load();
         }
     }
+    private void Update()
+    {
+        _time +=  Time.deltaTime;
+        if (_time > _duration)
+        {
+            buttonPanel.SetActive(true);
+        }
+    }
+
     public void ChangeVolume()
     {
        // AudioListener.volume = VolumeSlider.value;
@@ -40,13 +50,10 @@ public class Other_UI_Manager : MonoBehaviour
     {
         //PlayerPrefs.SetFloat("musicVolume", VolumeSlider.value);
     }
-    
 
     public void RestartLevel()
     {
-
         Time.timeScale = 1f;
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -66,7 +73,6 @@ public class Other_UI_Manager : MonoBehaviour
     {
         Application.Quit();
     }
-
     
 }
 

@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Levels/Tutorial.unity
+    path: Assets/Scenes/Levels/_StartScene.unity
+    guid: 11d43088243217b41b95df0996e60a59
+  - enabled: 1
+    path: Assets/Scenes/Levels/_Tutorial.unity
     guid: 442ebc5b9e3a0c44c84fa6ea13e176c3
   - enabled: 1
     path: Assets/Scenes/Levels/Level0.unity
@@ -38,6 +41,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level9.unity
     guid: 94b16c45ad869334b82f19dba122a780
+  - enabled: 1
+    path: Assets/Scenes/Levels/zEndScene.unity
+    guid: 026bf067eb57fc54ba1be66bc79edd9b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

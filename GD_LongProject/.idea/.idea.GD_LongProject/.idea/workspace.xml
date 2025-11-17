@@ -4,7 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="" />
+    <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Idle.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Idle.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Idle.anim.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Jump.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Jump.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Jump.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Jump.anim.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Walk.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Walk.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Walk.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player2/Clips/Walk.anim.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Player2/Player2.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Player2/Player2.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIGamepadControls .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UIGamepadControls .prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIKeyboardControls.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UIKeyboardControls.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/EndScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/EndScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level0.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level0.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level4.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level4.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level5.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level5.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level6.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level6.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level7.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level7.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level8.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level8.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level9.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level9.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Tutorial.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Tutorial.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StartScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StartScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/playerSceneTemp.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/playerSceneTemp.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UISTUFF/ImageUI/HowToPlayButton.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UISTUFF/ImageUI/HowToPlayButton.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UISTUFF/VideoUI/EndScreenTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UISTUFF/VideoUI/EndScreenTexture.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UISTUFF/VideoUI/StartScreenTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UISTUFF/VideoUI/StartScreenTexture.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UISTUFF/VideoUI/TransitionVideoTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UISTUFF/VideoUI/TransitionVideoTexture.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/Lights/LightSource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/managers/Other_UI_Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/managers/Other_UI_Manager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/managers/sceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/managers/sceneManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,8 +53,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/CombineTiles.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/RandomWallRotator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/CharacterController/CameraObstructionHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/CharacterController/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/Changeables/GreenChangeable.cs" root0="FORCE_HIGHLIGHTING" />
@@ -24,7 +61,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/Lights/overlapChecker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/_DatabaseScripts/GameState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/SoundMixerManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/exitTriggers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/exitTriggers.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_scripts/managers/sceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@e2c83221d2dc/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@087c6d6dbb7d/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
@@ -160,6 +197,7 @@
       <workItem from="1763220238102" duration="2073000" />
       <workItem from="1763226705488" duration="1264000" />
       <workItem from="1763282947400" duration="5715000" />
+      <workItem from="1763399198223" duration="11399000" />
     </task>
     <servers />
   </component>

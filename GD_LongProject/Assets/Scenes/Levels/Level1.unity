@@ -483,7 +483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &574641574
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -920,7 +920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1229700895
 Transform:
   m_ObjectHideFlags: 0
@@ -947,7 +947,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4376558993220817888, guid: a160fc9d016547341a9a7dcdeb4fae68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -10.766665
       objectReference: {fileID: 0}
     - target: {fileID: 4376558993220817888, guid: a160fc9d016547341a9a7dcdeb4fae68, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1195,7 +1195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8625940542971209649, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.766665
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8625940542971209649, guid: b4780e0b12149174da4503fcb1b6a35f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1472,15 +1472,15 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 91837688153707471}
-  - {fileID: 54596758}
-  - {fileID: 1839765818}
   - {fileID: 1782163201}
   - {fileID: 1473346567}
   - {fileID: 1849160955}
+  - {fileID: 54596758}
+  - {fileID: 1839765818}
   - {fileID: 1041240699}
   - {fileID: 1132853941}
-  - {fileID: 1229700895}
-  - {fileID: 574641578}
-  - {fileID: 1527364539}
   - {fileID: 474191403}
   - {fileID: 160833641}
+  - {fileID: 1527364539}
+  - {fileID: 1229700895}
+  - {fileID: 574641578}

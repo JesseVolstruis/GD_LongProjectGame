@@ -71,7 +71,7 @@ public class LightSource : MonoBehaviour
                 gameStateMan.currentGameState = GameState.CurrentGameState.White;
                 break;
             case 2:
-                gameStateMan.currentGameState = GameState.CurrentGameState.GreenOnly;
+                gameStateMan.currentGameState = GameState.CurrentGameState.White;
                 break;
             case 3:
                 gameStateMan.currentGameState = GameState.CurrentGameState.GreenOnly;
@@ -80,7 +80,7 @@ public class LightSource : MonoBehaviour
                 gameStateMan.currentGameState = GameState.CurrentGameState.GreenOnly;
                 break;
             case 5:
-                gameStateMan.currentGameState = GameState.CurrentGameState.GreenBlue;
+                gameStateMan.currentGameState = GameState.CurrentGameState.GreenOnly;
                 break;
             case 6:
                 gameStateMan.currentGameState = GameState.CurrentGameState.GreenBlue;
@@ -92,6 +92,12 @@ public class LightSource : MonoBehaviour
                 gameStateMan.currentGameState = GameState.CurrentGameState.GreenBlue;
                 break;
             case 9:
+                gameStateMan.currentGameState = GameState.CurrentGameState.GreenBlue;
+                break;
+            case 10:
+                gameStateMan.currentGameState = GameState.CurrentGameState.GreenBlue;
+                break;
+            case 11:
                 gameStateMan.currentGameState = GameState.CurrentGameState.GreenBlue;
                 break;
             

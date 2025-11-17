@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,20 +5,19 @@ using UnityEngine.Video;
 public class sceneManager : MonoBehaviour
 {
     [SerializeField] private exitTriggers exitA;
-    //[SerializeField] private button exitB;
 
     [SerializeField] private VideoPlayer videoPlayer;
-    private bool isLoadingNextLevel = false;
-
+    private bool _isLoadingNextLevel = false;
     public GameObject transitionScreen;
 
+    private float _waitTime;
     private void Start()
-    { 
+    {
+        _waitTime = SceneManager.GetActiveScene().buildIndex == 11 ? 1.5f : 3f;
         if (transitionScreen != null)
         {
             transitionScreen.SetActive(false);
         }
-       
     }
 
     private void Update()
@@ -46,33 +44,34 @@ public class sceneManager : MonoBehaviour
     {
         Application.Quit();
     }
-
+    
+    private void PlayVideo()
+    {
+        transitionScreen.SetActive(true);
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     private IEnumerator PlayVideoThenLoad()
     {
         transitionScreen.SetActive(true);
-
-        VideoPlayer videoPlayer = transitionScreen.GetComponent<VideoPlayer>();
-
-        videoPlayer.Play();
-
-        yield return new WaitForSeconds((float)videoPlayer.clip.length); // this should let the transition play out in full before transitionin
+        
+        yield return new WaitForSeconds(_waitTime); 
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void NextLevel()
-    { if (!isLoadingNextLevel)
+    { 
+        if (!_isLoadingNextLevel)
         {
-            isLoadingNextLevel = true;
+            _isLoadingNextLevel = true;
             StartCoroutine(PlayVideoThenLoad());
         }
-        
     }
     
     private void CheckExits(bool extA)
     {
         if (!extA) return;
-        Debug.Log("gotem");
         NextLevel();
     }
 }
