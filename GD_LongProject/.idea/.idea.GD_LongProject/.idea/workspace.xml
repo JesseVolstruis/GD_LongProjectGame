@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/BlueBlock.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/BlueBlock.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/End Screen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/End Screen.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/End Screen.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/End Screen.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Start Screen.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Start Screen.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/StartPanel.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/StartPanel.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIGamepadControls .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UIGamepadControls .prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIKeyboardControls.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UIKeyboardControls.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level0.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level0.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Roof/Tutorial 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Roof/Tutorial 1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/_StartScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/_StartScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/zEndScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/zEndScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sounds/MainMixer.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sounds/MainMixer.mixer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/_Tutorial.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/_Tutorial.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/export.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/export.fbx.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +165,7 @@
       <workItem from="1763226705488" duration="1264000" />
       <workItem from="1763282947400" duration="5715000" />
       <workItem from="1763399198223" duration="15455000" />
-      <workItem from="1763459975178" duration="2401000" />
+      <workItem from="1763459975178" duration="3725000" />
     </task>
     <servers />
   </component>
