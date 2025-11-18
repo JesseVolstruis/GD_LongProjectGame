@@ -661,21 +661,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 309879401441861850, guid: 0f53e3d410806e740ad0c468c816db8c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1690
-      objectReference: {fileID: 0}
     - target: {fileID: 508099427378633634, guid: 0f53e3d410806e740ad0c468c816db8c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1637.7297
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 508099427378633634, guid: 0f53e3d410806e740ad0c468c816db8c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 150.43286
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 508099427378633634, guid: 0f53e3d410806e740ad0c468c816db8c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -39.568478
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 508099427378633634, guid: 0f53e3d410806e740ad0c468c816db8c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -705,41 +701,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 929160324792752715, guid: 0f53e3d410806e740ad0c468c816db8c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1692.3999
-      objectReference: {fileID: 0}
-    - target: {fileID: 5282699326047328563, guid: 0f53e3d410806e740ad0c468c816db8c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1583.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5556968234730989112, guid: 0f53e3d410806e740ad0c468c816db8c, type: 3}
       propertyPath: m_Name
       value: 'UIGamepadControls '
-      objectReference: {fileID: 0}
-    - target: {fileID: 5556968234730989112, guid: 0f53e3d410806e740ad0c468c816db8c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5995667225419662669, guid: 0f53e3d410806e740ad0c468c816db8c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7194978516751212105, guid: 0f53e3d410806e740ad0c468c816db8c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1797.8999
-      objectReference: {fileID: 0}
-    - target: {fileID: 7202113672564715428, guid: 0f53e3d410806e740ad0c468c816db8c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7922175391731157052, guid: 0f53e3d410806e740ad0c468c816db8c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906012801860665115, guid: 0f53e3d410806e740ad0c468c816db8c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2061,61 +2025,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 251215724918360047, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 376294964445273809, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 231.3999
-      objectReference: {fileID: 0}
-    - target: {fileID: 696584920878275589, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 336.8999
-      objectReference: {fileID: 0}
-    - target: {fileID: 1730506132921349060, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1988073857697338736, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 122.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1988073857697338736, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 147.29999
-      objectReference: {fileID: 0}
     - target: {fileID: 3035928688442250033, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
       propertyPath: m_Name
       value: UIKeyboardControls
       objectReference: {fileID: 0}
-    - target: {fileID: 3035928688442250033, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3616600667758614197, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 229
-      objectReference: {fileID: 0}
-    - target: {fileID: 4660213732638416259, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6520024000633129051, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
-      propertyPath: m_RenderMode
+    - target: {fileID: 8020232174972561675, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8020232174972561675, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1651
-      objectReference: {fileID: 0}
-    - target: {fileID: 8020232174972561675, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 690.43286
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8020232174972561675, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -39.568474
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8020232174972561675, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2123,15 +2047,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8020232174972561675, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8020232174972561675, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8020232174972561675, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8020232174972561675, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2144,10 +2068,6 @@ PrefabInstance:
     - target: {fileID: 8020232174972561675, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9003401406419353279, guid: e466325d7a509eb4fa54b581d406b3e5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
