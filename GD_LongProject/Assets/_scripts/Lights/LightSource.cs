@@ -294,7 +294,7 @@ public class LightSource : MonoBehaviour
         colorOfLight = lightProperties.ColorOfLight.GreenLight;   
         l.color = Color.green; 
         m.color = _green;
-        m.SetColor(EmissionColor, Color.green * 0.1f);
+        m.SetColor(EmissionColor, Color.green * 0.03f);
         
     }
     private void MakeBlue(Light l, Material m)
@@ -303,7 +303,7 @@ public class LightSource : MonoBehaviour
         colorOfLight = lightProperties.ColorOfLight.BlueLight;    
         l.color = Color.blue;
         m.color = _blue;
-        m.SetColor(EmissionColor, Color.blue);
+        m.SetColor(EmissionColor, Color.blue * 0.3f);
     }
     
     private void MakeWhite(Light l, Material m)

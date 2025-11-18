@@ -19,4 +19,4 @@ MonoBehaviour:
   forwardRangeOfTorch: 12
   horizontalRangeOfTorch: 0.3
   radialRangeOfLantern: 0
-  intensityOfLight: 10
+  intensityOfLight: 1
