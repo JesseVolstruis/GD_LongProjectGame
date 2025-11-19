@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Other_UI_Manager : MonoBehaviour
 {
-    // [SerializeField] Slider VolumeSlider;
+    [SerializeField] private GameObject pauseScreen;
 
     public GameObject hubPanel;
     [SerializeField] GameObject buttonPanel;
@@ -30,12 +30,7 @@ public class Other_UI_Manager : MonoBehaviour
             buttonPanel.SetActive(true);
         }
     }
-
-    public void ChangeVolume()
-    {
-       // AudioListener.volume = VolumeSlider.value;
-        AudioSave();
-    }
+    
     private void Load()
     {
         if (hubPanel == null)
@@ -43,14 +38,7 @@ public class Other_UI_Manager : MonoBehaviour
             Debug.LogError("StartMenu: startPanel is not assigned in the Inspector!");
             return;
         }
-
-       // VolumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
     }
-    public void AudioSave()
-    {
-        //PlayerPrefs.SetFloat("musicVolume", VolumeSlider.value);
-    }
-
     public void RestartLevel()
     {
         Time.timeScale = 1f;
@@ -72,6 +60,12 @@ public class Other_UI_Manager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+    
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        pauseScreen.SetActive(false);
     }
     
 }

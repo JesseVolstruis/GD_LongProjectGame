@@ -7,10 +7,15 @@ public class sceneManager : MonoBehaviour
     [SerializeField] private exitTriggers exitA;
 
     [SerializeField] private VideoPlayer videoPlayer;
+    [SerializeField] private GameObject pauseScreen;
     private bool _isLoadingNextLevel = false;
     public GameObject transitionScreen;
 
+    
     private float _waitTime;
+    
+    
+    
     private void Start()
     {
         _waitTime = SceneManager.GetActiveScene().buildIndex == 11 ? 1.5f : 3f;
@@ -26,7 +31,7 @@ public class sceneManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Quit();
+            Pause();
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
@@ -43,6 +48,12 @@ public class sceneManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    private void Pause()
+    {
+        pauseScreen.SetActive(true);
+        Time.timeScale = 0;
     }
     
     private void PlayVideo()
