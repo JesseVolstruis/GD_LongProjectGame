@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/WallBlocks/NormalBlock/NormalWallMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3D_Assets/BuildingBlocks/WallBlocks/NormalBlock/NormalWallMat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/_Tutorial.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/_Tutorial.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/shaders/wallTemp.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/shaders/wallTemp.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/shaders/walls.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/shaders/walls.shadergraph" afterDir="false" />
-    </list>
+    <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -166,7 +160,7 @@
       <workItem from="1763282947400" duration="5715000" />
       <workItem from="1763399198223" duration="15455000" />
       <workItem from="1763459975178" duration="3725000" />
-      <workItem from="1763487316141" duration="1158000" />
+      <workItem from="1763487316141" duration="2348000" />
     </task>
     <servers />
   </component>
