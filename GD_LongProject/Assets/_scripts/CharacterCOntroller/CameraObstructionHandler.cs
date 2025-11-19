@@ -8,7 +8,8 @@ public class CameraObstructionHandler : MonoBehaviour
     [SerializeField] private Camera thisCamera;
 
     [Header("Settings")]
-    [SerializeField] private LayerMask obstructionMask;
+    [SerializeField] private LayerMask playerMask;
+    [SerializeField] private LayerMask wallsMask;
     [SerializeField] private float sphereRadius = 0.5f;
     [SerializeField] private float fadeSpeed = 5f;
     [SerializeField] private float minAlpha = 0f;
@@ -20,45 +21,60 @@ public class CameraObstructionHandler : MonoBehaviour
     {
         Vector3 direction = player.position - transform.position;
         Vector3 origin = transform.position + transform.forward * sphereRadius;
-        float distance = direction.magnitude - _buffer * sphereRadius;
+        float rayDistance = direction.magnitude;
+        float sphereDistance = Mathf.Max(0.01f, direction.magnitude - _buffer * sphereRadius);
 
-        RaycastHit[] hits = Physics.SphereCastAll(origin, sphereRadius, direction, distance, obstructionMask);
 
-        HashSet<ObstructionFadeTarget> currentlyHit = new();
-
-        // Identify all currently hit obstructions
-        foreach (var hit in hits)
+        if (!Physics.Raycast(origin, direction, out RaycastHit hitInfo, rayDistance, playerMask)) return;
+        if (hitInfo.collider.CompareTag("Player"))
         {
-            ObstructionFadeTarget target = hit.collider.GetComponent<ObstructionFadeTarget>();
-            if (target != null)
-            {
-                currentlyHit.Add(target);
-                if (!_fadingObjects.ContainsKey(target))
-                    _fadingObjects[target] = target.GetAlphaForCamera(thisCamera);
-            }
+            Debug.DrawRay(origin, direction, Color.red);
         }
-
-        // Update fade values
-        List<ObstructionFadeTarget> keys = new(_fadingObjects.Keys);
-        foreach (var target in keys)
+        else
         {
-            float currentAlpha = _fadingObjects[target];
+            
 
-            if (currentlyHit.Contains(target))
-                currentAlpha = Mathf.Lerp(currentAlpha, minAlpha, Time.deltaTime * fadeSpeed);
-            else
-            {
-                currentAlpha = Mathf.Lerp(currentAlpha, 1f, Time.deltaTime * fadeSpeed);
-                if (Mathf.Abs(currentAlpha - 1f) < 0.01f)
+                RaycastHit[] hits = Physics.SphereCastAll(origin, sphereRadius, direction, sphereDistance, wallsMask);
+
+                HashSet<ObstructionFadeTarget> currentlyHit = new();
+
+                // Identify all currently hit obstructions
+                foreach (var hit in hits)
                 {
-                    _fadingObjects.Remove(target);
-                    continue;
+                    ObstructionFadeTarget target = hit.collider.GetComponent<ObstructionFadeTarget>();
+                    if (target != null)
+                    {
+                        currentlyHit.Add(target);
+                        if (!_fadingObjects.ContainsKey(target))
+                            _fadingObjects[target] = target.GetAlphaForCamera(thisCamera);
+                    }
                 }
-            }
 
-            _fadingObjects[target] = currentAlpha;
-            target.SetAlphaForCamera(thisCamera, currentAlpha);
-            target.ForceApplyForCamera(thisCamera); // Apply immediately for this camera only
+                // Update fade values
+                List<ObstructionFadeTarget> keys = new(_fadingObjects.Keys);
+                foreach (var target in keys)
+                {
+                    float currentAlpha = _fadingObjects[target];
+
+                    if (currentlyHit.Contains(target))
+                        currentAlpha = Mathf.Lerp(currentAlpha, minAlpha, Time.deltaTime * fadeSpeed);
+                    else
+                    {
+                        currentAlpha = Mathf.Lerp(currentAlpha, 1f, Time.deltaTime * fadeSpeed);
+                        if (Mathf.Abs(currentAlpha - 1f) < 0.01f)
+                        {
+                            _fadingObjects.Remove(target);
+                            continue;
+                        }
+                    }
+
+                    _fadingObjects[target] = currentAlpha;
+                    target.SetAlphaForCamera(thisCamera, currentAlpha);
+                    target.ForceApplyForCamera(thisCamera); // Apply immediately for this camera only
+                }
+            
         }
+
+
     }
 }
