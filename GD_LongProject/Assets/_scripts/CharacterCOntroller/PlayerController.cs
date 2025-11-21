@@ -198,14 +198,13 @@ public class PlayerController : MonoBehaviour
         _holdingLight = true;
          animator.SetBool(HasItemAnimBool, true);
          var colorOfHeldLight = holdThis.GetComponent<LightSource>().colorOfLight;
-
          switch (colorOfHeldLight)
          {
              case lightProperties.ColorOfLight.BlueLight:
-                 //MakePlayerBlue();
+                 MakePlayerBlue();
                  break;
              case lightProperties.ColorOfLight.GreenLight:
-                 //MakePlayerGreen();
+                 MakePlayerGreen();
                  break;
          }
          
@@ -246,6 +245,7 @@ public class PlayerController : MonoBehaviour
         heldLight.GetComponentInChildren<BoxCollider>().enabled = true;
 
         _holdingLight = false;
+        MakePlayerGray();
         animator.SetBool(HasItemAnimBool, false);
         _lightSource = null;
         faceMoveDirection = true;
@@ -267,7 +267,94 @@ public class PlayerController : MonoBehaviour
     { 
         if (_lightSource != null)  
             _lightSource.GreenBlueSwitch();
+        var colorOfHeldLight = _lightSource.GetComponent<LightSource>().colorOfLight;
+        SwitchPlayerColour(colorOfHeldLight);
     }
     
+
+    [SerializeField] private Material greenFeetNeck;
+    [SerializeField] private Material greenTorsoSleevesPants;
+    [SerializeField] private Material greenSkin;
+    [SerializeField] private Material greenBase;
+    [SerializeField] private Material greenBangs;
+    [SerializeField] private Material greenBuns;
+    
+    [SerializeField] private Material blueFeetNeck;
+    [SerializeField] private Material blueTorsoSleevesPants;
+    [SerializeField] private Material blueSkin;
+    [SerializeField] private Material blueBase;
+    [SerializeField] private Material blueBangs;
+    [SerializeField] private Material blueBuns;
+    
+    [SerializeField] private Material grayFeetNeck;
+    [SerializeField] private Material grayTorsoSleevesPants;
+    [SerializeField] private Material graySkin;
+    [SerializeField] private Material grayBase;
+    [SerializeField] private Material grayBangs;
+    [SerializeField] private Material grayBuns;
+    
+    [SerializeField] private GameObject feet;
+    [SerializeField] private GameObject neck;
+    [SerializeField] private GameObject torso;
+    [SerializeField] private GameObject sleeves;
+    [SerializeField] private GameObject pants;
+    [SerializeField] private GameObject skin;
+    [SerializeField] private GameObject @base;
+    [SerializeField] private GameObject bangs;
+    [SerializeField] private GameObject buns;
+
+    private void MakePlayerBlue()
+    {
+        feet.GetComponent<SkinnedMeshRenderer>().material = blueFeetNeck;
+        neck.GetComponent<SkinnedMeshRenderer>().material = blueFeetNeck;
+        torso.GetComponent<SkinnedMeshRenderer>().material = blueTorsoSleevesPants;
+        sleeves.GetComponent<SkinnedMeshRenderer>().material = blueTorsoSleevesPants;
+        pants.GetComponent<SkinnedMeshRenderer>().material = blueTorsoSleevesPants;
+        skin.GetComponent<SkinnedMeshRenderer>().material = blueSkin;
+        if(@base) @base.GetComponent<SkinnedMeshRenderer>().material = blueBase;
+        if(bangs) bangs.GetComponent<SkinnedMeshRenderer>().material = blueBangs;
+        if(buns) buns.GetComponent<SkinnedMeshRenderer>().material = blueBuns;
+        
+    }
+    
+    private void MakePlayerGreen()
+    {
+        feet.GetComponent<SkinnedMeshRenderer>().material = greenFeetNeck;
+        neck.GetComponent<SkinnedMeshRenderer>().material = greenFeetNeck;
+        torso.GetComponent<SkinnedMeshRenderer>().material = greenTorsoSleevesPants;
+        sleeves.GetComponent<SkinnedMeshRenderer>().material = greenTorsoSleevesPants;
+        pants.GetComponent<SkinnedMeshRenderer>().material = greenTorsoSleevesPants;
+        skin.GetComponent<SkinnedMeshRenderer>().material = greenSkin;
+        if(@base) @base.GetComponent<SkinnedMeshRenderer>().material = greenBase;
+        if(bangs) bangs.GetComponent<SkinnedMeshRenderer>().material = greenBangs;
+        if(buns) buns.GetComponent<SkinnedMeshRenderer>().material = greenBuns;
+    }
+
+    private void MakePlayerGray()
+    {
+        feet.GetComponent<SkinnedMeshRenderer>().material = grayFeetNeck;
+        neck.GetComponent<SkinnedMeshRenderer>().material = grayFeetNeck;
+        torso.GetComponent<SkinnedMeshRenderer>().material = grayTorsoSleevesPants;
+        sleeves.GetComponent<SkinnedMeshRenderer>().material = grayTorsoSleevesPants;
+        pants.GetComponent<SkinnedMeshRenderer>().material = grayTorsoSleevesPants; 
+        skin.GetComponent<SkinnedMeshRenderer>().material = graySkin;
+        if(@base) @base.GetComponent<SkinnedMeshRenderer>().material = grayBase;
+        if(bangs) bangs.GetComponent<SkinnedMeshRenderer>().material = grayBangs;
+        if(buns) buns.GetComponent<SkinnedMeshRenderer>().material = grayBuns;
+        
+    }
+
+    private void SwitchPlayerColour(lightProperties.ColorOfLight colour)
+    {
+        switch (colour)
+        {
+            case lightProperties.ColorOfLight.BlueLight:
+                MakePlayerBlue();
+                break;
+            case lightProperties.ColorOfLight.GreenLight:
+                MakePlayerGreen();
+                break;
+        }
+    }
     
 }
