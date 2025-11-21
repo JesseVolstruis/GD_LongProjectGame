@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 5833751418212200252}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.4178057, y: -2.239634, z: 2.655878}
-  m_LocalScale: {x: 2.83, y: 2.83, z: 7.35}
+  m_LocalPosition: {x: -21.9654, y: -2.239634, z: 0.2946}
+  m_LocalScale: {x: 7.6975617, y: 2.83, z: 7.8226047}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9054268610637973076}
@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6380928599402535139}
   - component: {fileID: 6587936260536028632}
+  - component: {fileID: 6244462952979700816}
   m_Layer: 0
   m_Name: sceneManager
   m_TagString: Untagged
@@ -168,6 +169,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitA: {fileID: 0}
+  videoPlayer: {fileID: 0}
+  pauseScreen: {fileID: 0}
+  transitionScreen: {fileID: 0}
+--- !u!114 &6244462952979700816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6687250602736774025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2c504139a806c4498f46b4197d2ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1Spawn: {fileID: 0}
+  player2Spawn: {fileID: 0}
 --- !u!1 &8762155182650229701
 GameObject:
   m_ObjectHideFlags: 0

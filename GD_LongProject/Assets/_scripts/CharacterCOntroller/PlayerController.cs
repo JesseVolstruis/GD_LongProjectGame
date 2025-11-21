@@ -197,7 +197,18 @@ public class PlayerController : MonoBehaviour
     {
         _holdingLight = true;
          animator.SetBool(HasItemAnimBool, true);
-        
+         var colorOfHeldLight = holdThis.GetComponent<LightSource>().colorOfLight;
+
+         switch (colorOfHeldLight)
+         {
+             case lightProperties.ColorOfLight.BlueLight:
+                 //MakePlayerBlue();
+                 break;
+             case lightProperties.ColorOfLight.GreenLight:
+                 //MakePlayerGreen();
+                 break;
+         }
+         
         // Disable physics + attach to player
         var rb = holdThis.GetComponent<Rigidbody>();
         rb.isKinematic = true;
@@ -251,10 +262,12 @@ public class PlayerController : MonoBehaviour
         _lightSource.SwitchOnOff();
         Strafe();
     }
-
+    
     private void ColourSwitch()
     { 
         if (_lightSource != null)  
             _lightSource.GreenBlueSwitch();
     }
+    
+    
 }
