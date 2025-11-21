@@ -227,8 +227,9 @@ public class PlayerController : MonoBehaviour
         if (_lightSource.lightOn) faceMoveDirection = false;
     }
 
-    private void PutDown()
+    public void PutDown()
     {
+        if(!_holdingLight) return;
         if(!_grounded) return;
         
         Transform heldLight = _lightSource.transform;

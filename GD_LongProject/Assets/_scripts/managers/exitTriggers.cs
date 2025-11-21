@@ -13,12 +13,14 @@ public class exitTriggers : MonoBehaviour
     private void Update()
     {
         playersThrough = _playerCount >= 2;
+        
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            other.GetComponent<PlayerController>().PutDown();
             _playerCount++;
         }
     }
