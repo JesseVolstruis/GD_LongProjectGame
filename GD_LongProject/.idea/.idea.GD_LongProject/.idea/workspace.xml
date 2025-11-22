@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="532527a1-229f-4b3e-bd6c-f9b4f25d5e6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GD_LongProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem/InputSystem_Actions.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level2.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level3.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/_StartScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/_StartScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/_Tutorial.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/_Tutorial.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/CharacterController/PlayerSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/CharacterController/PlayerSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/managers/SceneSpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/managers/SceneSpawnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_scripts/managers/sceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/managers/sceneManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/pasueTest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/pasueTest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_scripts/managers/Other_UI_Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_scripts/managers/Other_UI_Manager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +170,7 @@
       <workItem from="1763564633735" duration="8637000" />
       <workItem from="1763708225566" duration="5614000" />
       <workItem from="1763716783020" duration="9916000" />
-      <workItem from="1763815454008" duration="1580000" />
+      <workItem from="1763815454008" duration="1779000" />
     </task>
     <servers />
   </component>
