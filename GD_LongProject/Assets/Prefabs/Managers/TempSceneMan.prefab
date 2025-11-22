@@ -172,6 +172,31 @@ MonoBehaviour:
   videoPlayer: {fileID: 0}
   pauseScreen: {fileID: 0}
   transitionScreen: {fileID: 0}
+  pauseAction:
+    m_Name: Pause
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 477b97d9-5197-4e0f-b35f-9d19a7f841b6
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 6e92082b-29d4-4d7c-accc-decefa7f7ad1
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pause
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 936b7365-1c59-429d-a467-7d04fa42335f
+      m_Path: <Gamepad>/start
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pause
+      m_Flags: 0
+    m_Flags: 0
 --- !u!114 &6244462952979700816
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 public class sceneManager : MonoBehaviour
@@ -14,6 +15,19 @@ public class sceneManager : MonoBehaviour
     
     private float _waitTime;
     
+    public InputAction pauseAction;
+
+    void OnEnable()
+    {
+        pauseAction.Enable();
+        pauseAction.performed += ctx => Pause();
+    }
+
+    void OnDisable()
+    {
+        pauseAction.performed -= ctx => Pause();
+        pauseAction.Disable();
+    }
     
     
     private void Start()
@@ -23,21 +37,13 @@ public class sceneManager : MonoBehaviour
         {
             transitionScreen.SetActive(false);
         }
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
         CheckExits(exitA.playersThrough);
-        
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Pause();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            Restart();
-        }
     }
 
     public void Restart()
@@ -54,6 +60,9 @@ public class sceneManager : MonoBehaviour
     {
         pauseScreen.SetActive(true);
         Time.timeScale = 0;
+       
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
     
     private void PlayVideo()
@@ -83,6 +92,7 @@ public class sceneManager : MonoBehaviour
     private void CheckExits(bool extA)
     {
         if (!extA) return;
+     
         NextLevel();
     }
 }

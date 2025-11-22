@@ -66,6 +66,9 @@ public class Other_UI_Manager : MonoBehaviour
     {
         Time.timeScale = 1f;
         pauseScreen.SetActive(false);
+        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     
 }
