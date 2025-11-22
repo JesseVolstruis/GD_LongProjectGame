@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(CharacterController))]
@@ -96,6 +97,20 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            MakePlayerBlue();
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            MakePlayerGreen();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            MakePlayerGray();
+        }
+        
         // --- Movement ---
         _moveInput = _moveAction.ReadValue<Vector2>();
         _grounded = _controller.isGrounded;
@@ -235,6 +250,7 @@ public class PlayerController : MonoBehaviour
         Transform heldLight = _lightSource.transform;
 
         heldLight.SetParent(null);
+        SceneManager.MoveGameObjectToScene(heldLight.gameObject, SceneManager.GetActiveScene());
         heldLight.position = lanternHoldPosition.position;  
         heldLight.rotation = lanternHoldPosition.rotation;
 
@@ -250,6 +266,20 @@ public class PlayerController : MonoBehaviour
         animator.SetBool(HasItemAnimBool, false);
         _lightSource = null;
         faceMoveDirection = true;
+    }
+
+    public void ResetPlayer()
+    {
+        if (_holdingLight)
+        {
+            Destroy(_lightSource.gameObject);
+            _holdingLight = false;
+            MakePlayerGray();
+            animator.SetBool(HasItemAnimBool, false);
+            _lightSource = null;
+            faceMoveDirection = true;
+             
+        }
     }
 
     private void Strafe()
@@ -302,6 +332,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject skin;
     [SerializeField] private GameObject @base;
     [SerializeField] private GameObject bangs;
+
+    [SerializeField] private GameObject pl1baseHair;
+    [SerializeField] private GameObject pl1bangsHair;
+        
     [SerializeField] private GameObject buns;
 
     private void MakePlayerBlue()
@@ -312,10 +346,26 @@ public class PlayerController : MonoBehaviour
         sleeves.GetComponent<SkinnedMeshRenderer>().material = blueTorsoSleevesPants;
         pants.GetComponent<SkinnedMeshRenderer>().material = blueTorsoSleevesPants;
         skin.GetComponent<SkinnedMeshRenderer>().material = blueSkin;
-        if(@base) @base.GetComponent<SkinnedMeshRenderer>().material = blueBase;
-        if(bangs) bangs.GetComponent<SkinnedMeshRenderer>().material = blueBangs;
-        if(buns) buns.GetComponent<SkinnedMeshRenderer>().material = blueBuns;
         
+        if(pl1baseHair) pl1baseHair.GetComponent<SkinnedMeshRenderer>().material = blueBase;
+        if(pl1bangsHair) pl1bangsHair.GetComponent<SkinnedMeshRenderer>().material = blueBangs;
+        if(buns) buns.GetComponent<SkinnedMeshRenderer>().material = blueBuns;
+
+        if (@base)
+        {
+            Material[] baseHair = @base.GetComponent<SkinnedMeshRenderer>().materials;
+            baseHair[1] = blueBase;
+            baseHair[0] = blueBangs;
+            @base.GetComponent<SkinnedMeshRenderer>().materials = baseHair;
+        }
+
+        if (bangs)
+        {
+            Material[] bangHair = bangs.GetComponent<SkinnedMeshRenderer>().materials;
+            bangHair[0] = blueBase;
+            bangHair[1] = blueBangs;
+            bangs.GetComponent<SkinnedMeshRenderer>().materials = bangHair;
+        }
     }
     
     private void MakePlayerGreen()
@@ -326,9 +376,19 @@ public class PlayerController : MonoBehaviour
         sleeves.GetComponent<SkinnedMeshRenderer>().material = greenTorsoSleevesPants;
         pants.GetComponent<SkinnedMeshRenderer>().material = greenTorsoSleevesPants;
         skin.GetComponent<SkinnedMeshRenderer>().material = greenSkin;
-        if(@base) @base.GetComponent<SkinnedMeshRenderer>().material = greenBase;
-        if(bangs) bangs.GetComponent<SkinnedMeshRenderer>().material = greenBangs;
+        if(pl1baseHair) pl1baseHair.GetComponent<SkinnedMeshRenderer>().material = greenBase;
+        if(pl1bangsHair) pl1bangsHair.GetComponent<SkinnedMeshRenderer>().material = greenBangs;
         if(buns) buns.GetComponent<SkinnedMeshRenderer>().material = greenBuns;
+        
+        Material[] baseHair = @base.GetComponent<SkinnedMeshRenderer>().materials;
+        baseHair[0] = greenBase;
+        baseHair[1] = greenBangs;
+        @base.GetComponent<SkinnedMeshRenderer>().materials = baseHair;
+        Material[] bangHair = bangs.GetComponent<SkinnedMeshRenderer>().materials;
+        bangHair[1] = greenBase;
+        bangHair[0] = greenBangs;
+        bangs.GetComponent<SkinnedMeshRenderer>().materials = bangHair;
+        
     }
 
     private void MakePlayerGray()
@@ -339,9 +399,20 @@ public class PlayerController : MonoBehaviour
         sleeves.GetComponent<SkinnedMeshRenderer>().material = grayTorsoSleevesPants;
         pants.GetComponent<SkinnedMeshRenderer>().material = grayTorsoSleevesPants; 
         skin.GetComponent<SkinnedMeshRenderer>().material = graySkin;
-        if(@base) @base.GetComponent<SkinnedMeshRenderer>().material = grayBase;
-        if(bangs) bangs.GetComponent<SkinnedMeshRenderer>().material = grayBangs;
+        
+        if(pl1baseHair) pl1baseHair.GetComponent<SkinnedMeshRenderer>().material = grayBase;
+        if(pl1bangsHair) pl1bangsHair.GetComponent<SkinnedMeshRenderer>().material = grayBangs;
         if(buns) buns.GetComponent<SkinnedMeshRenderer>().material = grayBuns;
+        
+        Material[] baseHair = @base.GetComponent<SkinnedMeshRenderer>().materials;
+        baseHair[0] = grayBase;
+        baseHair[1] = grayBangs;
+        @base.GetComponent<SkinnedMeshRenderer>().materials = baseHair;
+        Material[] bangHair = bangs.GetComponent<SkinnedMeshRenderer>().materials;
+        bangHair[1] = grayBase;
+        bangHair[0] = grayBangs;
+        bangs.GetComponent<SkinnedMeshRenderer>().materials = bangHair;
+       
         
     }
 

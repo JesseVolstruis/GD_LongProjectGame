@@ -8,6 +8,7 @@ public class resetPlane : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            other.GetComponent<PlayerController>().ResetPlayer();
             sceneManager.Restart();
         }
     }
