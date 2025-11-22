@@ -8,20 +8,32 @@ public class SceneSpawnManager : MonoBehaviour
 
     void Start()
     {
-        // Find players that were kept alive between scenes
-        var players = Object.FindObjectsByType<PlayerInput>(FindObjectsSortMode.None);
+        // Find all persistent players (those with KeepInputDevices)
+        var persistentPlayers = GameObject.FindObjectsByType<KeepInputDevices>(FindObjectsSortMode.None);
 
-        foreach (var p in players)
+        foreach (var p in persistentPlayers)
         {
-            if (p.playerIndex == 0) // Player 1
+            var playerInput = p.GetComponent<PlayerInput>();
+            if (playerInput == null) continue;
+
+            switch (playerInput.playerIndex)
             {
-                p.transform.position = player1Spawn.position;
-                p.transform.rotation = player1Spawn.rotation;
+                case 0: // Player 1
+                    p.transform.position = player1Spawn.position;
+                    p.transform.rotation = player1Spawn.rotation;
+                    break;
+                case 1: // Player 2
+                    p.transform.position = player2Spawn.position;
+                    p.transform.rotation = player2Spawn.rotation;
+                    break;
             }
-            else if (p.playerIndex == 1) // Player 2
+
+            // Optionally, reset animation states or velocity here
+            var controller = p.GetComponent<CharacterController>();
+            if (controller != null)
             {
-                p.transform.position = player2Spawn.position;
-                p.transform.rotation = player2Spawn.rotation;
+                controller.enabled = false; // reset controller position safely
+                controller.enabled = true;
             }
         }
     }

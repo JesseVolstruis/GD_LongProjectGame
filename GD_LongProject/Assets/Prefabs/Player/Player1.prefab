@@ -291,7 +291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &406255754126180502
 Transform:
   m_ObjectHideFlags: 0
@@ -463,8 +463,8 @@ MonoBehaviour:
   skin: {fileID: 1132312810628721682}
   base: {fileID: 0}
   bangs: {fileID: 0}
-  pl1baseHair: {fileID: 2750038647205006718}
-  pl1bangsHair: {fileID: 2458340739778160359}
+  pl1BaseHair: {fileID: 2750038647205006718}
+  pl1BangsHair: {fileID: 2458340739778160359}
   buns: {fileID: 3659310669689552577}
 --- !u!114 &1604063202232634458
 MonoBehaviour:
