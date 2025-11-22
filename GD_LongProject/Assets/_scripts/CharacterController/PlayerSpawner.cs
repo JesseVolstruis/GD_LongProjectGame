@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
+using UnityEngine.InputSystem.UI;
 
 public class PlayerSpawner : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerSpawner : MonoBehaviour
     public Transform player1Spawn;
     public Transform player2Spawn;
 
+    private InputSystemUIInputModule _uiModule;
     void Start()
     {
         // Find all existing PlayerInput components
