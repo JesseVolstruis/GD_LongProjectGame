@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class GreenChangeable : MonoBehaviour, IChangeable
 {
-    public GameObject leaf;
+    public GameObject leafBox;
+    public GameObject leafMesh;
 
     [SerializeField] private AudioClip greenSound;
 
@@ -17,20 +18,23 @@ public class GreenChangeable : MonoBehaviour, IChangeable
         if (shouldBeGreen && !_isGreen)
         {
             _isGreen = true;
-            leaf.SetActive(true);
+            leafBox.SetActive(true);
+            leafMesh.SetActive(true);
             if(SoundManager.Instance != null) SoundManager.Instance.PlaySoundFX(greenSound, transform, 1f);
         }
         else if (!shouldBeGreen && _isGreen)
         {
             // switched away from green
             _isGreen = false;
-            leaf.SetActive(false);
+            leafBox.SetActive(false);
+            leafMesh.SetActive(true);
         }
     }
 
     public void UnChange(bool immediately)
     {
         _isGreen = false;
-        leaf.SetActive(false);
+        leafBox.SetActive(false);
+        leafMesh.SetActive(false);
     }
 }

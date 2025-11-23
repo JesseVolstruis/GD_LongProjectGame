@@ -19,10 +19,12 @@ public class SceneSpawnManager : MonoBehaviour
             switch (playerInput.playerIndex)
             {
                 case 0: // Player 1
+                    p.gameObject.GetComponent<PlayerController>().ResetPlayer();
                     p.transform.position = player1Spawn.position;
                     p.transform.rotation = player1Spawn.rotation;
                     break;
                 case 1: // Player 2
+                    p.gameObject.GetComponent<PlayerController>().ResetPlayer();
                     p.transform.position = player2Spawn.position;
                     p.transform.rotation = player2Spawn.rotation;
                     break;

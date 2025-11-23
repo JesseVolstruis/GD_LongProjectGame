@@ -48,7 +48,7 @@ public class Other_UI_Manager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Thoriso");
+        SceneManager.LoadScene("_StartScene");
     }
 
 
