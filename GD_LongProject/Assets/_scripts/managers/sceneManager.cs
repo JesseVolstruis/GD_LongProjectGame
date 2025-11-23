@@ -37,8 +37,8 @@ public class sceneManager : MonoBehaviour
         {
             transitionScreen.SetActive(false);
         }
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -58,11 +58,16 @@ public class sceneManager : MonoBehaviour
 
     private void Pause()
     {
-        pauseScreen.SetActive(true);
-        Time.timeScale = 0;
-       
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        if (pauseScreen.activeSelf)
+        {
+            pauseScreen.SetActive(false);
+            Time.timeScale = 1;
+        }
+        else
+        {
+            pauseScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
     
     private void PlayVideo()

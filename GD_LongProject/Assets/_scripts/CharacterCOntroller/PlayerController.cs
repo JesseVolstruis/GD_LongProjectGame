@@ -262,7 +262,9 @@ public class PlayerController : MonoBehaviour
         heldLight.GetComponentInChildren<BoxCollider>().enabled = true;
 
         _holdingLight = false;
+        Debug.Log("bef");
         MakePlayerGray();
+        Debug.Log("aft");
         animator.SetBool(HasItemAnimBool, false);
         _lightSource = null;
         faceMoveDirection = true;
@@ -274,7 +276,9 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(_lightSource.gameObject);
             _holdingLight = false;
+            Debug.Log("bef");
             MakePlayerGray();
+            Debug.Log("aft");
             animator.SetBool(HasItemAnimBool, false);
             _lightSource = null;
             faceMoveDirection = true;
@@ -333,8 +337,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject @base;
     [SerializeField] private GameObject bangs;
 
-    [SerializeField] private GameObject pl1baseHair;
-    [SerializeField] private GameObject pl1bangsHair;
+    [SerializeField] private GameObject pl1BaseHair;
+    [SerializeField] private GameObject pl1BangsHair;
         
     [SerializeField] private GameObject buns;
 
@@ -347,8 +351,8 @@ public class PlayerController : MonoBehaviour
         pants.GetComponent<SkinnedMeshRenderer>().material = blueTorsoSleevesPants;
         skin.GetComponent<SkinnedMeshRenderer>().material = blueSkin;
         
-        if(pl1baseHair) pl1baseHair.GetComponent<SkinnedMeshRenderer>().material = blueBase;
-        if(pl1bangsHair) pl1bangsHair.GetComponent<SkinnedMeshRenderer>().material = blueBangs;
+        if(pl1BaseHair) pl1BaseHair.GetComponent<SkinnedMeshRenderer>().material = blueBase;
+        if(pl1BangsHair) pl1BangsHair.GetComponent<SkinnedMeshRenderer>().material = blueBangs;
         if(buns) buns.GetComponent<SkinnedMeshRenderer>().material = blueBuns;
 
         if (@base)
@@ -376,19 +380,25 @@ public class PlayerController : MonoBehaviour
         sleeves.GetComponent<SkinnedMeshRenderer>().material = greenTorsoSleevesPants;
         pants.GetComponent<SkinnedMeshRenderer>().material = greenTorsoSleevesPants;
         skin.GetComponent<SkinnedMeshRenderer>().material = greenSkin;
-        if(pl1baseHair) pl1baseHair.GetComponent<SkinnedMeshRenderer>().material = greenBase;
-        if(pl1bangsHair) pl1bangsHair.GetComponent<SkinnedMeshRenderer>().material = greenBangs;
+        if(pl1BaseHair) pl1BaseHair.GetComponent<SkinnedMeshRenderer>().material = greenBase;
+        if(pl1BangsHair) pl1BangsHair.GetComponent<SkinnedMeshRenderer>().material = greenBangs;
         if(buns) buns.GetComponent<SkinnedMeshRenderer>().material = greenBuns;
-        
-        Material[] baseHair = @base.GetComponent<SkinnedMeshRenderer>().materials;
-        baseHair[0] = greenBase;
-        baseHair[1] = greenBangs;
-        @base.GetComponent<SkinnedMeshRenderer>().materials = baseHair;
-        Material[] bangHair = bangs.GetComponent<SkinnedMeshRenderer>().materials;
-        bangHair[1] = greenBase;
-        bangHair[0] = greenBangs;
-        bangs.GetComponent<SkinnedMeshRenderer>().materials = bangHair;
-        
+
+        if (@base)
+        {
+            Material[] baseHair = @base.GetComponent<SkinnedMeshRenderer>().materials;
+            baseHair[0] = greenBase;
+            baseHair[1] = greenBangs;
+            @base.GetComponent<SkinnedMeshRenderer>().materials = baseHair;
+        }
+
+        if (bangs)
+        {
+            Material[] bangHair = bangs.GetComponent<SkinnedMeshRenderer>().materials;
+            bangHair[1] = greenBase;
+            bangHair[0] = greenBangs;
+            bangs.GetComponent<SkinnedMeshRenderer>().materials = bangHair;
+        }
     }
 
     private void MakePlayerGray()
@@ -400,20 +410,25 @@ public class PlayerController : MonoBehaviour
         pants.GetComponent<SkinnedMeshRenderer>().material = grayTorsoSleevesPants; 
         skin.GetComponent<SkinnedMeshRenderer>().material = graySkin;
         
-        if(pl1baseHair) pl1baseHair.GetComponent<SkinnedMeshRenderer>().material = grayBase;
-        if(pl1bangsHair) pl1bangsHair.GetComponent<SkinnedMeshRenderer>().material = grayBangs;
+        if(pl1BaseHair) pl1BaseHair.GetComponent<SkinnedMeshRenderer>().material = grayBase;
+        if(pl1BangsHair) pl1BangsHair.GetComponent<SkinnedMeshRenderer>().material = grayBangs;
         if(buns) buns.GetComponent<SkinnedMeshRenderer>().material = grayBuns;
-        
-        Material[] baseHair = @base.GetComponent<SkinnedMeshRenderer>().materials;
-        baseHair[0] = grayBase;
-        baseHair[1] = grayBangs;
-        @base.GetComponent<SkinnedMeshRenderer>().materials = baseHair;
-        Material[] bangHair = bangs.GetComponent<SkinnedMeshRenderer>().materials;
-        bangHair[1] = grayBase;
-        bangHair[0] = grayBangs;
-        bangs.GetComponent<SkinnedMeshRenderer>().materials = bangHair;
-       
-        
+
+        if (@base)
+        {
+            Material[] baseHair = @base.GetComponent<SkinnedMeshRenderer>().materials;
+            baseHair[0] = grayBase;
+            baseHair[1] = grayBangs;
+            @base.GetComponent<SkinnedMeshRenderer>().materials = baseHair;
+        }
+
+        if (bangs)
+        {
+            Material[] bangHair = bangs.GetComponent<SkinnedMeshRenderer>().materials;
+            bangHair[1] = grayBase;
+            bangHair[0] = grayBangs;
+            bangs.GetComponent<SkinnedMeshRenderer>().materials = bangHair;
+        }
     }
 
     private void SwitchPlayerColour(lightProperties.ColorOfLight colour)
